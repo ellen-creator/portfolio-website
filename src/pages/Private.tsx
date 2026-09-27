@@ -59,28 +59,14 @@ export default function Private() {
     },
   ]
 
-  const designAbilities = [
-    {
-      category: 'Research & Analysis',
-      description: 'Conducted competitive audits for e-commerce platforms (home shopping apps), identifying UX patterns, pain points, and market opportunities.',
-    },
-    {
-      category: 'Lead Generation & Conversion',
-      description: 'Designed web experiences for customer acquisition, optimizing user journeys from initial inquiry to conversion with progressive disclosure and social proof.',
-    },
-    {
-      category: 'Conversational UX',
-      description: 'Designed chatbot messaging flows, information architecture, and conversation design for seamless human-AI interactions.',
-    },
-    {
-      category: 'Design Systems',
-      description: 'Created scalable component libraries and design systems with documentation, enabling consistent design across products.',
-    },
-    {
-      category: 'User-Centered Design',
-      description: 'Applied research-driven approach to design: observation → problem identification → solution → implementation → measurement of impact.',
-    },
-  ]
+  // Design abilities (for future use)
+  // const designAbilities = [
+  //   {
+  //     category: 'Research & Analysis',
+  //     description: 'Conducted competitive audits for e-commerce platforms (home shopping apps), identifying UX patterns, pain points, and market opportunities.',
+  //   },
+  //   ...
+  // ]
 
   return (
     <div className="max-w-4xl mx-auto px-8 py-20">

@@ -55,6 +55,7 @@ export interface CaseStudy {
       afterImage?: string
       images?: string[]
       image?: string
+      video?: string
       title?: string
       description?: string
       explanation?: string
@@ -494,5 +495,3 @@ export const projects: CaseStudy[] = [
     timeline: '4 months',
   },
 ];
-
-export { CaseStudy };

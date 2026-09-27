@@ -109,7 +109,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               Tools & Methods
             </h3>
             <div className="flex flex-wrap gap-2">
-              {project.solution.tools.map((tool, idx) => (
+              {project.solution.tools?.map((tool, idx) => (
                 <motion.span
                   key={tool}
                   initial={{ opacity: 0, scale: 0.9 }}
