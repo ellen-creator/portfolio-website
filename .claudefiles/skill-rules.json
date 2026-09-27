@@ -1,0 +1,60 @@
+{
+  "frontend-guidelines": {
+    "type": "domain",
+    "enforcement": "suggest",
+    "priority": "high",
+    "promptTriggers": {
+      "keywords": ["component", "react", "styling", "animation", "kinfork", "framer motion"],
+      "intentPatterns": [
+        "(create|add|build).*?(component|page|layout)",
+        "(animate|motion|transition).*?(smooth|easing)",
+        "design.*?(system|consistency)"
+      ]
+    },
+    "fileTriggers": {
+      "pathPatterns": ["src/**/*.tsx", "src/components/**/*", "src/design-system/**/*"],
+      "contentPatterns": ["import.*react", "export.*React.FC"]
+    }
+  },
+
+  "animation-design": {
+    "type": "domain",
+    "enforcement": "suggest",
+    "priority": "high",
+    "promptTriggers": {
+      "keywords": ["animation", "motion", "transition", "scroll", "interaction", "microinteraction"],
+      "intentPatterns": [
+        "(add|create).*?(animation|motion|transition)",
+        "smooth.*?(scroll|fade|slide)",
+        "kinfork.*?(style|feel)"
+      ]
+    }
+  },
+
+  "ux-portfolio-structure": {
+    "type": "workflow",
+    "enforcement": "suggest",
+    "priority": "high",
+    "promptTriggers": {
+      "keywords": ["case study", "project", "portfolio", "situation", "problem", "solution"],
+      "intentPatterns": [
+        "(create|add).*?(case study|project detail)",
+        "(structure|organize).*?(portfolio|projects)",
+        "ux.*?(process|framework)"
+      ]
+    }
+  },
+
+  "performance-optimization": {
+    "type": "domain",
+    "enforcement": "suggest",
+    "priority": "medium",
+    "promptTriggers": {
+      "keywords": ["performance", "optimization", "bundle", "lazy load", "split"],
+      "intentPatterns": [
+        "(optimize|improve).*?(performance|speed|load)",
+        "bundle.*?(size|analysis)"
+      ]
+    }
+  }
+}
