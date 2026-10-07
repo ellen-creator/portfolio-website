@@ -1,359 +1,193 @@
 import { motion } from 'framer-motion'
-import { useState, useEffect, useRef } from 'react'
-import { projects } from '@data/projects'
-import { useScrollAnimation } from '@utils/useScrollAnimation'
+import { projects, type CaseStudy } from '@data/projects'
 
 interface HomeProps {
   onSelectProject: (id: string) => void
+  onStory: () => void
 }
 
-export default function Home({ onSelectProject }: HomeProps) {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const galleryRef = useRef<HTMLDivElement>(null)
-  const touchStartX = useRef(0)
-  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation()
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        handleNavigate((currentIndex - 1 + projects.length) % projects.length)
-      } else if (e.key === 'ArrowRight') {
-        handleNavigate((currentIndex + 1) % projects.length)
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [currentIndex])
-
-  // Touch/swipe support
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX
+// Rough reading time from every string in the case study
+function readMinutes(project: CaseStudy) {
+  const words = (value: unknown): number => {
+    if (typeof value === 'string') return value.split(/\s+/).length
+    if (Array.isArray(value)) return value.reduce((n, v) => n + words(v), 0)
+    if (value && typeof value === 'object') return Object.values(value).reduce((n: number, v) => n + words(v), 0)
+    return 0
   }
+  return Math.max(1, Math.round(words(project) / 230))
+}
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    const touchEndX = e.changedTouches[0].clientX
-    const diff = touchStartX.current - touchEndX
+function BookIcon() {
+  return (
+    <svg viewBox="0 0 24 16" className="w-6 h-4" fill="none" stroke="currentColor" strokeWidth="1.3" aria-hidden="true">
+      <path d="M12 3C9 1 5 1 1.5 2v12C5 13 9 13 12 15c3-2 7-2 10.5-1V2C19 1 15 1 12 3z" />
+      <path d="M12 3v12" />
+    </svg>
+  )
+}
 
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        handleNavigate((currentIndex + 1) % projects.length)
-      } else {
-        handleNavigate((currentIndex - 1 + projects.length) % projects.length)
-      }
-    }
-  }
+function Meta({ project, index }: { project: CaseStudy; index: number }) {
+  return (
+    <p className="flex items-center gap-2 text-earth-600 uppercase text-sm tracking-wide whitespace-nowrap">
+      <BookIcon />
+      <span>Case study #{String(index + 1).padStart(2, '0')}</span>
+      <span className="text-earth-300">|</span>
+      <span>{readMinutes(project)} min</span>
+    </p>
+  )
+}
 
-  const getCurrentProject = (offset: number) => {
-    return projects[(currentIndex + offset + projects.length) % projects.length]
-  }
+function Label({ project }: { project: CaseStudy }) {
+  return <p className="uppercase tracking-wide text-[15px] mb-3">{project.tags[0]}</p>
+}
 
-  const handleNavigate = (index: number) => {
-    setCurrentIndex(index)
-  }
+const experience = [
+  { mark: 'G', name: 'Google', role: 'Account Strategist', note: 'UI/UX for 200+ partner websites' },
+  { mark: 'BCG', name: 'Boston Consulting Group', role: 'Senior Associate Consultant', note: 'Supply chain & procurement strategy' },
+  { mark: 'K', name: 'Kearney', role: 'Business Analyst', note: 'E-commerce app rating 2.8 → 4.8' },
+  { mark: 'SNU', name: 'Seoul National University', role: 'Research Assistant', note: 'Developmental cognitive neuroscience lab' },
+]
 
-  const currentProject = getCurrentProject(0)
-  const nextProject = getCurrentProject(1)
-  const prevProject = getCurrentProject(-1)
+const abilities = [
+  { title: 'Research & Analysis', body: 'Competitive audits, interviews and behavioral data, turned into the few insights that actually change a design.' },
+  { title: 'Conversion Optimization', body: 'Lead-generation journeys and progressive disclosure, from first inquiry to conversion.' },
+  { title: 'Conversational Design', body: 'Chatbot flows that match the user’s state of mind: reassurance first, or proof first.' },
+  { title: 'Accessible Design', body: 'Contrast, touch targets, plain language and calm defaults for neurodivergent users.' },
+]
+
+export default function Home({ onSelectProject, onStory }: HomeProps) {
+  const [lead, second, third, ...rest] = projects
+  const open = (id: string) => () => onSelectProject(id)
 
   return (
-    <div className="w-full bg-earth-50 dark:bg-navy-900 min-h-screen flex flex-col">
-      {/* Main Gallery Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="flex-1 flex flex-col items-center justify-center px-4 md:px-8 py-20 lg:py-12"
-      >
-        {/* Gallery Container */}
-        <div
-          ref={galleryRef}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-          className="w-full max-w-7xl"
-        >
-          {/* Main Image with Side Previews */}
-          <div className="flex items-center justify-between gap-4 md:gap-8 mb-16">
-            {/* Left Preview - Previous Project */}
-            <motion.div
-              key={`prev-${currentIndex}`}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 0.4, x: 0 }}
-              transition={{ duration: 0.5 }}
-              onClick={() => handleNavigate((currentIndex - 1 + projects.length) % projects.length)}
-              whileHover={{ scale: 1.05, opacity: 0.6 }}
-              className="hidden md:block flex-shrink-0 w-28 h-40 bg-gradient-to-br from-earth-200 to-earth-100 dark:from-earth-600 dark:to-earth-900 cursor-pointer transition-all duration-500 group shadow-sm hover:shadow-md rounded-sm"
-            >
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center opacity-50">
-                  <div className="text-5xl font-light font-serif text-earth-600 dark:text-earth-200">
-                    {prevProject.title.split(' ')[0].charAt(0)}
-                  </div>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="max-w-7xl mx-auto px-4 md:px-8 pt-10">
+      {/* Front page: lead story | second column | at-a-glance panel */}
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0">
+        {/* Lead story */}
+        <article className="lg:col-span-6 lg:pr-8 lg:border-r border-earth-900">
+          <Label project={lead} />
+          <button onClick={open(lead.id)} className="text-left group">
+            <h1 className="font-serif text-4xl md:text-5xl leading-[1.12] mb-5 group-hover:underline decoration-1 underline-offset-4">
+              {lead.title}
+            </h1>
+          </button>
+          <p className="text-xl md:text-2xl leading-snug mb-6">{lead.subtitle}</p>
+          <Meta project={lead} index={0} />
+          <button onClick={open(lead.id)} className="block w-full mt-6 overflow-hidden">
+            <img src={lead.thumbnail} alt={lead.title} className="w-full aspect-[16/9] object-cover hover:scale-[1.02] transition-transform duration-700" />
+          </button>
+        </article>
+
+        {/* Second column */}
+        <div className="lg:col-span-3 lg:px-6 lg:border-r border-earth-900 flex flex-col">
+          <article className="pb-6 border-b border-earth-900">
+            <button onClick={open(second.id)} className="block w-full overflow-hidden mb-5">
+              <img src={second.thumbnail} alt={second.title} className="w-full aspect-video object-cover hover:scale-[1.02] transition-transform duration-700" />
+            </button>
+            <Label project={second} />
+            <button onClick={open(second.id)} className="text-left">
+              <h2 className="font-serif text-2xl md:text-[1.75rem] leading-tight mb-6 hover:underline decoration-1 underline-offset-4">{second.title}</h2>
+            </button>
+            <Meta project={second} index={1} />
+          </article>
+          <article className="pt-6">
+            <Label project={third} />
+            <button onClick={open(third.id)} className="text-left">
+              <h2 className="font-serif text-2xl leading-tight mb-3 hover:underline decoration-1 underline-offset-4">{third.title}</h2>
+            </button>
+            <p className="text-lg leading-snug text-earth-700 mb-5">{third.subtitle}</p>
+            <Meta project={third} index={2} />
+          </article>
+        </div>
+
+        {/* At a glance panel */}
+        <aside className="lg:col-span-3 lg:pl-6">
+          <div className="bg-[#2B2B2B] text-white rounded-xl p-5">
+            <h2 className="font-serif uppercase text-2xl tracking-wide mb-4">At a glance</h2>
+
+            <div className="bg-black rounded-lg p-4 border-b-4 border-accent">
+              <div className="flex gap-3 items-start mb-5">
+                <div className="w-20 h-20 shrink-0 bg-accent text-accent-dark flex items-center justify-center font-display text-xl">M.S.</div>
+                <div>
+                  <p className="font-sans font-bold text-accent text-sm uppercase tracking-wide">● Now</p>
+                  <p className="font-serif uppercase text-lg leading-tight mt-1">Information, University of Michigan</p>
                 </div>
               </div>
-            </motion.div>
+              <a href="/resume.pdf" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 bg-accent text-accent-dark font-sans font-bold uppercase text-sm py-3 hover:brightness-95">
+                ▶ Read my resume
+              </a>
+            </div>
 
-            {/* Center - Main Image */}
-            <motion.div
-              key={`main-${currentIndex}`}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              onClick={() => onSelectProject(currentProject.id)}
-              className="flex-1 max-w-2xl cursor-pointer group"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className="relative aspect-video bg-gradient-to-br from-earth-200 to-earth-100 dark:from-earth-600 dark:to-earth-900 overflow-hidden rounded-sm shadow-lg hover:shadow-2xl transition-shadow duration-500">
-                {/* Project Thumbnail Image */}
-                {currentProject.thumbnail && (
-                  <motion.img
-                    src={currentProject.thumbnail}
-                    alt={currentProject.title}
-                    className="w-full h-full object-cover"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6 }}
-                  />
-                )}
-
-                {/* Fallback Content */}
-                <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-                  <div className="text-center">
-                    <motion.div
-                      className="text-9xl font-light font-serif text-earth-600 dark:text-earth-200 opacity-50"
-                      animate={{ y: 0 }}
-                      whileHover={{ y: -10 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {currentProject.title.split(' ')[0].charAt(0)}
-                    </motion.div>
+            <ul className="divide-y divide-white/20 mt-2">
+              {experience.map((e) => (
+                <li key={e.name} className="flex gap-3 py-4">
+                  <div className="w-16 h-16 shrink-0 border border-white/40 flex items-center justify-center font-display text-lg">{e.mark}</div>
+                  <div>
+                    <p className="font-serif text-lg leading-tight">{e.name}</p>
+                    <p className="font-sans text-sm text-white/75 mt-1 leading-snug">{e.role} · {e.note}</p>
                   </div>
-                </div>
+                </li>
+              ))}
+            </ul>
 
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-earth-900/0 group-hover:bg-earth-900/50 dark:bg-earth-900/0 dark:group-hover:bg-earth-900/40 transition-all duration-300 flex items-center justify-center">
-                  <motion.span
-                    className="text-earth-50/0 group-hover:text-earth-50 dark:text-earth-900/0 dark:group-hover:text-earth-900 font-light tracking-widest text-sm transition-all"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    VIEW PROJECT
-                  </motion.span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right Preview - Next Project */}
-            <motion.div
-              key={`next-${currentIndex}`}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 0.4, x: 0 }}
-              transition={{ duration: 0.5 }}
-              onClick={() => handleNavigate((currentIndex + 1) % projects.length)}
-              whileHover={{ scale: 1.05, opacity: 0.6 }}
-              className="hidden md:block flex-shrink-0 w-28 h-40 bg-gradient-to-br from-earth-200 to-earth-100 dark:from-earth-600 dark:to-earth-900 cursor-pointer transition-all duration-500 shadow-sm hover:shadow-md rounded-sm"
-            >
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center opacity-50">
-                  <div className="text-5xl font-light font-serif text-earth-600 dark:text-earth-200">
-                    {nextProject.title.split(' ')[0].charAt(0)}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            <button onClick={onStory} className="w-full mt-2 border border-white py-3 font-sans font-bold uppercase text-sm tracking-wide hover:bg-white hover:text-black">
+              Read the full story
+            </button>
           </div>
+        </aside>
+      </section>
 
-          {/* Project Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-5xl md:text-6xl font-light font-serif text-earth-900 dark:text-earth-50 mb-6">
-              {currentProject.title}
-            </h2>
-            <p className="text-xl text-earth-900 dark:text-earth-100 font-light leading-relaxed mb-4">
-              {currentProject.subtitle}
-            </p>
-            <p className="text-sm text-earth-600 dark:text-earth-200 font-light tracking-widest uppercase">
-              {currentProject.timeline}
-            </p>
-          </motion.div>
-
-          {/* Page Number Buttons - Bottom Navigation */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-3 mb-8"
-          >
-            {projects.map((_, index) => (
-              <motion.button
-                key={index}
-                whileHover={{ scale: 1.15, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleNavigate(index)}
-                className={`px-4 py-2 text-sm font-light tracking-widest transition-all duration-300 border rounded-sm ${
-                  currentIndex === index
-                    ? 'bg-earth-900 dark:bg-earth-200 text-earth-50 dark:text-earth-900 border-earth-900 dark:border-earth-200 shadow-md'
-                    : 'border-earth-600/50 dark:border-earth-200/50 text-earth-900 dark:text-earth-100 hover:border-earth-900 dark:hover:border-earth-200 hover:bg-earth-900 dark:hover:bg-earth-200 hover:text-earth-50 dark:hover:text-earth-900'
-                }`}
-              >
-                {index + 1}
-              </motion.button>
+      {/* More case studies */}
+      {rest.length > 0 && (
+        <section className="mt-16">
+          <h2 className="border-t-2 border-earth-900 pt-3 font-serif uppercase text-xl tracking-wide mb-8">More case studies</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0">
+            {rest.map((p, i) => (
+              <article key={p.id} className={`grid grid-cols-5 gap-5 ${i % 2 === 0 ? 'md:pr-8 md:border-r border-earth-900' : 'md:pl-8'}`}>
+                <button onClick={open(p.id)} className="col-span-2 overflow-hidden">
+                  <img src={p.thumbnail} alt={p.title} className="w-full aspect-square object-cover hover:scale-[1.03] transition-transform duration-700" />
+                </button>
+                <div className="col-span-3">
+                  <Label project={p} />
+                  <button onClick={open(p.id)} className="text-left">
+                    <h3 className="font-serif text-2xl leading-tight mb-3 hover:underline decoration-1 underline-offset-4">{p.title}</h3>
+                  </button>
+                  <p className="text-earth-700 leading-snug mb-4">{p.subtitle}</p>
+                  <Meta project={p} index={i + 3} />
+                </div>
+              </article>
             ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Design Process Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.8 }}
-        className="px-8 py-20 border-t border-earth-600/15 dark:border-earth-50/10 max-w-6xl mx-auto w-full"
-      >
-        <h2 className="text-4xl font-light font-serif text-earth-900 dark:text-earth-50 mb-4">
-          Design and Research Ability
-        </h2>
-        <p className="text-lg text-earth-900 dark:text-earth-100 font-light leading-relaxed mb-16 max-w-2xl">
-          From observation to impact. Exploring user-centered design through systematic research and iterative solutions.
-        </p>
-
-        {/* Design Abilities Grid */}
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={cardsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            whileHover={{ y: -4, boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)' }}
-            className="p-8 bg-earth-200/70 dark:bg-earth-600/40 border border-earth-200/60 dark:border-earth-600/50 rounded-lg backdrop-blur-sm shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-default"
-          >
-            <h3 className="text-xl font-serif font-light text-earth-900 dark:text-earth-50 mb-4">
-              Research & Analysis
-            </h3>
-            <p className="text-earth-900 dark:text-earth-100 font-light leading-relaxed">
-              Competitive audits for e-commerce platforms. Identifying UX patterns, pain points, and market opportunities through systematic analysis.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={cardsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ delay: 0.55, duration: 0.6 }}
-            whileHover={{ y: -4, boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)' }}
-            className="p-8 bg-earth-200/70 dark:bg-earth-600/40 border border-earth-200/60 dark:border-earth-600/50 rounded-lg backdrop-blur-sm shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-default"
-          >
-            <h3 className="text-xl font-serif font-light text-earth-900 dark:text-earth-50 mb-4">
-              Conversion Optimization
-            </h3>
-            <p className="text-earth-900 dark:text-earth-100 font-light leading-relaxed">
-              Lead generation web design with progressive disclosure forms. Optimizing user journeys from inquiry to conversion.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={cardsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            whileHover={{ y: -4, boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)' }}
-            className="p-8 bg-earth-200/70 dark:bg-earth-600/40 border border-earth-200/60 dark:border-earth-600/50 rounded-lg backdrop-blur-sm shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-default"
-          >
-            <h3 className="text-xl font-serif font-light text-earth-900 dark:text-earth-50 mb-4">
-              Conversational Design
-            </h3>
-            <p className="text-earth-900 dark:text-earth-100 font-light leading-relaxed">
-              Chatbot messaging flows and conversation design. Creating seamless human-AI interactions with transparency and personality.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={cardsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ delay: 0.65, duration: 0.6 }}
-            whileHover={{ y: -4, boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)' }}
-            className="p-8 bg-earth-200/70 dark:bg-earth-600/40 border border-earth-200/60 dark:border-earth-600/50 rounded-lg backdrop-blur-sm shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-default"
-          >
-            <h3 className="text-xl font-serif font-light text-earth-900 dark:text-earth-50 mb-4">
-              Design Systems
-            </h3>
-            <p className="text-earth-900 dark:text-earth-100 font-light leading-relaxed">
-              Scalable UI infrastructure and component libraries. Building design systems for cross-platform consistency and team efficiency.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* About Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-        className="px-8 py-20 border-t border-earth-600/15 dark:border-earth-50/10 max-w-4xl mx-auto w-full"
-      >
-        <h2 className="text-4xl font-light font-serif text-earth-900 dark:text-earth-50 mb-10">
-          About
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-6 text-earth-900 dark:text-earth-100 font-light leading-relaxed text-lg">
-            <p>
-              I'm a designer who solves user problems through UX/UI design and research.
-              I believe in starting from observation, identifying problems, conceptualizing solutions,
-              and evaluating results.
-            </p>
-            <p>
-              I began in business and technology consulting, but grew increasingly interested in deeper
-              user experience considerations. This passion ultimately led me to design.
-            </p>
           </div>
-          <div className="space-y-6 text-earth-900 dark:text-earth-100 font-light leading-relaxed text-lg">
-            <p>
-              Recently, I entered graduate school to systematically study design and research.
-              I'm particularly interested in AI, automation, and human-centered design.
-            </p>
-            <p>
-              This portfolio showcases my process: observing reality, discovering problems,
-              ideating solutions, implementing changes, and measuring impact.
-            </p>
-          </div>
-        </div>
-      </motion.section>
+        </section>
+      )}
 
-      {/* Contact */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.8 }}
-        className="px-8 py-20 border-t border-earth-600/15 dark:border-earth-50/10 text-center w-full"
-      >
-        <h2 className="text-3xl font-light font-serif text-earth-900 dark:text-earth-50 mb-10">
-          Get in Touch
-        </h2>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm font-light tracking-widest uppercase">
-          <motion.a
-            whileHover={{ y: -2, textDecoration: 'underline' }}
-            whileTap={{ scale: 0.98 }}
-            href="mailto:elllllllenlim@gmail.com"
-            className="text-earth-900 dark:text-earth-100 transition-all duration-300 border-b-2 border-earth-900/30 dark:border-earth-100/30 hover:border-earth-900 dark:hover:border-earth-100 pb-2"
-          >
-            Email
-          </motion.a>
-          <span className="hidden sm:inline text-earth-600 dark:text-earth-400">|</span>
-          <motion.a
-            whileHover={{ y: -2, textDecoration: 'underline' }}
-            whileTap={{ scale: 0.98 }}
-            href="/resume.pdf"
-            download="Suhyun_Lim_Resume_UX.pdf"
-            className="text-earth-900 dark:text-earth-100 transition-all duration-300 border-b-2 border-earth-900/30 dark:border-earth-100/30 hover:border-earth-900 dark:hover:border-earth-100 pb-2"
-          >
-            Resume
-          </motion.a>
+      {/* What I bring */}
+      <section className="mt-16">
+        <h2 className="border-t-2 border-earth-900 pt-3 font-serif uppercase text-xl tracking-wide mb-8">What I bring</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {abilities.map((a) => (
+            <div key={a.title} className="border-t border-earth-300 pt-4">
+              <h3 className="font-serif text-xl mb-2">{a.title}</h3>
+              <p className="text-earth-700 leading-relaxed">{a.body}</p>
+            </div>
+          ))}
         </div>
-      </motion.section>
-    </div>
+      </section>
+
+      {/* From the editor */}
+      <section className="mt-16 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <h2 className="lg:col-span-3 border-t-2 border-earth-900 pt-3 font-serif uppercase text-xl tracking-wide">From the editor</h2>
+        <div className="lg:col-span-9 border-t border-earth-300 pt-3 grid grid-cols-1 md:grid-cols-2 gap-8 text-lg leading-relaxed">
+          <p>
+            I solve user problems through UX research and design: observe first, find the real problem, then build and
+            measure. I began in business and technology consulting and kept drifting toward the human side of the data.
+          </p>
+          <p>
+            Now at the University of Michigan&apos;s School of Information, I&apos;m studying design and research
+            systematically, with a focus on accessibility, AI and human-centered tools that leave no one behind.
+          </p>
+        </div>
+      </section>
+    </motion.div>
   )
 }

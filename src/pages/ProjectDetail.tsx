@@ -41,7 +41,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         whileHover={{ x: -6 }}
         whileTap={{ scale: 0.95 }}
         onClick={onBack}
-        className="mb-12 text-earth-600 dark:text-earth-300 hover:text-earth-900 dark:hover:text-earth-50 transition-all duration-300 flex items-center gap-2 text-sm font-light tracking-widest uppercase"
+        className="mb-12 text-earth-600 dark:text-earth-300 hover:text-earth-900 dark:hover:text-earth-50 transition-all duration-300 flex items-center gap-2 text-sm tracking-widest uppercase"
       >
         ← Back to Work
       </motion.button>
@@ -55,11 +55,12 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
       >
         {/* Left: Title + Overview */}
         <div className="md:col-span-7">
+          <p className="uppercase tracking-wide text-[15px] mb-3">{project.tags[0]}</p>
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-4xl md:text-5xl font-light font-serif mb-6 leading-tight text-earth-900 dark:text-earth-50"
+            className="text-4xl md:text-5xl font-serif mb-6 leading-tight text-earth-900 dark:text-earth-50"
           >
             {project.title}
           </motion.h1>
@@ -67,7 +68,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-lg leading-relaxed text-earth-700 dark:text-earth-200 font-light"
+            className="text-lg leading-relaxed text-earth-700 dark:text-earth-200"
           >
             {project.overview}
           </motion.p>
@@ -89,8 +90,8 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                 ['Outcome', project.outcome],
               ].filter(([, value]) => value).map(([label, value]) => (
                 <div key={label} className="grid grid-cols-[5.5rem_1fr] gap-3 border-b border-earth-100/50 dark:border-earth-600/50 pb-3">
-                  <dt className="text-xs font-light uppercase tracking-widest text-earth-600 dark:text-earth-600 pt-1">{label}</dt>
-                  <dd className="text-earth-900 dark:text-earth-100 font-light leading-relaxed">{value}</dd>
+                  <dt className="text-xs uppercase tracking-widest text-earth-600 dark:text-earth-600 pt-1">{label}</dt>
+                  <dd className="text-earth-900 dark:text-earth-100 leading-relaxed">{value}</dd>
                 </div>
               ))}
             </motion.dl>
@@ -102,7 +103,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <h3 className="text-lg font-serif font-light mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
+            <h3 className="text-lg font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
               Focus
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -112,7 +113,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + idx * 0.1, duration: 0.4 }}
-                  className="px-4 py-2 bg-earth-100/50 dark:bg-earth-700/30 text-earth-700 dark:text-earth-200 rounded-full text-sm font-light border border-earth-200/50 dark:border-earth-600/50"
+                  className="px-3 py-1.5 text-earth-900 dark:text-earth-100 uppercase text-xs tracking-wide border border-earth-900/70 dark:border-earth-200/70"
                 >
                   {tag}
                 </motion.span>
@@ -126,7 +127,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <h3 className="text-lg font-serif font-light mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
+            <h3 className="text-lg font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
               Tools & Methods
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -136,7 +137,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6 + idx * 0.05, duration: 0.4 }}
-                  className="px-3 py-1 bg-earth-200/30 dark:bg-earth-600/20 text-earth-700 dark:text-earth-300 rounded-lg text-sm font-light border border-earth-300/30 dark:border-earth-600/30"
+                  className="px-3 py-1 bg-earth-100 dark:bg-earth-800 text-earth-800 dark:text-earth-200 text-sm"
                 >
                   {tool}
                 </motion.span>
@@ -163,7 +164,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           {/* Situation Section */}
           {project.situation.keywords && (
             <div className="mb-8 pb-8">
-              <h4 className="text-xs font-light text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-6">
+              <h4 className="text-xs text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-6">
                 ▸ Situation
               </h4>
               {/* Keywords with hanging lines */}
@@ -176,7 +177,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     transition={{ delay: 0.45 + idx * 0.05, duration: 0.5 }}
                     className="relative"
                   >
-                    <span className="text-base font-serif font-light text-earth-700 dark:text-earth-200 italic whitespace-nowrap">
+                    <span className="text-base font-serif text-earth-700 dark:text-earth-200 italic whitespace-nowrap">
                       {keyword}
                     </span>
                     {/* Vertical dotted line */}
@@ -191,7 +192,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
 
           {/* Problem Section */}
           <div>
-            <h4 className="text-xs font-light text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-4">
+            <h4 className="text-xs text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-4">
               ▸ Problem
             </h4>
             <div className="space-y-3">
@@ -203,7 +204,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   transition={{ delay: 0.5 + idx * 0.05, duration: 0.5 }}
                   className="bg-earth-50/70 dark:bg-earth-800/40 px-4 py-3 rounded-lg border border-earth-300/30 dark:border-earth-600/30"
                 >
-                  <p className="text-earth-700 dark:text-earth-300 font-light text-sm">
+                  <p className="text-earth-700 dark:text-earth-300 text-sm">
                     {point}
                   </p>
                 </motion.div>
@@ -222,7 +223,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           <div className="flex items-start gap-4">
             <span className="text-3xl text-earth-400 dark:text-earth-500 flex-shrink-0 pt-1">▶</span>
             <div className="flex-1">
-              <h3 className="text-xs font-light text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-4">
+              <h3 className="text-xs text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-4">
                 Core Challenge
               </h3>
               <ul className="space-y-4">
@@ -233,7 +234,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                       initial={{ opacity: 0, x: 10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.55 + idx * 0.1, duration: 0.5 }}
-                      className="text-earth-700 dark:text-earth-200 font-light text-base leading-relaxed"
+                      className="text-earth-700 dark:text-earth-200 text-base leading-relaxed"
                     >
                       {line.trim()}
                     </motion.li>
@@ -252,14 +253,14 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         transition={{ delay: 0.5, duration: 0.6 }}
         className="mb-20 text-center max-w-3xl mx-auto"
       >
-        <p className="text-earth-600 dark:text-earth-400 font-light text-lg mb-6">
+        <p className="text-earth-600 dark:text-earth-400 text-lg mb-6">
           So what's the hypothesis?
         </p>
-        <blockquote className="text-3xl md:text-4xl font-serif font-light italic text-earth-900 dark:text-earth-50 leading-relaxed mb-8">
+        <blockquote className="text-3xl md:text-4xl font-serif italic text-earth-900 dark:text-earth-50 leading-relaxed mb-8">
           "{project.solution.howMightWe}"
         </blockquote>
         {project.solution.approach && (
-          <p className="text-earth-700 dark:text-earth-200 font-light text-base leading-relaxed">
+          <p className="text-earth-700 dark:text-earth-200 text-base leading-relaxed">
             {project.solution.approach}
           </p>
         )}
@@ -276,10 +277,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         >
           {project.insights && project.insights.length > 0 && (
             <div className="mb-16">
-              <h2 className="text-4xl font-serif font-light mb-3 text-earth-900 dark:text-earth-50">
+              <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">
                 What I Learned
               </h2>
-              <p className="text-earth-600 dark:text-earth-600 font-light mb-8">
+              <p className="text-earth-600 dark:text-earth-600 mb-8">
                 Insights that shaped every decision below.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -292,13 +293,13 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     viewport={{ once: true }}
                     className="flex flex-col p-6 rounded-2xl border border-earth-100/40 dark:border-earth-600/40 bg-earth-100/30 dark:bg-earth-900/15"
                   >
-                    <p className="text-xs font-light uppercase tracking-widest text-earth-600 dark:text-earth-600 mb-4">
+                    <p className="text-xs uppercase tracking-widest text-earth-600 dark:text-earth-600 mb-4">
                       {insight.source}
                     </p>
-                    <p className="text-earth-900 dark:text-earth-100 font-light leading-relaxed mb-5 flex-1">
+                    <p className="text-earth-900 dark:text-earth-100 leading-relaxed mb-5 flex-1">
                       {insight.finding}
                     </p>
-                    <p className="text-sm text-earth-900 dark:text-earth-200 font-light leading-relaxed border-t border-earth-100/40 dark:border-earth-600/40 pt-4">
+                    <p className="text-sm text-earth-900 dark:text-earth-200 leading-relaxed border-t border-earth-100/40 dark:border-earth-600/40 pt-4">
                       <span className="text-earth-600 dark:text-earth-600 mr-1">→</span>
                       {insight.implication}
                     </p>
@@ -310,10 +311,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
 
           {project.decisions && project.decisions.length > 0 && (
             <div>
-              <h2 className="text-4xl font-serif font-light mb-3 text-earth-900 dark:text-earth-50">
+              <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">
                 Key Decisions
               </h2>
-              <p className="text-earth-600 dark:text-earth-600 font-light mb-8">
+              <p className="text-earth-600 dark:text-earth-600 mb-8">
                 The options I weighed, and why I chose what I did.
               </p>
               <div className="space-y-6">
@@ -326,7 +327,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     viewport={{ once: true }}
                     className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 pb-6 border-b border-earth-100/40 dark:border-earth-600/40"
                   >
-                    <h3 className="md:col-span-4 text-xl font-serif font-light text-earth-900 dark:text-earth-50 leading-snug">
+                    <h3 className="md:col-span-4 text-xl font-serif text-earth-900 dark:text-earth-50 leading-snug">
                       {decision.question}
                     </h3>
                     <div className="md:col-span-8 space-y-3">
@@ -339,7 +340,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                               className={
                                 chosen
                                   ? 'px-3 py-1 rounded-full text-sm font-normal bg-earth-900 text-earth-50 dark:bg-earth-200 dark:text-earth-900'
-                                  : 'px-3 py-1 rounded-full text-sm font-light text-earth-600 dark:text-earth-600 border border-earth-600/30 dark:border-earth-600/60 line-through decoration-earth-600/50'
+                                  : 'px-3 py-1 rounded-full text-sm text-earth-600 dark:text-earth-600 border border-earth-600/30 dark:border-earth-600/60 line-through decoration-earth-600/50'
                               }
                             >
                               {chosen && '✓ '}{option}
@@ -347,7 +348,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           )
                         })}
                       </div>
-                      <p className="text-earth-900 dark:text-earth-200 font-light leading-relaxed">
+                      <p className="text-earth-900 dark:text-earth-200 leading-relaxed">
                         {decision.why}
                       </p>
                     </div>
@@ -368,10 +369,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         className="mb-20"
       >
         <div className="mb-12 text-center max-w-2xl mx-auto">
-          <h2 className="text-4xl font-serif font-light mb-4 text-earth-900 dark:text-earth-50">
+          <h2 className="text-4xl font-serif mb-4 text-earth-900 dark:text-earth-50">
             Solution
           </h2>
-          <p className="text-earth-700 dark:text-earth-200 font-light text-lg">
+          <p className="text-earth-700 dark:text-earth-200 text-lg">
             Two distinct user personas required two completely different approaches to messaging, UI flows, and immediate action pathways.
           </p>
         </div>
@@ -398,14 +399,14 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
 
             {/* Content */}
             <div className="flex-1 flex flex-col">
-              <h3 className="text-2xl font-serif font-light mb-3 text-earth-900 dark:text-earth-50">
+              <h3 className="text-2xl font-serif mb-3 text-earth-900 dark:text-earth-50">
                 Persona 1: Urgent Help & Immediate Rescue
               </h3>
-              <p className="text-sm text-earth-600 dark:text-earth-400 mb-6 pb-6 border-b border-earth-300/30 dark:border-earth-600/30 font-light">
+              <p className="text-sm text-earth-600 dark:text-earth-400 mb-6 pb-6 border-b border-earth-300/30 dark:border-earth-600/30">
                 <strong>Psychology:</strong> Acute panic, extreme anxiety, time pressure. Needs immediate reassurance and action pathway.
               </p>
-              <h4 className="font-serif font-light text-earth-900 dark:text-earth-50 mb-3 text-lg">Design Solution</h4>
-              <p className="text-earth-700 dark:text-earth-200 leading-relaxed font-light">
+              <h4 className="font-serif text-earth-900 dark:text-earth-50 mb-3 text-lg">Design Solution</h4>
+              <p className="text-earth-700 dark:text-earth-200 leading-relaxed">
                 Emotionally reassuring UX copy with time-bound action commitment. Chatbot opens with personal accountability: "I will personally ensure your data doesn't spread." Direct Inquiry Bar for instant consultation.
               </p>
             </div>
@@ -432,14 +433,14 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
 
             {/* Content */}
             <div className="flex-1 flex flex-col">
-              <h3 className="text-2xl font-serif font-light mb-3 text-earth-900 dark:text-earth-50">
+              <h3 className="text-2xl font-serif mb-3 text-earth-900 dark:text-earth-50">
                 Persona 2: Technical & Platform Research
               </h3>
-              <p className="text-sm text-earth-600 dark:text-earth-400 mb-6 pb-6 border-b border-earth-300/30 dark:border-earth-600/30 font-light">
+              <p className="text-sm text-earth-600 dark:text-earth-400 mb-6 pb-6 border-b border-earth-300/30 dark:border-earth-600/30">
                 <strong>Psychology:</strong> Rational validation, seeking technical credibility. Researching specific platforms & solutions.
               </p>
-              <h4 className="font-serif font-light text-earth-900 dark:text-earth-50 mb-3 text-lg">Design Solution</h4>
-              <p className="text-earth-700 dark:text-earth-200 leading-relaxed font-light">
+              <h4 className="font-serif text-earth-900 dark:text-earth-50 mb-3 text-lg">Design Solution</h4>
+              <p className="text-earth-700 dark:text-earth-200 leading-relaxed">
                 Technical credibility-first messaging with platform-specific expertise. Downloadable technical summaries and malware analysis methodologies. Direct Inquiry Bar for qualified consultation.
               </p>
             </div>
@@ -453,7 +454,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         transition={{ delay: 0.4, duration: 0.8 }}
         className="mb-20"
       >
-        <h2 className="text-4xl font-serif font-light mb-12 text-earth-900 dark:text-earth-50">
+        <h2 className="text-4xl font-serif mb-12 text-earth-900 dark:text-earth-50">
           Solution: Progressive Disclosure Dashboard
         </h2>
 
@@ -480,10 +481,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
 
               {/* Right: Text (1 column - 1/3 width) */}
               <div className="md:col-span-1 flex flex-col justify-center">
-                <h3 className="text-2xl font-serif font-light mb-4 text-earth-900 dark:text-earth-50">
+                <h3 className="text-2xl font-serif mb-4 text-earth-900 dark:text-earth-50">
                   {dashboard.title}
                 </h3>
-                <p className="text-base text-earth-700 dark:text-earth-200 font-light leading-relaxed">
+                <p className="text-base text-earth-700 dark:text-earth-200 leading-relaxed">
                   {dashboard.description}
                 </p>
               </div>
@@ -498,7 +499,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         transition={{ delay: 0.4, duration: 0.8 }}
         className="mb-20"
       >
-        <h2 className="text-4xl font-serif font-light mb-12 text-earth-900 dark:text-earth-50">
+        <h2 className="text-4xl font-serif mb-12 text-earth-900 dark:text-earth-50">
           Solution
         </h2>
 
@@ -523,7 +524,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         {/* Concise Description */}
         <div className="mb-12 max-w-3xl mx-auto space-y-6">
           <div>
-            <p className="text-lg text-earth-700 dark:text-earth-200 font-light leading-relaxed">
+            <p className="text-lg text-earth-700 dark:text-earth-200 leading-relaxed">
               {project.solution.description}
             </p>
           </div>
@@ -538,10 +539,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         transition={{ delay: 0.5, duration: 0.8 }}
         className="mb-20"
       >
-        <h2 className="text-4xl font-serif font-light mb-6 text-earth-900 dark:text-earth-50">
+        <h2 className="text-4xl font-serif mb-6 text-earth-900 dark:text-earth-50">
           Implementation & Changes
         </h2>
-        <p className="text-lg text-sage-700 dark:text-sage-300 font-light leading-relaxed mb-20 max-w-3xl">
+        <p className="text-lg text-sage-700 dark:text-sage-300 leading-relaxed mb-20 max-w-3xl">
           {project.implementation.description}
         </p>
 
@@ -582,10 +583,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   >
                     {/* Text Content Above */}
                     <div className="max-w-3xl mx-auto space-y-4">
-                      <h3 className="text-3xl font-serif font-light text-earth-900 dark:text-earth-50">
+                      <h3 className="text-3xl font-serif text-earth-900 dark:text-earth-50">
                         {(change as any).title}
                       </h3>
-                      <p className="text-lg text-earth-700 dark:text-earth-200 font-light leading-relaxed">
+                      <p className="text-lg text-earth-700 dark:text-earth-200 leading-relaxed">
                         {(change as any).description}
                       </p>
                     </div>
@@ -672,10 +673,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     className="space-y-8"
                   >
                     <div className="max-w-2xl mx-auto">
-                      <h3 className="text-3xl font-serif font-light mb-4 text-earth-900 dark:text-earth-50">
+                      <h3 className="text-3xl font-serif mb-4 text-earth-900 dark:text-earth-50">
                         {(change as any).title}
                       </h3>
-                      <p className="text-lg text-earth-700 dark:text-earth-200 font-light leading-relaxed mb-8">
+                      <p className="text-lg text-earth-700 dark:text-earth-200 leading-relaxed mb-8">
                         {(change as any).description}
                       </p>
                     </div>
@@ -734,7 +735,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           )}
                           <button
                             onClick={() => setSelectedMedia(null)}
-                            className="absolute top-4 right-4 bg-earth-900/80 dark:bg-earth-50/80 text-earth-50 dark:text-earth-900 rounded-full w-10 h-10 flex items-center justify-center text-xl font-light hover:bg-earth-900 dark:hover:bg-earth-50 transition-colors"
+                            className="absolute top-4 right-4 bg-earth-900/80 dark:bg-earth-50/80 text-earth-50 dark:text-earth-900 rounded-full w-10 h-10 flex items-center justify-center text-xl hover:bg-earth-900 dark:hover:bg-earth-50 transition-colors"
                           >
                             ✕
                           </button>
@@ -753,10 +754,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     viewport={{ once: false, margin: "-100px" }}
                     className="relative z-10 max-w-3xl mx-auto bg-earth-50 dark:bg-navy-900 border border-earth-100/40 dark:border-earth-600/40 rounded-2xl p-8 md:p-10 space-y-4"
                   >
-                    <h3 className="text-3xl font-serif font-light text-earth-900 dark:text-earth-50">
+                    <h3 className="text-3xl font-serif text-earth-900 dark:text-earth-50">
                       {(change as any).title}
                     </h3>
-                    <p className="text-lg text-earth-900 dark:text-earth-200 font-light leading-relaxed whitespace-pre-line">
+                    <p className="text-lg text-earth-900 dark:text-earth-200 leading-relaxed whitespace-pre-line">
                       {(change as any).description}
                     </p>
                   </motion.div>
@@ -771,12 +772,12 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     viewport={{ once: false, margin: "-100px" }}
                     className="space-y-4"
                   >
-                    <h3 className="text-2xl font-serif font-light text-earth-900 dark:text-earth-50">{change.before}</h3>
+                    <h3 className="text-2xl font-serif text-earth-900 dark:text-earth-50">{change.before}</h3>
                     <div className="bg-earth-100/40 dark:bg-earth-700/20 border border-earth-300/30 dark:border-earth-600/30 rounded-xl p-6 md:p-8">
-                      <p className="text-lg text-earth-700 dark:text-earth-200 font-light italic leading-relaxed">"{change.after}"</p>
+                      <p className="text-lg text-earth-700 dark:text-earth-200 italic leading-relaxed">"{change.after}"</p>
                     </div>
                     <div className="bg-earth-50/50 dark:bg-earth-800/20 border border-earth-200/30 dark:border-earth-700/30 rounded-lg p-6">
-                      <p className="text-earth-700 dark:text-earth-300 font-light leading-relaxed text-base">{change.explanation}</p>
+                      <p className="text-earth-700 dark:text-earth-300 leading-relaxed text-base">{change.explanation}</p>
                     </div>
                   </motion.div>
                 )}
@@ -793,10 +794,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         transition={{ delay: 0.6, duration: 0.8 }}
         className="mb-20 border-t border-earth-600/15 dark:border-earth-50/10 pt-16"
       >
-        <h2 className="text-4xl font-serif font-light mb-6 text-earth-900 dark:text-earth-50">
+        <h2 className="text-4xl font-serif mb-6 text-earth-900 dark:text-earth-50">
           {project.impact.title}
         </h2>
-        <p className="text-lg text-earth-700 dark:text-earth-200 font-light mb-12 leading-relaxed">
+        <p className="text-lg text-earth-700 dark:text-earth-200 mb-12 leading-relaxed">
           {project.impact.description}
         </p>
 
@@ -810,15 +811,15 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               transition={{ delay: 0.65 + idx * 0.05, duration: 0.5 }}
               className="p-6 border border-earth-300/40 dark:border-earth-600/40 rounded-lg text-center hover:shadow-md transition-shadow duration-300"
             >
-              <p className="text-4xl font-serif font-light text-earth-900 dark:text-earth-50 mb-2">
+              <p className="text-4xl font-serif text-earth-900 dark:text-earth-50 mb-2">
                 {metric.value}
               </p>
               {metric.unit && (
-                <p className="text-xs text-earth-600 dark:text-earth-400 font-light tracking-wide mb-3">
+                <p className="text-xs text-earth-600 dark:text-earth-400 tracking-wide mb-3">
                   {metric.unit}
                 </p>
               )}
-              <p className="text-sm text-earth-600 dark:text-earth-400 font-light tracking-wide">
+              <p className="text-sm text-earth-600 dark:text-earth-400 tracking-wide">
                 {metric.label}
               </p>
             </motion.div>
@@ -831,7 +832,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="italic text-earth-700 dark:text-earth-200 pl-8 border-l-4 border-earth-400 dark:border-earth-500 text-lg leading-relaxed font-light bg-earth-100/30 dark:bg-earth-700/20 p-6 rounded-lg"
+            className="italic text-earth-700 dark:text-earth-200 pl-8 border-l-4 border-earth-400 dark:border-earth-500 text-lg leading-relaxed bg-earth-100/30 dark:bg-earth-700/20 p-6 rounded-lg"
           >
             "{project.impact.testimonial}"
           </motion.blockquote>
@@ -846,13 +847,13 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             viewport={{ once: true }}
             className="mt-12 max-w-3xl"
           >
-            <p className="text-xs font-light uppercase tracking-widest text-earth-600 dark:text-earth-600 mb-3">
+            <p className="text-xs uppercase tracking-widest text-earth-600 dark:text-earth-600 mb-3">
               Back to the hypothesis
             </p>
-            <p className="text-lg font-serif font-light italic text-earth-600 dark:text-earth-600 mb-4 leading-relaxed">
+            <p className="text-lg font-serif italic text-earth-600 dark:text-earth-600 mb-4 leading-relaxed">
               "{project.solution.howMightWe}"
             </p>
-            <p className="text-lg text-earth-900 dark:text-earth-100 font-light leading-relaxed">
+            <p className="text-lg text-earth-900 dark:text-earth-100 leading-relaxed">
               {project.hypothesisCheck}
             </p>
           </motion.div>
@@ -866,7 +867,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         transition={{ delay: 0.65, duration: 0.8 }}
         className="border-t border-earth-600/15 dark:border-earth-50/10 pt-16"
       >
-        <h2 className="text-4xl font-serif font-light mb-8 text-earth-900 dark:text-earth-50">
+        <h2 className="text-4xl font-serif mb-8 text-earth-900 dark:text-earth-50">
           Key Learnings
         </h2>
         <ul className="space-y-4">
@@ -876,7 +877,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7 + idx * 0.05, duration: 0.5 }}
-              className="flex gap-4 text-earth-700 dark:text-earth-200 font-light text-lg leading-relaxed"
+              className="flex gap-4 text-earth-700 dark:text-earth-200 text-lg leading-relaxed"
             >
               <span className="text-earth-400 dark:text-earth-500 mt-1 flex-shrink-0">▸</span>
               <span>{learning}</span>
@@ -890,7 +891,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.75, duration: 0.6 }}
-        className="border-t border-earth-600/15 dark:border-earth-50/10 mt-16 pt-8 text-xs text-earth-600 dark:text-earth-400 font-light tracking-widest uppercase flex gap-4"
+        className="border-t border-earth-600/15 dark:border-earth-50/10 mt-16 pt-8 text-xs text-earth-600 dark:text-earth-400 tracking-widest uppercase flex gap-4"
       >
         <p>{project.timeline}</p>
         <span>•</span>

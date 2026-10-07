@@ -77,10 +77,10 @@ export default function Private() {
         transition={{ duration: 0.8 }}
         className="mb-32"
       >
-        <h1 className="text-6xl font-light font-serif mb-8 tracking-tight text-earth-900 dark:text-earth-50">
+        <h1 className="text-6xl font-serif mb-8 tracking-tight text-earth-900 dark:text-earth-50">
           About Me
         </h1>
-        <div className="text-xl text-earth-900 dark:text-earth-100 font-light leading-relaxed space-y-6 max-w-3xl">
+        <div className="text-xl text-earth-900 dark:text-earth-100 leading-relaxed space-y-6 max-w-3xl">
           <p>
             I have always been driven by a relentless curiosity about how people experience the world.
             This question led me to decode customer journeys and optimize digital marketing at BCG, Kearney, and Google.
@@ -104,7 +104,7 @@ export default function Private() {
         transition={{ delay: 0.2, duration: 0.8 }}
         className="mb-32 border-t border-earth-600/15 dark:border-earth-50/10 pt-20"
       >
-        <h2 className="text-4xl font-light font-serif mb-12 text-earth-900 dark:text-earth-50">
+        <h2 className="text-4xl font-serif mb-12 text-earth-900 dark:text-earth-50">
           Work Experience
         </h2>
         <div className="space-y-16">
@@ -117,27 +117,27 @@ export default function Private() {
               className="border-l-2 border-earth-600 dark:border-earth-300 pl-8 py-4"
             >
               <div className="mb-3">
-                <time className="text-xs text-earth-600 dark:text-earth-200 font-light tracking-widest uppercase">
+                <time className="text-xs text-earth-600 dark:text-earth-200 tracking-widest uppercase">
                   {experience.date}
                 </time>
-                <h3 className="text-2xl font-serif font-light text-earth-900 dark:text-earth-50 mt-2">
+                <h3 className="text-2xl font-serif text-earth-900 dark:text-earth-50 mt-2">
                   {experience.role}
                 </h3>
-                <p className="text-lg text-earth-600 dark:text-earth-200 font-light">
+                <p className="text-lg text-earth-600 dark:text-earth-200">
                   {experience.company}
                 </p>
-                <p className="text-sm text-earth-600 dark:text-earth-300 font-light">
+                <p className="text-sm text-earth-600 dark:text-earth-300">
                   {experience.location}
                 </p>
               </div>
-              <p className="text-earth-900 dark:text-earth-100 font-light leading-relaxed mb-4">
+              <p className="text-earth-900 dark:text-earth-100 leading-relaxed mb-4">
                 {experience.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {experience.highlights.map((highlight) => (
                   <span
                     key={highlight}
-                    className="text-xs px-3 py-1 border border-earth-600/50 dark:border-earth-300/50 text-earth-900 dark:text-earth-100 font-light rounded"
+                    className="text-xs px-3 py-1 border border-earth-600/50 dark:border-earth-300/50 text-earth-900 dark:text-earth-100 rounded"
                   >
                     {highlight}
                   </span>
@@ -155,7 +155,7 @@ export default function Private() {
         transition={{ delay: 0.3, duration: 0.8 }}
         className="mb-32 border-t border-earth-600/15 dark:border-earth-50/10 pt-20"
       >
-        <h2 className="text-4xl font-light font-serif mb-12 text-earth-900 dark:text-earth-50">
+        <h2 className="text-4xl font-serif mb-12 text-earth-900 dark:text-earth-50">
           Recent Reflections
         </h2>
         <div className="space-y-16">
@@ -167,13 +167,13 @@ export default function Private() {
               transition={{ delay: 0.3 + 0.1 * idx, duration: 0.6 }}
               className="border-l-2 border-earth-600 dark:border-earth-300 pl-8 py-4"
             >
-              <time className="text-xs text-earth-600 dark:text-earth-200 font-light tracking-widest uppercase">
+              <time className="text-xs text-earth-600 dark:text-earth-200 tracking-widest uppercase">
                 {entry.date}
               </time>
-              <h3 className="text-2xl font-light font-serif mt-3 mb-4 text-earth-900 dark:text-earth-50">
+              <h3 className="text-2xl font-serif mt-3 mb-4 text-earth-900 dark:text-earth-50">
                 {entry.title}
               </h3>
-              <p className="text-earth-900 dark:text-earth-100 leading-relaxed font-light text-lg">
+              <p className="text-earth-900 dark:text-earth-100 leading-relaxed text-lg">
                 {entry.content}
               </p>
             </motion.article>
@@ -188,10 +188,10 @@ export default function Private() {
         transition={{ delay: 0.4, duration: 0.8 }}
         className="border-t border-earth-600/15 dark:border-earth-50/10 pt-20"
       >
-        <h2 className="text-4xl font-light font-serif mb-8 text-earth-900 dark:text-earth-50">
+        <h2 className="text-4xl font-serif mb-8 text-earth-900 dark:text-earth-50">
           Design Philosophy
         </h2>
-        <div className="space-y-6 text-earth-900 dark:text-earth-100 font-light leading-relaxed text-lg">
+        <div className="space-y-6 text-earth-900 dark:text-earth-100 leading-relaxed text-lg">
           <p>
             I believe in starting from observation. Before designing, I listen. I watch how people actually use products,
             identify friction points, and understand the real problems beneath what they initially ask for.

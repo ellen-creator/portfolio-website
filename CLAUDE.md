@@ -8,7 +8,7 @@
 
 ## 프로젝트 개요
 UX Designer 인턴십 지원을 위한 인터랙티브 포트폴리오 웹사이트.
-- **스타일**: kinfork 스타일 (부드러운 애니메이션, 마이크로인터랙션)
+- **스타일**: 에디토리얼 신문 스타일 (흰 종이 + 검정 잉크, 노란 포인트 1색, 얇은 rule, `|` 섹션 내비)
 - **목표**: UX/UI 실력 보여주기
 - **핵심 섹션**: 프로젝트 사례, 디자인 프로세스, 스킬, 연락처
 
@@ -24,7 +24,8 @@ UX Designer 인턴십 지원을 위한 인터랙티브 포트폴리오 웹사이
 - 컴포넌트: `/src/components/`
 
 ## Project-Specific Quirks
-- kinfork 스타일: 부드러운 커브, 느린 애니메이션, 마이크로인터랙션 강조
+- 에디토리얼 스타일: 마스트헤드 DM Serif Display, 본문 Source Serif 4, 유틸리티 라벨 Helvetica 볼드 대문자
+- Work = 아침판(라이트), Story = 밤판(다크). 마스트헤드: `src/components/Masthead.tsx`
 - 모바일 첫 디자인
 - 다크 모드 지원 필수
 - 성능: LCP < 2.5s, CLS < 0.1

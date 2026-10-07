@@ -4,6 +4,7 @@
 export interface CaseStudy {
   id: string
   title: string
+  navLabel?: string
   subtitle: string
   thumbnail: string
   tags: string[]
@@ -104,6 +105,7 @@ export const projects: CaseStudy[] = [
   {
     id: 'vori',
     title: 'Vori - Neuro-Interventional Smart Eyewear',
+    navLabel: 'Vori',
     subtitle: 'Founder: Gentle & Non-Invasive Assistive Technology for Neurodivergent Children',
     thumbnail: '/images/projects/vori_mockup.png',
     tags: ['Product Strategy', 'Neurotechnology', 'Accessible Design', 'User Research'],
@@ -204,6 +206,7 @@ export const projects: CaseStudy[] = [
   {
     id: "lumi-redesign",
     title: "LUMI - Body Battery App UI/UX Redesign",
+    navLabel: 'LUMI',
     subtitle: "From a Feature-First Dashboard to a Calm Daily Companion",
     thumbnail: "/images/projects/lumi_thumbnail.png",
     tags: ["UI/UX Redesign", "Accessible Design", "Health Tech", "iOS & watchOS"],
@@ -357,6 +360,7 @@ export const projects: CaseStudy[] = [
   {
     id: 'arklink-lead-generation',
     title: 'Arklink Lead Generation Optimization',
+    navLabel: 'Arklink',
     subtitle: 'Persona-Driven UX & Chatbot Redesign',
     thumbnail: '/images/projects/arklink_thumnail.png',
     tags: ['UX Design', 'Lead Generation', 'Chatbot Design'],
@@ -466,6 +470,7 @@ export const projects: CaseStudy[] = [
   {
     id: 'ecommerce-ui-redesign',
     title: 'E-Commerce UI/UX Redesign',
+    navLabel: 'E-Commerce',
     subtitle: 'Segment-Driven Design for Diverse Customer Demographics',
     thumbnail: '/images/projects/ec3.png',
     tags: ['E-Commerce', 'UX Research', 'UI Design', 'Accessibility'],
@@ -608,6 +613,7 @@ export const projects: CaseStudy[] = [
   {
     id: 'cost-optimization-dashboard',
     title: 'Cost Optimization - Building Dashboard',
+    navLabel: 'Dashboard',
     subtitle: 'Data-Driven Cost Analysis for Manufacturing',
     thumbnail: '/images/projects/dashboard1.png',
     tags: ['Dashboard Design', 'Data Analysis', 'Business Intelligence'],

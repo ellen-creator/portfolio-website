@@ -7,17 +7,30 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Playfair Display', 'Georgia', 'serif'],
-        sans: ['Inter', '-apple-system', 'system-ui', 'sans-serif'],
+        // Editorial type: heavy display serif for the masthead, text serif for reading,
+        // bold Helvetica caps for utility labels
+        display: ['"DM Serif Display"', 'Georgia', 'serif'],
+        serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+        sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
-        // Custom earthy palette
+        // Paper & ink (editorial). Full scale so every shade used in the app resolves.
         earth: {
-          50: '#F1EAD8',   // Light cream background
-          100: '#D5C7AD',  // Secondary beige
-          200: '#BEC5A4',  // Light olive accent
-          600: '#8A8E75',  // Muted olive
-          900: '#68604D',  // Dark brown
+          50: '#FFFFFF',   // Paper
+          100: '#F4F3EF',  // Light rule / panel
+          200: '#E4E2DC',
+          300: '#CBC8C0',
+          400: '#A6A29A',
+          500: '#85817A',
+          600: '#5F5C56',  // Meta text
+          700: '#45423D',
+          800: '#2A2825',
+          900: '#111111',  // Ink
+        },
+        // Single accent, used sparingly (buttons, "now" markers)
+        accent: {
+          DEFAULT: '#F7C600',
+          dark: '#1A1A1A',
         },
         // Fallback ivory palette
         ivory: {
@@ -35,6 +48,7 @@ export default {
         },
         // Navy for dark mode
         navy: {
+          950: '#0B0E14',  // Night edition paper
           900: '#0f1419',
           800: '#1a1f2e',
           700: '#252d3d',
