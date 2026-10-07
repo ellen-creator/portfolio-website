@@ -27,10 +27,10 @@ export default {
           800: '#2A2825',
           900: '#111111',  // Ink
         },
-        // Single accent, used sparingly (buttons, "now" markers)
+        // Single accent, used sparingly: LUMI's text-safe coral (white text passes WCAG AA)
         accent: {
-          DEFAULT: '#F7C600',
-          dark: '#1A1A1A',
+          DEFAULT: '#A9432D',
+          soft: '#F7E4DD',
         },
         // Fallback ivory palette
         ivory: {

@@ -42,10 +42,10 @@ function Label({ project }: { project: CaseStudy }) {
 }
 
 const experience = [
-  { mark: 'G', name: 'Google', role: 'Account Strategist', note: 'UI/UX for 200+ partner websites' },
-  { mark: 'BCG', name: 'Boston Consulting Group', role: 'Senior Associate Consultant', note: 'Supply chain & procurement strategy' },
-  { mark: 'K', name: 'Kearney', role: 'Business Analyst', note: 'E-commerce app rating 2.8 → 4.8' },
-  { mark: 'SNU', name: 'Seoul National University', role: 'Research Assistant', note: 'Developmental cognitive neuroscience lab' },
+  { name: 'University of Michigan', role: 'M.S. Information', note: 'UX design & research, 2026 – 2028' },
+  { name: 'Google', role: 'Account Strategist', note: 'UI/UX for 200+ partner websites' },
+  { name: 'BCG', role: 'Senior Associate Consultant', note: 'Supply chain & procurement' },
+  { name: 'Kearney', role: 'Business Analyst', note: 'E-commerce app 2.8 → 4.8' },
 ]
 
 const abilities = [
@@ -100,39 +100,38 @@ export default function Home({ onSelectProject, onStory }: HomeProps) {
           </article>
         </div>
 
-        {/* At a glance panel */}
+        {/* Editor's letter */}
         <aside className="lg:col-span-3 lg:pl-6">
-          <div className="bg-[#2B2B2B] text-white rounded-xl p-5">
-            <h2 className="font-serif uppercase text-2xl tracking-wide mb-4">At a glance</h2>
+          <p className="font-sans font-bold uppercase text-xs tracking-widest text-accent mb-3">Editor&apos;s letter</p>
+          <button onClick={onStory} className="block w-full overflow-hidden mb-4">
+            <img
+              src="/images/about/suhyun.jpg"
+              alt="Suhyun Lim smiling on a mountain ridge, holding trekking poles"
+              className="w-full aspect-[4/5] object-cover object-top hover:scale-[1.02] transition-transform duration-700"
+            />
+          </button>
+          <h2 className="font-serif text-2xl leading-tight mb-3">Hello, I&apos;m Suhyun (Ellen).</h2>
+          <p className="text-earth-700 leading-snug mb-5">
+            Social worker by training, consultant by trade, now a UX researcher at the University of Michigan.
+            I design for the people data tends to leave out.
+          </p>
 
-            <div className="bg-black rounded-lg p-4 border-b-4 border-accent">
-              <div className="flex gap-3 items-start mb-5">
-                <div className="w-20 h-20 shrink-0 bg-accent text-accent-dark flex items-center justify-center font-display text-xl">M.S.</div>
-                <div>
-                  <p className="font-sans font-bold text-accent text-sm uppercase tracking-wide">● Now</p>
-                  <p className="font-serif uppercase text-lg leading-tight mt-1">Information, University of Michigan</p>
-                </div>
-              </div>
-              <a href="/resume.pdf" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 bg-accent text-accent-dark font-sans font-bold uppercase text-sm py-3 hover:brightness-95">
-                ▶ Read my resume
-              </a>
-            </div>
+          <ul className="border-t border-earth-900 divide-y divide-earth-200 mb-5">
+            {experience.map((e) => (
+              <li key={e.name} className="py-3">
+                <p className="font-sans font-bold uppercase text-xs tracking-wide">{e.name}</p>
+                <p className="text-sm text-earth-600 leading-snug mt-1">{e.role} · {e.note}</p>
+              </li>
+            ))}
+          </ul>
 
-            <ul className="divide-y divide-white/20 mt-2">
-              {experience.map((e) => (
-                <li key={e.name} className="flex gap-3 py-4">
-                  <div className="w-16 h-16 shrink-0 border border-white/40 flex items-center justify-center font-display text-lg">{e.mark}</div>
-                  <div>
-                    <p className="font-serif text-lg leading-tight">{e.name}</p>
-                    <p className="font-sans text-sm text-white/75 mt-1 leading-snug">{e.role} · {e.note}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-            <button onClick={onStory} className="w-full mt-2 border border-white py-3 font-sans font-bold uppercase text-sm tracking-wide hover:bg-white hover:text-black">
-              Read the full story
+          <div className="flex flex-col gap-2">
+            <button onClick={onStory} className="w-full bg-accent text-white py-3 font-sans font-bold uppercase text-sm tracking-wide hover:brightness-110">
+              Read my story
             </button>
+            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="w-full text-center border border-earth-900 py-3 font-sans font-bold uppercase text-sm tracking-wide hover:bg-earth-900 hover:text-white">
+              Resume
+            </a>
           </div>
         </aside>
       </section>

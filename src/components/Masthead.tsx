@@ -36,16 +36,6 @@ function NightSketch() {
   )
 }
 
-function EnvelopeSketch() {
-  return (
-    <svg viewBox="0 0 120 80" className="w-24 h-auto" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true">
-      <path d="M22 20h76v46H22z" />
-      <path d="M22 20l38 28 38-28" />
-      <path d="M8 34h8M4 44h12M10 54h6" strokeLinecap="round" />
-    </svg>
-  )
-}
-
 export default function Masthead({ edition, compact = false, onWork, onStory, onSelectProject }: MastheadProps) {
   const isNight = edition === 'story'
 
@@ -66,7 +56,7 @@ export default function Masthead({ edition, compact = false, onWork, onStory, on
         </nav>
         <div className="flex items-center gap-4 md:gap-6">
           <a href={EMAIL} className="hidden sm:inline hover:opacity-60">Email</a>
-          <a href={EMAIL} className="bg-accent text-accent-dark px-4 md:px-6 py-3 hover:brightness-95">
+          <a href={EMAIL} className="bg-accent text-white px-4 md:px-6 py-3 hover:brightness-110">
             Get in touch
           </a>
         </div>
@@ -90,18 +80,23 @@ export default function Masthead({ edition, compact = false, onWork, onStory, on
             </p>
           </div>
 
-          <button onClick={onWork} className="font-display uppercase text-center leading-none tracking-[0.02em] text-[15vw] md:text-[7.5rem] lg:text-[9rem]">
-            Suhyun Lim
+          <button onClick={onWork} className="text-center">
+            <span className="block font-display uppercase leading-none tracking-[0.02em] text-[15vw] md:text-[7.5rem] lg:text-[9rem]">
+              Suhyun Lim
+            </span>
+            <span className="block font-serif text-lg md:text-xl tracking-[0.5em] mt-2 text-earth-600 dark:text-earth-300">임수현</span>
           </button>
 
-          <a href={EMAIL} className="hidden md:flex flex-col items-end gap-3 text-right group">
-            <EnvelopeSketch />
-            <p className="text-lg leading-snug">
-              UX research &amp; design,
-              <br />
-              <span className="text-earth-600 dark:text-earth-300 group-hover:underline">from data to people</span>
+          <div className="hidden md:block text-right text-lg leading-snug">
+            <p className="font-sans font-bold uppercase text-xs tracking-widest text-accent mb-2">
+              {isNight ? 'Vol. 1 · Night' : 'Vol. 1 · Morning'}
             </p>
-          </a>
+            <p>
+              {projects.length} case studies,
+              <br />
+              <span className="text-earth-600 dark:text-earth-300">2021 – today</span>
+            </p>
+          </div>
         </div>
       )}
 

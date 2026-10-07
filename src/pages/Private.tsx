@@ -7,8 +7,8 @@ export default function Private() {
       role: 'Account Strategist',
       company: 'Google, Inc (Google for Startup Accelerator)',
       location: 'Seoul, Korea',
-      description: 'Led UI/UX optimization for 200+ partner websites by analyzing user behavior patterns and redesigning end-to-end customer journeys to increase visual engagement. Leveraged Generative AI tools to craft interactive visual ad assets. Delivered UX redesign and marketing strategies for early-stage AI startups within the accelerator program. Optimized SEO and geo-targeting strategies across content and technical implementations.',
-      highlights: ['UI/UX Optimization', 'SEO/Geo Optimization', 'Generative AI', 'Customer Journey', 'Analytics'],
+      description: 'Led UI/UX optimization for 200+ partner websites by analyzing user behavior patterns and redesigning end-to-end customer journeys, consistently reaching 120%+ of quarterly targets. Led internal sessions on Generative Engine Optimization (GEO) and AI-driven search that earned the company-wide Learning Sharing Award. Restructured web architecture for early-stage AI startups in the Google for Startups Accelerator to remove friction and improve onboarding.',
+      highlights: ['UI/UX Optimization', 'SEO / GEO', 'Customer Journey', 'Web Architecture', 'Analytics'],
     },
     {
       date: 'Jun 2022 - Jul 2024',
@@ -70,32 +70,88 @@ export default function Private() {
 
   return (
     <div className="max-w-4xl mx-auto px-8 py-20">
-      {/* Header with Bio */}
-      <motion.div
+      {/* About: photo + bio + quick facts */}
+      <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="mb-32"
+        className="mb-24"
       >
-        <h1 className="text-6xl font-serif mb-8 tracking-tight text-earth-900 dark:text-earth-50">
-          About Me
+        <p className="uppercase tracking-wide text-[15px] mb-3">Story</p>
+        <h1 className="font-serif text-4xl md:text-6xl leading-[1.1] mb-10 text-earth-900 dark:text-earth-50">
+          Hello, I&apos;m Suhyun (Ellen) Lim.
         </h1>
-        <div className="text-xl text-earth-900 dark:text-earth-100 leading-relaxed space-y-6 max-w-3xl">
-          <p>
-            I have always been driven by a relentless curiosity about how people experience the world.
-            This question led me to decode customer journeys and optimize digital marketing at BCG, Kearney, and Google.
-            But wanting to actually build those digital experiences pushed me to the University of Michigan's MSI program.
-          </p>
-          <p>
-            Today, I am designing inclusive, accessible web experiences and doing on-the-ground user discovery for my startup, Vori.
-            I believe the best technology leaves no one behind.
-          </p>
-          <p>
-            When I'm not untangling complex UX problems, you'll likely find me finding new perspectives on a mountain
-            or diving into books on neuroscience and assistive technology.
-          </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          <figure className="md:col-span-5">
+            <img
+              src="/images/about/suhyun.jpg"
+              alt="Suhyun Lim smiling on a mountain ridge, holding trekking poles"
+              className="w-full aspect-[4/5] object-cover object-top"
+            />
+            <figcaption className="mt-3 text-sm text-earth-600 dark:text-earth-300 italic">
+              Happiest above the treeline.
+            </figcaption>
+          </figure>
+
+          <div className="md:col-span-7 text-lg leading-relaxed space-y-5 text-earth-900 dark:text-earth-100">
+            <p className="text-xl md:text-2xl leading-snug font-serif">
+              I&apos;ve always wanted to know how people actually experience the world, and then make that experience a little kinder.
+            </p>
+            <p>
+              <strong className="font-semibold">I started in social work.</strong> At the University of Hong Kong I double-majored in
+              social work and business design &amp; innovation, and learned to begin every problem by listening to the person living it.
+            </p>
+            <p>
+              <strong className="font-semibold">Then I learned to read the data.</strong> As a consultant at Kearney and BCG, I turned
+              messy operational data into decisions: an e-commerce app redesign that lifted its rating from 2.8 to 4.8, and
+              procurement models that raised cost efficiency by 40%.
+            </p>
+            <p>
+              <strong className="font-semibold">At Google, the two came together.</strong> I optimized UI/UX for 200+ partner websites,
+              restructured web architecture for AI startups in the Google for Startups Accelerator, and led sessions on Generative
+              Engine Optimization that earned a company-wide Learning Sharing Award.
+            </p>
+            <p>
+              <strong className="font-semibold">Now I&apos;m designing for the people data leaves out.</strong> I&apos;m an M.S. in
+              Information student at the University of Michigan and a Mayleben Grant nominee. I&apos;m rebuilding the UMSI Career
+              Development Office website for accessibility, and building Vori and LUMI for neurodivergent people. I believe the
+              best technology leaves no one behind.
+            </p>
+            <p className="text-earth-700 dark:text-earth-300">
+              Off-screen, you&apos;ll usually find me on a mountain, or reading about neuroscience and assistive technology.
+            </p>
+          </div>
         </div>
-      </motion.div>
+
+        {/* Quick facts */}
+        <dl className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 border-t-2 border-earth-900 dark:border-earth-50 pt-6">
+          <div>
+            <dt className="font-sans font-bold uppercase text-xs tracking-widest mb-2">Education</dt>
+            <dd className="leading-snug">
+              M.S. Information, University of Michigan
+              <span className="block text-earth-600 dark:text-earth-300 text-sm mt-1">UX design &amp; research · 2026 – 2028</span>
+              <span className="block mt-3">B.A. Social Work &amp; Business Design, The University of Hong Kong</span>
+            </dd>
+          </div>
+          <div>
+            <dt className="font-sans font-bold uppercase text-xs tracking-widest mb-2">Recognition</dt>
+            <dd className="leading-snug space-y-1">
+              <span className="block">Mayleben Grant nominee</span>
+              <span className="block">+Impact Studio (accelerator program)</span>
+              <span className="block">Google Learning Sharing Award</span>
+              <span className="block">U-M DARE to Dream Grant (Vori)</span>
+            </dd>
+          </div>
+          <div>
+            <dt className="font-sans font-bold uppercase text-xs tracking-widest mb-2">Languages</dt>
+            <dd className="leading-snug">
+              English, Korean (native)
+              <span className="block mt-1">Japanese (JLPT N2), Chinese (HSK 6)</span>
+            </dd>
+          </div>
+        </dl>
+      </motion.section>
 
       {/* Work Experience */}
       <motion.section
