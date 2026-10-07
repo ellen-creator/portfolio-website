@@ -202,127 +202,156 @@ export const projects: CaseStudy[] = [
   },
 
   {
-    id: 'lumi-redesign',
-    title: 'LUMI - Body Battery App UI/UX Redesign',
-    subtitle: 'From a Clinical Dashboard to a Calm Daily Companion for Adults Who Burn Out Easily',
-    thumbnail: '/images/projects/lumi_thumbnail.png',
-    tags: ['UI/UX Redesign', 'Accessible Design', 'Health Tech', 'iOS & watchOS'],
-
+    id: "lumi-redesign",
+    title: "LUMI - Body Battery App UI/UX Redesign",
+    subtitle: "From a Feature-First Dashboard to a Calm Daily Companion",
+    thumbnail: "/images/projects/lumi_thumbnail.png",
+    tags: ["UI/UX Redesign", "Accessible Design", "Health Tech", "iOS & watchOS"],
     role: "Project lead · UX research, IA, UX writing & iOS build",
     team: "Built on the LUMI-ND team's adult app",
-    outcome: "Restructured onboarding → explanation → features → main layout; beta build ready",
-
-    overview: 'Redesigned the LUMI-ND adult app into LUMI, an iPhone + Apple Watch beta for people who burn out easily, especially those with ADHD, autism or anxiety. The original app focused only on features. After 20 expert interviews (ABA (applied behavior analysis) therapists, IEP clinicians and University of Michigan Medical School faculty) and 20 user interviews, I rebuilt the whole experience in order: onboarding → explanation → features → main screen layout. LUMI now turns what the Apple Watch already measures into one daily body battery score (1–10), explains why it is that number, and offers one small, research-backed tip for where the person is right now.',
-
+    outcome: "Rebuilt onboarding → explanation → features → main layout; beta ready",
+    overview: "An iPhone + Apple Watch app for adults who burn out easily, especially with ADHD, autism or anxiety. The original app was feature-first. After 20 expert interviews (ABA therapists, IEP clinicians, University of Michigan Medical School faculty) and 20 user interviews, I rebuilt it in the order people meet it: onboarding → explanation → features → main layout.",
     insights: [
-      { source: "20 expert + 20 user interviews", finding: "The app had grown feature by feature, but no one had defined what a new user should understand first or what the main screen should put first.", implication: "Redesign in the order a person meets the app: onboarding, then explanation, then features, then layout." },
-      { source: "Competitive review (Apple Watch, WHOOP, Oura, Headspace)", finding: "Readiness scores are black boxes (\"What does 6/10 mean?\"), built for athletes, and slow to learn a baseline.", implication: "LUMI's score must explain itself and fit people who aren't training." },
-      { source: "Research synthesis", finding: "Users forget to sync manually, and generic tips feel boring and irrelevant (\"go for a run\" on an empty day).", implication: "Sync must be automatic, and tips must depend on energy and place." },
+      {
+        source: "20 expert + 20 user interviews",
+        finding: "Features kept growing, but nothing told a new user what to understand first.",
+        implication: "Redesign in the order people meet the app.",
+      },
+      {
+        source: "Competitive review",
+        finding: "\"What does 6/10 mean?\" Readiness scores are black boxes built for athletes.",
+        implication: "The score has to explain itself.",
+      },
+      {
+        source: "Research synthesis",
+        finding: "People forget to sync, and generic tips feel irrelevant on an empty day.",
+        implication: "Sync automatically; match tips to energy and place.",
+      },
     ],
     decisions: [
-      { question: "What should the main number measure?", options: ["Stress score", "Body battery 0–100", "Energy 1–10"], chose: "Energy 1–10", why: "Rising stress doesn't tell people what to do; falling energy does (\"pace yourself\"). Ten segments read at a glance, while 0–100 invites over-reading small changes." },
-      { question: "How much of the score should we explain?", options: ["Nothing (like competitors)", "Full formula and weights", "Which signals help or drain you"], chose: "Which signals help or drain you", why: "A black box loses trust, but formulas add more numbers to an app that already had too many. Naming the signals gives the \"why\" without the math." },
-      { question: "Should tips name the user's condition?", options: ["Label tips by condition", "Ignore conditions", "Use them privately, never show them"], chose: "Use them privately, never show them", why: "Neurotype makes tips more relevant, but labels feel stigmatizing in a daily app. A test checks that no tip ever names a condition." },
+      {
+        question: "What should the main number measure?",
+        options: ["Stress score", "Body battery 0–100", "Energy 1–10"],
+        chose: "Energy 1–10",
+        why: "Falling energy tells you what to do (\"pace yourself\"); rising stress doesn't. Ten segments read at a glance.",
+      },
+      {
+        question: "How much should we explain?",
+        options: ["Nothing", "The full formula", "Which signals help or drain you"],
+        chose: "Which signals help or drain you",
+        why: "Enough \"why\" to trust the score, without adding more numbers.",
+      },
+      {
+        question: "Should tips name the condition?",
+        options: ["Label by condition", "Ignore it", "Use it privately"],
+        chose: "Use it privately",
+        why: "Tips stay relevant, and no one sees a stigmatizing label.",
+      },
+      {
+        question: "How do we motivate logging?",
+        options: ["Daily streaks", "Points that never drop"],
+        chose: "Points that never drop",
+        why: "A bad week shouldn't cost progress. That's when logging matters most.",
+      },
     ],
-    hypothesisCheck: "Not yet answered. The beta with 10–20 adults will test whether the 1–10 score \"makes sense\" to people and whether they keep opening the app (7-day retention target: 50%).",
-
+    hypothesisCheck: "Not yet answered. The beta with 10–20 adults will test whether the score makes sense and whether people come back (7-day retention target: 50%).",
     situation: {
-      title: 'Situation',
-      description: 'LUMI-ND was built feature-first, for parents watching a child\'s signals. Adults reviewing their own health were using the same screens and they didn\'t fit: the app showed a lot of data but didn\'t explain much.',
-      context: '(1) The product had grown feature by feature. There was no onboarding, no explanation of what the numbers meant, and no thought about what the main screen should put first.\n\n(2) The Today screen stacked five cards: live heart rate, a 0–100 battery strip, body tension, a long sleep card and logging. It showed many numbers but gave no clear next step.\n\n(3) Wording was written for parents and teachers ("Meltdown", IEP sharing, kid strategies), not for an adult reviewing their own day.\n\n(4) Setup asked users to tap "Connect Watch" and manage syncing themselves, and they often forgot.',
-      keywords: ['Feature-First', 'Data Overload', 'Wrong Audience', 'No Next Step'],
+      title: "Situation",
+      description: "LUMI-ND was built feature-first, for parents watching a child's signals. Adults reviewing their own health got lots of data and little explanation.",
+      context: "No onboarding, no explanation of the numbers, no priority on the main screen.\n\nToday opened on live heart rate and stacked five cards.\n\nWording was written for parents and teachers (\"Meltdown\", IEP).",
+      keywords: ["Feature-First", "Data Overload", "Wrong Audience", "No Next Step"],
     },
-
     problem: {
-      title: 'Problem',
-      description: '20 expert interviews and 20 user interviews, set against the existing flows, surfaced these issues:',
-      painPoints: [
-        'Too many numbers: live bpm and a 0–100 score could make anxious users more anxious and didn\'t explain what to do',
-        'Generic advice: tips ignored energy level, place (school/work, home, out), recent patterns and how the person works',
-        'Labeling: condition names and clinical terms felt stigmatizing in an app people check every day',
-        'Friction: manual watch connection, no first-launch explanation and no guide to what each tab is for',
-        'Reactive only: the app recorded hard moments but never warned users before the times that are usually hard for them',
-      ],
+      title: "Problem",
+      description: "What the interviews surfaced:",
+      painPoints: ["Too many numbers, no clear next step", "Generic tips that ignored energy, place and recent days", "Clinical labels in an app people open every day", "Manual watch sync, and no warning before hard times"],
     },
-
     solution: {
-      title: 'Solution',
-      howMightWe: 'How might we turn passive wearable data into one calm, understandable number and one small action that fits this person, in this place, today?',
-      description: 'A restructured experience built around three questions: Why do I burn out? When does it hit me? What actually helps? Today became four blocks with one decision each. A transparent body battery explains which signals are supporting or draining you, without formulas. A tip engine filters, ranks and rotates 42 research-backed tips across 1,536 situations. A gentle growth loop ("logs are LUMI\'s food") rewards check-ins with no streaks to lose.',
-      approach: 'Started from 20 expert interviews and 20 user interviews instead of the feature list, then redesigned in the order a new user meets the app: onboarding → explanation → features → main screen layout. Along the way I audited every screen and string against an adult self-review lens; mapped each recommendation to a PubMed source; designed the selection logic as a visible flow (inputs → filter → rank → rotate → show); built a tip board to find and fill content gaps before beta; and shipped it in SwiftUI with 582 automated tests, including one that checks no tip names a condition.',
-      tools: ['Expert Interviews (20): ABA, IEP, U-M Medical School', 'User Interviews (20)', 'Information Architecture', 'SwiftUI', 'HealthKit', 'WatchConnectivity', 'EventKit', 'UX Writing', 'Accessibility (WCAG)', 'Evidence Review (PubMed)', 'Google Apps Script'],
+      title: "Solution",
+      howMightWe: "How might we turn passive wearable data into one calm, understandable number and one small action that fits this person, in this place, today?",
+      description: "One calm number, one small action, and a character that grows when you log.",
+      approach: "Started from 40 interviews, not the feature list. Every tip is tied to a PubMed study, content coverage was checked across 2,304 situations, and the app shipped in SwiftUI with 588 automated tests.",
+      tools: ["Expert Interviews (20)", "User Interviews (20)", "Information Architecture", "UX Writing", "Accessibility (WCAG AA)", "SwiftUI", "HealthKit", "Evidence Review (PubMed)"],
     },
-
     implementation: {
-      title: 'Implementation & Changes',
-      description: 'The original app was organized around features. Guided by 20 expert and 20 user interviews, I restructured it in the order a person experiences it: onboarding → explanation → features → main screen layout. Each step below answers one of the pain points above.',
+      title: "Implementation & Changes",
+      description: "Rebuilt in the order people meet the app.",
       changes: [
         {
-          title: 'Step 0 · Research — 20 Experts, 20 Users Before Any Feature',
-          description: 'Instead of adding more features, I went back to the people: 20 expert interviews with ABA (applied behavior analysis) therapists, IEP clinicians and University of Michigan Medical School faculty, and 20 user interviews with adults who burn out easily. What they told me (see Insights above) set the redesign order, following the path a new user takes: (1) Onboarding: what LUMI is and how to set it up. (2) Explanation: what the body battery reads and why. (3) Features: tips, Energizer, heads-ups and growth, rebuilt around those explanations. (4) Main layout: Today rearranged so the most important thing comes first.',
+          title: "Step 0 · Research",
+          description: "20 expert interviews (ABA therapists, IEP clinicians, U-M Medical School faculty) and 20 user interviews set the order for everything below.",
         },
         {
-          title: 'Step 1 · Onboarding — First Launch: Explain First, Then a One-Time Setup',
-          description: 'Four launch screens explain the value, what the body battery reads and why, "wear your watch, that\'s it," and "low days are information, not failure" (with the 988 crisis line). A three-step setup asks for name, age range, an optional "anything that fits you," what drains you and who\'s in your corner. Afterwards, a see-through overlay spotlights each tab and explains how to use it, and the ? button on Today replays it.',
-        },
-        {
-          title: 'Step 2 · Explanation — A Body Battery You Can Understand',
-          description: 'The score is built from signals the watch already records (sleep, heart rate variability, resting heart rate, activity and an optional calendar), each compared with the person\'s own recent days. The app shows which signals are supporting or draining you, never the weights. Steps stand in for activity until the battery learns your rhythm, so movement counts from day one. A "calm view" switch hides live heart-rate numbers for anyone anxious about them.',
-        },
-        {
-          title: 'Step 3 · Features — Evidence-Based Tip Engine',
-          description: '42 tips, each linked to one of 22 PubMed studies (autistic burnout and masking, exercise and ADHD, paced breathing, worry postponement, naps, caffeine timing and more). Tips are filtered by battery level, place, how the person works, age, last night\'s sleep and the last 7 days, then ranked so the most specific match comes first. A tip seen in the last 2 days drops to the bottom, so advice never feels repetitive. Condition names decide which tips appear but are never shown to the user.',
-          image: '/images/projects/lumi_tip_flow.png',
-        },
-        {
-          title: 'Step 3 · Features — Designing for Coverage, Not Just the Happy Path',
-          description: '4 battery levels × 3 places × 8 neurotype mixes × 4 recent patterns × 2 age groups × 2 sleep states = 1,536 situations. I built an internal tip board that maps how many tips each situation has, so thin spots (charged days with no neurotype, burnout-risk days, "bouncing back") are easy to see and fill before beta.',
-          image: '/images/projects/lumi_tip_coverage.png',
-        },
-        {
-          title: 'Step 3 · Features — Energizer Tab & a Growth Loop With No Streaks',
-          description: 'Strategies became Energizer: "For you" describes today\'s situation in one friendly line and shows six ranked tip cards that open to what to do and why it works. "Situations" lets users browse every case LUMI plans for. The Library holds step-by-step strategies rewritten for adults. LUMI earns 10 points per log and 5 for opening the app each day. Levels grow, but nothing is ever taken away, so a bad week never feels like a punishment.',
-        },
-        {
-          title: 'Step 3 · Features — Heads-Ups Before Hard Times',
-          description: 'If a hard moment was logged on the same weekday at a similar time in at least 2 of the last 4 weeks, or during the same calendar event twice, LUMI sends a gentle notification before the next one: "Tuesdays around 3:00 PM have been hard lately… take 5 quiet minutes now." Users choose on/off, 30/45/60 minutes ahead and frequency (no more than one a day, never between 10pm and 7am).',
-        },
-        {
-          title: 'Step 4 · Main Layout — Information First, Then a Reason to Log',
-          description: 'The old Today opened on live heart rate and stacked five cards, so the one thing people needed to know was buried. I reordered the screen by what the user needs first. The first screen answers "How am I doing?" (body battery 1–10, a one-line status and a 10-segment meter) and "What should I do?" (one tip for School/work, Home or Out). Detailed analysis moved into Details. Scrolling down, LUMI and logging sit together, so every check-in visibly feeds the character: +10 points per log (up to 8 a day), +5 for opening the app, longer levels as LUMI grows, and a banner for each level-up. There are no streaks to lose, because a bad week is exactly when people need to keep logging.',
+          title: "Step 1 · Onboarding",
+          description: "A short launch story, a one-time setup and a walkthrough of each tab. Low days are framed as \"information, not failure,\" with the 988 crisis line one tap away.",
+          image: "/images/projects/lumi_onboarding.jpg",
           wide: true,
-          image: '/images/projects/lumi_today_before_after.png',
         },
         {
-          title: 'Throughout — Zero-Tap Watch Sync, Accessibility & Adult Voice',
-          description: 'There\'s no "Connect Watch" button anymore: after one Health permission, the iPhone launches the Watch app and starts recording on its own, and a pause on either device stays in sync. Accessibility: darker secondary text for stronger contrast, 52pt main buttons, status shown with an icon and text (not color alone), and reduced motion respected. Wording: "Meltdown" became "Overloaded", IEP/teacher sharing became counselor and accommodations summaries, and the Analysis tab replaced made-up percentages with an honest empty state.',
+          title: "Step 2 · Explanation",
+          description: "A 0–100 \"early estimate\" became 1–10 with a plain status. Details shows which signals help or drain you, never the formula.",
+          image: "/images/projects/lumi_battery.jpg",
+          wide: true,
+        },
+        {
+          title: "Step 3 · Features — Tips That Fit the Moment",
+          description: "55 tips, each tied to one of 29 PubMed studies, picked by energy, place, recent days and how you work. \"This helped\" brings a tip back; \"Not for me\" hides it. A coverage grid showed where content was thin.",
+          image: "/images/projects/lumi_energizer.jpg",
+          wide: true,
+        },
+        {
+          title: "Step 3 · Features — Heads-Ups Before Hard Times",
+          description: "If a weekday or event has been hard in 2 of the last 4 weeks, LUMI warns you before it comes around again. You choose how early and how often, and it never fires at night.",
+          image: "/images/projects/lumi_headsup.jpg",
+          wide: true,
+        },
+        {
+          title: "Step 3 · Features — Patterns, Honestly",
+          description: "Journal and Analysis show hard moments and top triggers over time. There are no made-up percentages: missing data gets an honest empty state.",
+          image: "/images/projects/lumi_patterns.jpg",
+          wide: true,
+        },
+        {
+          title: "Step 4 · Main Layout — Battery First, LUMI Below",
+          description: "What you need to know comes first. LUMI talks in a bubble that changes with your battery and grows only when you log: 10, 8, 6, 4, then 2 points through the day, with no streaks to lose.",
+          image: "/images/projects/lumi_today.jpg",
+          wide: true,
+        },
+        {
+          title: "Throughout",
+          description: "Automatic Watch sync after one permission. Every text color passes WCAG AA, large text scales, and \"Meltdown\" became \"Overloaded.\"",
         },
       ],
     },
-
     impact: {
-      title: 'Outcome & Next Steps',
-      description: 'The redesign is shipped as a beta build with a Google Form beta application (interview first, download link after). Next: beta testing with 10–20 adults across ADHD, autism and anxiety, measuring 7-day retention, NPS and whether the body battery "makes sense." Tips will get a clinical review before a wider release.',
+      title: "Outcome & Next Steps",
+      description: "Beta build ready. Next: test with 10–20 adults, measuring 7-day retention, NPS and whether the score makes sense.",
       metrics: [
-        { label: 'Interviews', value: '20 + 20', unit: 'ABA/IEP clinicians & U-M Medical School faculty + users' },
-        { label: 'Today screen', value: '5 → 4', unit: 'cards → focused blocks' },
-        { label: 'Research-backed tips', value: '42', unit: 'linked to 22 PubMed studies' },
-        { label: 'Situations designed for', value: '1,536', unit: '304 distinct tip pools' },
+        {
+          label: "Interviews",
+          value: "20 + 20",
+          unit: "experts + users",
+        },
+        {
+          label: "Today screen",
+          value: "5 → 4",
+          unit: "cards, battery first",
+        },
+        {
+          label: "Research-backed tips",
+          value: "55",
+          unit: "from 29 PubMed studies",
+        },
+        {
+          label: "Situations designed for",
+          value: "2,304",
+          unit: "checked for coverage",
+        },
       ],
     },
-
-    learnings: [
-      'Research reorders the roadmap. Starting from 20 expert and 20 user interviews instead of the feature list changed what came first, so the redesign followed the user\'s path: onboarding → explanation → features → main layout.',
-      'Fewer numbers can mean more understanding. Moving a 0–100 score, live bpm and body tension into Details made Today easier to act on without hiding anything from people who want the depth.',
-      'Explain the "why" without the math. Showing which signals are supporting or draining you builds trust; showing weights and formulas invites second-guessing.',
-      'Words are interface. Swapping parent/clinical language ("Meltdown", IEP) for adult self-review language changed who the product feels like it is for, without changing a single feature.',
-      'Personalize without labeling. Neurotype shapes which tips appear, but it never appears on screen. Personalization and stigma can be designed apart.',
-      'Design the whole matrix, not just the happy path. Mapping 1,536 situations exposed thin spots that a few sample screens would never have shown.',
-      'Gamify without punishing. No streaks to lose and nothing taken away matters especially for users whose bad weeks are exactly when they need the app most.',
-    ],
-
+    learnings: ["Research reorders the roadmap: people needed onboarding and explanation before more features.", "Fewer numbers, more understanding. Detail lives one tap away in Details.", "Personalize without labeling: neurotype shapes the tips but never appears on them.", "Reward without punishing. No streaks, because bad weeks are when logging matters most."],
     year: 2026,
-    timeline: 'Beta redesign · Oct 2026',
+    timeline: "Beta redesign · Oct 2026",
   },
 
   {
