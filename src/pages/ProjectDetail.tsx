@@ -629,6 +629,24 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   </motion.div>
                 )}
 
+                {/* Text-only layout (no image/video) */}
+                {!isCostOptimization && !hasImage && !hasImages && !(change as any).video && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15, duration: 0.6 }}
+                    viewport={{ once: false, margin: "-100px" }}
+                    className="relative z-10 max-w-3xl mx-auto bg-earth-50 dark:bg-navy-900 border border-earth-300/40 dark:border-earth-600/40 rounded-2xl p-8 md:p-10 space-y-4"
+                  >
+                    <h3 className="text-3xl font-serif font-light text-earth-900 dark:text-earth-50">
+                      {(change as any).title}
+                    </h3>
+                    <p className="text-lg text-earth-700 dark:text-earth-200 font-light leading-relaxed whitespace-pre-line">
+                      {(change as any).description}
+                    </p>
+                  </motion.div>
+                )}
+
                 {/* Cost Optimization Layout */}
                 {isCostOptimization && (
                   <motion.div
