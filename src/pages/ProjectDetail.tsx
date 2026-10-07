@@ -73,16 +73,37 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           </motion.p>
         </div>
 
-        {/* Right: Impact + Tools Tags */}
+        {/* Right: Role/Outcome + Focus + Tools Tags */}
         <div className="md:col-span-5 flex flex-col gap-8">
-          {/* Impact Section */}
+          {/* At a glance: role, team, outcome */}
+          {(project.role || project.team || project.outcome) && (
+            <motion.dl
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.6 }}
+              className="space-y-4"
+            >
+              {[
+                ['Role', project.role],
+                ['Team', project.team],
+                ['Outcome', project.outcome],
+              ].filter(([, value]) => value).map(([label, value]) => (
+                <div key={label} className="grid grid-cols-[5.5rem_1fr] gap-3 border-b border-earth-100/50 dark:border-earth-600/50 pb-3">
+                  <dt className="text-xs font-light uppercase tracking-widest text-earth-600 dark:text-earth-600 pt-1">{label}</dt>
+                  <dd className="text-earth-900 dark:text-earth-100 font-light leading-relaxed">{value}</dd>
+                </div>
+              ))}
+            </motion.dl>
+          )}
+
+          {/* Focus Section */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             <h3 className="text-lg font-serif font-light mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
-              Key Impact
+              Focus
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.tags.slice(0, 3).map((tag, idx) => (
@@ -243,6 +264,100 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           </p>
         )}
       </motion.section>
+
+      {/* SECTION 2C: Thinking process — Insights → Decisions */}
+      {(project.insights?.length || project.decisions?.length) ? (
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="mb-20"
+        >
+          {project.insights && project.insights.length > 0 && (
+            <div className="mb-16">
+              <h2 className="text-4xl font-serif font-light mb-3 text-earth-900 dark:text-earth-50">
+                What I Learned
+              </h2>
+              <p className="text-earth-600 dark:text-earth-600 font-light mb-8">
+                Insights that shaped every decision below.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {project.insights.map((insight, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1, duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col p-6 rounded-2xl border border-earth-100/40 dark:border-earth-600/40 bg-earth-100/30 dark:bg-earth-900/15"
+                  >
+                    <p className="text-xs font-light uppercase tracking-widest text-earth-600 dark:text-earth-600 mb-4">
+                      {insight.source}
+                    </p>
+                    <p className="text-earth-900 dark:text-earth-100 font-light leading-relaxed mb-5 flex-1">
+                      {insight.finding}
+                    </p>
+                    <p className="text-sm text-earth-900 dark:text-earth-200 font-light leading-relaxed border-t border-earth-100/40 dark:border-earth-600/40 pt-4">
+                      <span className="text-earth-600 dark:text-earth-600 mr-1">→</span>
+                      {insight.implication}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {project.decisions && project.decisions.length > 0 && (
+            <div>
+              <h2 className="text-4xl font-serif font-light mb-3 text-earth-900 dark:text-earth-50">
+                Key Decisions
+              </h2>
+              <p className="text-earth-600 dark:text-earth-600 font-light mb-8">
+                The options I weighed, and why I chose what I did.
+              </p>
+              <div className="space-y-6">
+                {project.decisions.map((decision, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.08, duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 pb-6 border-b border-earth-100/40 dark:border-earth-600/40"
+                  >
+                    <h3 className="md:col-span-4 text-xl font-serif font-light text-earth-900 dark:text-earth-50 leading-snug">
+                      {decision.question}
+                    </h3>
+                    <div className="md:col-span-8 space-y-3">
+                      <div className="flex flex-wrap gap-2">
+                        {decision.options.map((option) => {
+                          const chosen = option === decision.chose
+                          return (
+                            <span
+                              key={option}
+                              className={
+                                chosen
+                                  ? 'px-3 py-1 rounded-full text-sm font-normal bg-earth-900 text-earth-50 dark:bg-earth-200 dark:text-earth-900'
+                                  : 'px-3 py-1 rounded-full text-sm font-light text-earth-600 dark:text-earth-600 border border-earth-600/30 dark:border-earth-600/60 line-through decoration-earth-600/50'
+                              }
+                            >
+                              {chosen && '✓ '}{option}
+                            </span>
+                          )
+                        })}
+                      </div>
+                      <p className="text-earth-900 dark:text-earth-200 font-light leading-relaxed">
+                        {decision.why}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+        </motion.section>
+      ) : null}
 
       {/* SECTION 3: Solution */}
       {project.id === 'arklink-lead-generation' ? (
@@ -636,12 +751,12 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.15, duration: 0.6 }}
                     viewport={{ once: false, margin: "-100px" }}
-                    className="relative z-10 max-w-3xl mx-auto bg-earth-50 dark:bg-navy-900 border border-earth-300/40 dark:border-earth-600/40 rounded-2xl p-8 md:p-10 space-y-4"
+                    className="relative z-10 max-w-3xl mx-auto bg-earth-50 dark:bg-navy-900 border border-earth-100/40 dark:border-earth-600/40 rounded-2xl p-8 md:p-10 space-y-4"
                   >
                     <h3 className="text-3xl font-serif font-light text-earth-900 dark:text-earth-50">
                       {(change as any).title}
                     </h3>
-                    <p className="text-lg text-earth-700 dark:text-earth-200 font-light leading-relaxed whitespace-pre-line">
+                    <p className="text-lg text-earth-900 dark:text-earth-200 font-light leading-relaxed whitespace-pre-line">
                       {(change as any).description}
                     </p>
                   </motion.div>
@@ -720,6 +835,27 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           >
             "{project.impact.testimonial}"
           </motion.blockquote>
+        )}
+
+        {/* Back to the hypothesis */}
+        {project.hypothesisCheck && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mt-12 max-w-3xl"
+          >
+            <p className="text-xs font-light uppercase tracking-widest text-earth-600 dark:text-earth-600 mb-3">
+              Back to the hypothesis
+            </p>
+            <p className="text-lg font-serif font-light italic text-earth-600 dark:text-earth-600 mb-4 leading-relaxed">
+              "{project.solution.howMightWe}"
+            </p>
+            <p className="text-lg text-earth-900 dark:text-earth-100 font-light leading-relaxed">
+              {project.hypothesisCheck}
+            </p>
+          </motion.div>
         )}
       </motion.section>
 

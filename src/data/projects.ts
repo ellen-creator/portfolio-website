@@ -8,8 +8,27 @@ export interface CaseStudy {
   thumbnail: string
   tags: string[]
 
+  // Hero summary
+  role?: string
+  team?: string
+  outcome?: string
+
   // Case Study sections
   overview: string
+
+  // Thinking process: what we learned → what we decided
+  insights?: Array<{
+    source: string
+    finding: string
+    implication: string
+  }>
+  decisions?: Array<{
+    question: string
+    options: string[]
+    chose: string
+    why: string
+  }>
+  hypothesisCheck?: string
 
   situation: {
     title: string
@@ -88,7 +107,23 @@ export const projects: CaseStudy[] = [
     thumbnail: '/images/projects/vori_mockup.png',
     tags: ['Product Strategy', 'Neurotechnology', 'Accessible Design', 'User Research'],
 
+    role: "Solo founder · research, product & interaction design",
+    team: "Solo, with 50+ clinicians, educators, parents & community advisors",
+    outcome: "Validated concept now in usability testing with 121 children; U-M DARE to Dream Grant",
+
     overview: 'Solo founder and technology leader who conceived, validated, and is building Vori: ultra-lightweight smart eyewear that detects early biometric signs of sensory overload in ADHD & ASD children and intervenes with calming visual cues. Currently scaling from research validation to clinical-grade software and usability testing with real children. Awarded University of Michigan DARE to Dream Grant and pursuing additional funding.',
+
+    insights: [
+      { source: "Students", finding: "Kids feared being teased for wearing anything that looked \"medical\", and disliked heavy headsets (>200g).", implication: "The device has to look like everyday glasses and weigh far less than a headset." },
+      { source: "Educators & parents", finding: "Distress is usually masked until a visible meltdown. Adults only see the crisis, never the build-up.", implication: "Detection has to happen before behavior changes, not after." },
+      { source: "Clinicians", finding: "Diagnosis and treatment rely on subjective parent/teacher reports, with no objective data.", implication: "The same signals that trigger a cue should also give clinicians a usable record." },
+    ],
+    decisions: [
+      { question: "What form should it take?", options: ["EEG headset", "Wristband", "Everyday glasses"], chose: "Everyday glasses", why: "Headsets failed on weight and stigma. Glasses can carry temple-mounted EEG and eye tracking under 90g and look like nothing special." },
+      { question: "Where should the calming cue appear?", options: ["Sound or vibration alert", "Center of vision", "Peripheral field only"], chose: "Peripheral field only", why: "The child must still see the teacher and board clearly, and peers should never notice. Peripheral cues keep central vision 100% clear." },
+      { question: "When should it intervene?", options: ["After a meltdown (reactive)", "On a fixed schedule", "30–60s before escalation (predictive)"], chose: "30–60s before escalation (predictive)", why: "By the time behavior is visible, it is too late to help. Early neural markers give a window to prevent the crisis instead of managing it." },
+    ],
+    hypothesisCheck: "Partly answered: early EEG testing (61 ADHD/ASD participants vs 60 controls) shows distinct neural signatures with 87% early-detection accuracy. Still open: whether peripheral cues actually calm children in a real classroom. That is what the current usability phase tests.",
 
     situation: {
       title: 'Situation',
@@ -172,7 +207,23 @@ export const projects: CaseStudy[] = [
     thumbnail: '/images/projects/lumi_thumbnail.png',
     tags: ['UI/UX Redesign', 'Accessible Design', 'Health Tech', 'iOS & watchOS'],
 
+    role: "Project lead · UX research, IA, UX writing & iOS build",
+    team: "Built on the LUMI-ND team's adult app",
+    outcome: "Restructured onboarding → explanation → features → main layout; beta build ready",
+
     overview: 'Redesigned the LUMI-ND adult app into LUMI, an iPhone + Apple Watch beta for people who burn out easily, especially those with ADHD, autism or anxiety. The original app focused only on features. After 20 expert interviews (ABA (applied behavior analysis) therapists, IEP clinicians and University of Michigan Medical School faculty) and 20 user interviews, I rebuilt the whole experience in order: onboarding → explanation → features → main screen layout. LUMI now turns what the Apple Watch already measures into one daily body battery score (1–10), explains why it is that number, and offers one small, research-backed tip for where the person is right now.',
+
+    insights: [
+      { source: "20 expert + 20 user interviews", finding: "The app had grown feature by feature, but no one had defined what a new user should understand first or what the main screen should put first.", implication: "Redesign in the order a person meets the app: onboarding, then explanation, then features, then layout." },
+      { source: "Competitive review (Apple Watch, WHOOP, Oura, Headspace)", finding: "Readiness scores are black boxes (\"What does 6/10 mean?\"), built for athletes, and slow to learn a baseline.", implication: "LUMI's score must explain itself and fit people who aren't training." },
+      { source: "Research synthesis", finding: "Users forget to sync manually, and generic tips feel boring and irrelevant (\"go for a run\" on an empty day).", implication: "Sync must be automatic, and tips must depend on energy and place." },
+    ],
+    decisions: [
+      { question: "What should the main number measure?", options: ["Stress score", "Body battery 0–100", "Energy 1–10"], chose: "Energy 1–10", why: "Rising stress doesn't tell people what to do; falling energy does (\"pace yourself\"). Ten segments read at a glance, while 0–100 invites over-reading small changes." },
+      { question: "How much of the score should we explain?", options: ["Nothing (like competitors)", "Full formula and weights", "Which signals help or drain you"], chose: "Which signals help or drain you", why: "A black box loses trust, but formulas add more numbers to an app that already had too many. Naming the signals gives the \"why\" without the math." },
+      { question: "Should tips name the user's condition?", options: ["Label tips by condition", "Ignore conditions", "Use them privately, never show them"], chose: "Use them privately, never show them", why: "Neurotype makes tips more relevant, but labels feel stigmatizing in a daily app. A test checks that no tip ever names a condition." },
+    ],
+    hypothesisCheck: "Not yet answered. The beta with 10–20 adults will test whether the 1–10 score \"makes sense\" to people and whether they keep opening the app (7-day retention target: 50%).",
 
     situation: {
       title: 'Situation',
@@ -207,7 +258,7 @@ export const projects: CaseStudy[] = [
       changes: [
         {
           title: 'Step 0 · Research — 20 Experts, 20 Users Before Any Feature',
-          description: 'Instead of adding more features, I went back to the people: 20 expert interviews with ABA (applied behavior analysis) therapists, IEP clinicians and University of Michigan Medical School faculty, and 20 user interviews with adults who burn out easily. Together they showed the problem wasn\'t missing features. Users couldn\'t tell what the app was for, what the numbers meant, or what to do next. That set the redesign order, following the path a new user takes: (1) Onboarding: what LUMI is and how to set it up. (2) Explanation: what the body battery reads and why. (3) Features: tips, Energizer, heads-ups and growth, rebuilt around those explanations. (4) Main layout: Today rearranged so the most important thing comes first.',
+          description: 'Instead of adding more features, I went back to the people: 20 expert interviews with ABA (applied behavior analysis) therapists, IEP clinicians and University of Michigan Medical School faculty, and 20 user interviews with adults who burn out easily. What they told me (see Insights above) set the redesign order, following the path a new user takes: (1) Onboarding: what LUMI is and how to set it up. (2) Explanation: what the body battery reads and why. (3) Features: tips, Energizer, heads-ups and growth, rebuilt around those explanations. (4) Main layout: Today rearranged so the most important thing comes first.',
         },
         {
           title: 'Step 1 · Onboarding — First Launch: Explain First, Then a One-Time Setup',
@@ -259,7 +310,7 @@ export const projects: CaseStudy[] = [
     },
 
     learnings: [
-      'Research reorders the roadmap. 20 expert and 20 user interviews showed people didn\'t need more features. They needed onboarding and explanation first, so the redesign followed the user\'s path: onboarding → explanation → features → main layout.',
+      'Research reorders the roadmap. Starting from 20 expert and 20 user interviews instead of the feature list changed what came first, so the redesign followed the user\'s path: onboarding → explanation → features → main layout.',
       'Fewer numbers can mean more understanding. Moving a 0–100 score, live bpm and body tension into Details made Today easier to act on without hiding anything from people who want the depth.',
       'Explain the "why" without the math. Showing which signals are supporting or draining you builds trust; showing weights and formulas invites second-guessing.',
       'Words are interface. Swapping parent/clinical language ("Meltdown", IEP) for adult self-review language changed who the product feels like it is for, without changing a single feature.',
@@ -279,7 +330,22 @@ export const projects: CaseStudy[] = [
     thumbnail: '/images/projects/arklink_thumnail.png',
     tags: ['UX Design', 'Lead Generation', 'Chatbot Design'],
 
+    role: "UX strategy, persona research & conversational design",
+    team: "With Arklink executive leadership",
+    outcome: "Lead quality +42%; CTA click-through +55%",
+
     overview: 'Optimized lead generation landing page and chatbot interaction through persona-driven design research.',
+
+    insights: [
+      { source: "Funnel analysis", finding: "Ads brought traffic and 5–10% of visitors clicked the chatbot, but almost none converted inside it. Overall conversion stayed below 1%.", implication: "The leak wasn't the ads; it was the conversation itself." },
+      { source: "User interviews", finding: "People in crisis and people researching options arrive with opposite needs: one needs to feel safe right now, the other needs proof of expertise.", implication: "One generic script can't serve both." },
+      { source: "Page audit", finding: "The landing page led with company information, and contact was buried several pages deep.", implication: "Put the user's next step in front, not the company's story." },
+    ],
+    decisions: [
+      { question: "How should the chatbot open?", options: ["One generic script", "A menu of services", "Separate flows per persona"], chose: "Separate flows per persona", why: "The two personas need opposite first messages, so a single script was guaranteed to fail one of them." },
+      { question: "What should a person in crisis see first?", options: ["Pricing and process", "Company credentials", "Reassurance and a personal commitment"], chose: "Reassurance and a personal commitment", why: "Panic blocks reading. \"I will personally ensure your data doesn't spread\" lowers anxiety before asking for anything." },
+    ],
+    hypothesisCheck: "Supported: tailoring the conversation by segment raised lead quality 42% and conversation completion to 68%.",
 
     situation: {
       title: 'Situation',
@@ -310,13 +376,13 @@ export const projects: CaseStudy[] = [
           id: 'persona-1',
           name: 'Persona 1: Urgent Help Seeker',
           image: '/images/projects/persona1.png',
-          description: 'Time-constrained professionals seeking immediate solutions and quick information.',
+          description: 'Victims in acute crisis who need immediate reassurance and a clear action pathway.',
         },
         {
           id: 'persona-2',
           name: 'Persona 2: Technical Researcher',
           image: '/images/projects/persona2.png',
-          description: 'Detail-oriented engineers evaluating technical capabilities and integration options.',
+          description: 'Rational researchers validating technical credibility before choosing a platform or solution.',
         },
       ],
     },
@@ -373,7 +439,22 @@ export const projects: CaseStudy[] = [
     thumbnail: '/images/projects/ec3.png',
     tags: ['E-Commerce', 'UX Research', 'UI Design', 'Accessibility'],
 
+    role: "Business Analyst · customer segmentation, UX audit & UI rationale",
+    team: "Kearney team with the client's designers & developers",
+    outcome: "Google Play rating 2.8 → 4.8",
+
     overview: 'Revitalized a struggling e-commerce mobile application by conducting data-driven customer segmentation and implementing a comprehensive UI/UX redesign. The result: Google Play rating increased from 2.8 to 4.8/5 stars, with significantly improved user satisfaction and engagement.',
+
+    insights: [
+      { source: "Heuristic walkthrough", finding: "The purchase flow was so unintuitive that even I found it hard to finish buying a product.", implication: "This was a whole-app UI problem, not a single broken screen." },
+      { source: "Customer data + competitor analysis", finding: "Customers in their 50s–60s contributed the most sales, yet the UI had low contrast and small touch targets.", implication: "Designing for this segment first would move revenue the most." },
+      { source: "App store reviews (verbatim analysis)", finding: "\"After so many updates, the application just stopped and push marketing comes out even though I did not agree on that.\"", implication: "Stability and respect for consent mattered as much as visual polish." },
+    ],
+    decisions: [
+      { question: "One UI for everyone, or by segment?", options: ["Refresh one UI for all", "Segment-specific experiences"], chose: "Segment-specific experiences", why: "Active buyers needed cross-selling and social proof; 50–60s customers needed contrast, bigger targets and voice input. One design would underserve the segment that pays the most." },
+      { question: "How do we keep hesitant buyers to checkout?", options: ["More discounts", "Repeated exposure to other buyers' reviews and behavior"], chose: "Repeated exposure to other buyers' reviews and behavior", why: "Customers keep reconsidering until payment. Targeted reviews and \"people also bought\" reassure them at each step, with limited-time offers as support, not the lead." },
+    ],
+    hypothesisCheck: "Supported: the rating rose from 2.8 to 4.8, and reviews shifted from \"it just sucks\" to \"the page itself gets really cleaned, fast and easy to log in\". Hardest part: aligning the client's designers and developers, who had a long history of misunderstanding each other.",
 
     situation: {
       title: 'Situation',
@@ -500,7 +581,22 @@ export const projects: CaseStudy[] = [
     thumbnail: '/images/projects/dashboard1.png',
     tags: ['Dashboard Design', 'Data Analysis', 'Business Intelligence'],
 
+    role: "Consultant · cost-driver analysis, dashboard design & ML forecasting",
+    team: "Consulting team with the client's finance, operations & procurement managers",
+    outcome: "15–20% potential procurement savings identified",
+
     overview: 'Built a comprehensive cost optimization dashboard for a food manufacturing company to identify and manage major cost drivers impacting profitability during post-COVID supply chain disruptions.',
+
+    insights: [
+      { source: "Internal & external interviews", finding: "Cost data was piling up in SAP, but no one had grouped it into comparable cost levers.", implication: "Re-categorize costs (starting from the bill of materials) before drawing any chart." },
+      { source: "Factory comparison", finding: "Factories making similar products had very different costs, driven by productivity and raw-material waste.", implication: "Side-by-side site comparison is the most useful first view." },
+      { source: "Manager testing", finding: "Executives wanted a one-screen summary; operations teams needed transaction-level detail.", implication: "One flat dashboard can't serve both. The depth needs layers." },
+    ],
+    decisions: [
+      { question: "One dashboard or layers?", options: ["One detailed dashboard", "Separate reports per team", "Tiered drill-down (LV0 → LV1 → detail)"], chose: "Tiered drill-down (LV0 → LV1 → detail)", why: "Everyone starts from the same network summary and goes only as deep as their job needs, so execs and operators share one source of truth." },
+      { question: "How simple should it be?", options: ["Minimal KPIs only", "Context-aware detail where decisions happen"], chose: "Context-aware detail where decisions happen", why: "Testing with managers showed that oversimplified views hid the cost drivers they needed to act on." },
+    ],
+    hypothesisCheck: "Supported: despite missing data, the models (decision trees, random forests) forecast procurement price hikes and backed recommendations on recipes, suppliers, materials and buying formulas.",
 
     situation: {
       title: 'Situation',
@@ -581,7 +677,7 @@ export const projects: CaseStudy[] = [
       title: 'Impact & Business Outcomes',
       description: 'The dashboard transformed cost visibility and enabled data-driven decision-making across the manufacturing organization.',
       metrics: [
-        { label: 'Cost visibility improved', value: '360°', unit: 'complete network view' },
+        { label: 'Levels of drill-down', value: '4', unit: 'network summary → transaction detail' },
         { label: 'Decision-making speed', value: '↑40', unit: '%' },
         { label: 'Procurement optimization', value: '15-20', unit: '% potential savings identified' },
         { label: 'Manager satisfaction', value: '4.5/5', unit: 'on usability' },
