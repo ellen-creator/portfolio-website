@@ -72,6 +72,7 @@ export interface CaseStudy {
       beforeImage?: string
       after?: string
       afterImage?: string
+      wide?: boolean
       images?: string[]
       image?: string
       video?: string
@@ -287,8 +288,9 @@ export const projects: CaseStudy[] = [
           description: 'If a hard moment was logged on the same weekday at a similar time in at least 2 of the last 4 weeks, or during the same calendar event twice, LUMI sends a gentle notification before the next one: "Tuesdays around 3:00 PM have been hard lately… take 5 quiet minutes now." Users choose on/off, 30/45/60 minutes ahead and frequency (no more than one a day, never between 10pm and 7am).',
         },
         {
-          title: 'Step 4 · Main Layout — Today: From 5 Cards to 4 Blocks',
-          description: 'Each block now answers one question: (1) Your body battery: a 1–10 score, a one-line status ("Steady — pace yourself") and a 10-segment meter. (2) What helps now: a School/work · Home · Out switch with one tip and its study. (3) LUMI: the character and a level bar. (4) Feed LUMI: one-tap check-ins (Rested / Okay / Tired / Overwhelmed). The 0–100 strip, body tension and long sleep card moved into Details, so the analysis is still there for anyone who wants it.',
+          title: 'Step 4 · Main Layout — Information First, Then a Reason to Log',
+          description: 'The old Today opened on live heart rate and stacked five cards, so the one thing people needed to know was buried. I reordered the screen by what the user needs first. The first screen answers "How am I doing?" (body battery 1–10, a one-line status and a 10-segment meter) and "What should I do?" (one tip for School/work, Home or Out). Detailed analysis moved into Details. Scrolling down, LUMI and logging sit together, so every check-in visibly feeds the character: +10 points per log (up to 8 a day), +5 for opening the app, longer levels as LUMI grows, and a banner for each level-up. There are no streaks to lose, because a bad week is exactly when people need to keep logging.',
+          wide: true,
           image: '/images/projects/lumi_today_before_after.png',
         },
         {

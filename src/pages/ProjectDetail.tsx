@@ -632,13 +632,13 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           if ((change as any).image) setSelectedMedia({ type: 'image', src: (change as any).image })
                           else if ((change as any).video) setSelectedMedia({ type: 'video', src: (change as any).video })
                         }}
-                        className="max-w-2xl mx-auto cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+                        className={`${change.wide ? 'max-w-5xl' : 'max-w-2xl'} mx-auto cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow`}
                       >
                         {(change as any).image && (
                           <motion.img
                             src={(change as any).image}
                             alt={(change as any).title}
-                            className="w-full h-auto max-h-96 object-contain bg-earth-100 dark:bg-earth-800"
+                            className={`w-full h-auto ${change.wide ? '' : 'max-h-96'} object-contain bg-earth-100 dark:bg-earth-800`}
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2, duration: 0.6 }}
