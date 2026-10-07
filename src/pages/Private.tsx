@@ -7,8 +7,8 @@ export default function Private() {
       role: 'Account Strategist',
       company: 'Google, Inc (Google for Startup Accelerator)',
       location: 'Seoul, Korea',
-      description: 'Led UI/UX optimization for 200+ partner websites by analyzing user behavior patterns and redesigning end-to-end customer journeys to increase visual engagement. Leveraged Generative AI tools to craft interactive visual ad assets. Delivered UX redesign and marketing strategies for early-stage AI startups within the accelerator program.',
-      highlights: ['UI/UX Optimization', 'Generative AI', 'Customer Journey', 'Analytics'],
+      description: 'Led UI/UX optimization for 200+ partner websites by analyzing user behavior patterns and redesigning end-to-end customer journeys to increase visual engagement. Leveraged Generative AI tools to craft interactive visual ad assets. Delivered UX redesign and marketing strategies for early-stage AI startups within the accelerator program. Optimized SEO and geo-targeting strategies across content and technical implementations.',
+      highlights: ['UI/UX Optimization', 'SEO/Geo Optimization', 'Generative AI', 'Customer Journey', 'Analytics'],
     },
     {
       date: 'Jun 2022 - Jul 2024',
