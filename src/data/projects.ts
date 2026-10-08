@@ -105,7 +105,7 @@ export const projects: CaseStudy[] = [
   {
     id: 'vori',
     title: 'Vori - Neuro-Interventional Smart Eyewear',
-    navLabel: 'Vori',
+    navLabel: 'VR UI design',
     subtitle: 'Founder: Gentle & Non-Invasive Assistive Technology for Neurodivergent Children',
     thumbnail: '/images/projects/vori_mockup.png',
     tags: ['Product Strategy', 'Neurotechnology', 'Accessible Design', 'User Research'],
@@ -206,7 +206,7 @@ export const projects: CaseStudy[] = [
   {
     id: "lumi-redesign",
     title: "LUMI - Body Battery App UI/UX Redesign",
-    navLabel: 'LUMI',
+    navLabel: 'App usability redesign',
     subtitle: "From a Feature-First Dashboard to a Calm Daily Companion",
     thumbnail: "/images/projects/lumi_thumbnail.png",
     tags: ["UI/UX Redesign", "Accessible Design", "Health Tech", "iOS & watchOS"],
@@ -360,7 +360,7 @@ export const projects: CaseStudy[] = [
   {
     id: 'arklink-lead-generation',
     title: 'Arklink Lead Generation Optimization',
-    navLabel: 'Arklink',
+    navLabel: 'Professional website',
     subtitle: 'Persona-Driven UX & Chatbot Redesign',
     thumbnail: '/images/projects/arklink_thumnail.png',
     tags: ['UX Design', 'Lead Generation', 'Chatbot Design'],
@@ -470,7 +470,7 @@ export const projects: CaseStudy[] = [
   {
     id: 'ecommerce-ui-redesign',
     title: 'E-Commerce UI/UX Redesign',
-    navLabel: 'E-Commerce',
+    navLabel: 'E-commerce application audit',
     subtitle: 'Segment-Driven Design for Diverse Customer Demographics',
     thumbnail: '/images/projects/ec3.png',
     tags: ['E-Commerce', 'UX Research', 'UI Design', 'Accessibility'],
@@ -610,128 +610,4 @@ export const projects: CaseStudy[] = [
     timeline: '5 months',
   },
 
-  {
-    id: 'cost-optimization-dashboard',
-    title: 'Cost Optimization - Building Dashboard',
-    navLabel: 'Dashboard',
-    subtitle: 'Data-Driven Cost Analysis for Manufacturing',
-    thumbnail: '/images/projects/dashboard1.png',
-    tags: ['Dashboard Design', 'Data Analysis', 'Business Intelligence'],
-
-    role: "Consultant · cost-driver analysis, dashboard design & ML forecasting",
-    team: "Consulting team with the client's finance, operations & procurement managers",
-    outcome: "15–20% potential procurement savings identified",
-
-    overview: 'Built a comprehensive cost optimization dashboard for a food manufacturing company to identify and manage major cost drivers impacting profitability during post-COVID supply chain disruptions.',
-
-    insights: [
-      { source: "Internal & external interviews", finding: "Cost data was piling up in SAP, but no one had grouped it into comparable cost levers.", implication: "Re-categorize costs (starting from the bill of materials) before drawing any chart." },
-      { source: "Factory comparison", finding: "Factories making similar products had very different costs, driven by productivity and raw-material waste.", implication: "Side-by-side site comparison is the most useful first view." },
-      { source: "Manager testing", finding: "Executives wanted a one-screen summary; operations teams needed transaction-level detail.", implication: "One flat dashboard can't serve both. The depth needs layers." },
-    ],
-    decisions: [
-      { question: "One dashboard or layers?", options: ["One detailed dashboard", "Separate reports per team", "Tiered drill-down (LV0 → LV1 → detail)"], chose: "Tiered drill-down (LV0 → LV1 → detail)", why: "Everyone starts from the same network summary and goes only as deep as their job needs, so execs and operators share one source of truth." },
-      { question: "How simple should it be?", options: ["Minimal KPIs only", "Context-aware detail where decisions happen"], chose: "Context-aware detail where decisions happen", why: "Testing with managers showed that oversimplified views hid the cost drivers they needed to act on." },
-    ],
-    hypothesisCheck: "Supported: despite missing data, the models (decision trees, random forests) forecast procurement price hikes and backed recommendations on recipes, suppliers, materials and buying formulas.",
-
-    situation: {
-      title: 'Situation',
-      description: 'The client is a food manufacturing company facing significant cost pressures due to post-COVID supply chain disruptions and rising import prices.',
-      context: 'The company had accumulated cost data in their SAP system but lacked a unified view of cost drivers across their manufacturing network. Managers struggled to identify which cost factors were driving profitability issues and where to focus optimization efforts.',
-      keywords: ['Fragmented Data', 'No Cost Visibility', 'Supply Chain Crisis', 'Rising Costs'],
-    },
-
-    problem: {
-      title: 'Problem',
-      description: 'Analysis revealed critical challenges in cost visibility and decision-making:',
-      painPoints: [
-        'No clear cost categorization across raw materials, overhead, labor, and indirect costs',
-        'Inability to compare cost performance across different factory locations',
-        'Missing visibility into major cost drivers impacting profit margins',
-        'Difficulty forecasting procurement price hikes and their business impact',
-        'Lack of data-driven approach to supplier and material sourcing decisions',
-      ],
-    },
-
-    solution: {
-      title: 'Solution',
-      howMightWe: 'How might we architect a multi-layered analytics system that transforms fragmented cost data into network-wide visibility for procurement optimization and factory benchmarking?',
-      description: 'Built a progressive disclosure dashboard system that reveals cost data at multiple levels of detail, from executive summary to granular factory-level analysis.',
-      approach: 'Conducted extensive cost driver analysis and recategorized cost structures. Created a tiered dashboard approach: Dashboard A for operational performance by factory, Dashboard B for cost summary by cost buckets. This enabled managers to drill down from high-level cost trends to specific factory and material-level insights.',
-      tools: ['Python', 'Excel', 'Power BI', 'Data Analytics', 'SQL'],
-      dashboards: [
-        {
-          id: 'dashboard-a',
-          title: 'Dashboard A: Operational Performance Summary',
-          description: 'Provides a high-level overview comparing sites across key operational metrics. Shows raw material waste, operational efficiency, labor productivity, and labor utilization for each factory location.',
-          image: '/images/projects/dashboard1.png',
-        },
-        {
-          id: 'dashboard-b',
-          title: 'Dashboard B: Cost Summary Dashboard',
-          description: 'Reveals total cost and cost-per-unit breakdown across major cost buckets for each factory. Enables managers to compare cost structures and identify which cost factors differ most between similar producing facilities.',
-          image: '/images/projects/dashboard2.png',
-        },
-        {
-          id: 'dashboard-c',
-          title: 'Dashboard C: Detailed Cost Analysis',
-          description: 'Deep dive into cost components including materials, labor, overhead, and sourcing decisions. Supports strategic buying decisions and supplier optimization.',
-          image: '/images/projects/dashboard3.png',
-        },
-        {
-          id: 'dashboard-d',
-          title: 'Dashboard D: Forecasting & Scenarios',
-          description: 'Enables procurement teams to forecast price hikes and model the business impact of different sourcing strategies, material changes, and supplier alternatives.',
-          image: '/images/projects/dashboard4.png',
-        },
-      ],
-    },
-
-    implementation: {
-      title: 'Implementation',
-      description: 'Implemented a progressive disclosure dashboard system, allowing users to start with executive summaries and drill down to factory-specific details.',
-      changes: [
-        {
-          before: 'Disconnected data sources with no unified cost view',
-          after: 'Integrated SAP data into consolidated dashboard',
-          explanation: 'Aggregated cost data from multiple sources into a unified data model, enabling real-time cost visibility across the manufacturing network.',
-        },
-        {
-          before: 'Unable to compare factory performance',
-          after: 'Factory-to-factory cost comparison now visible',
-          explanation: 'Created benchmarking views that enable managers to compare operational metrics and cost structures across similar factories, identifying best practices and lagging sites.',
-        },
-        {
-          before: 'Managers couldn\'t drill into cost drivers',
-          after: 'Progressive disclosure reveals data at 4 levels of detail',
-          explanation: 'Implemented tiered dashboard approach allowing users to start with summary metrics and progressively drill down to material-level and transaction-level details as needed.',
-        },
-      ],
-    },
-
-    impact: {
-      title: 'Impact & Business Outcomes',
-      description: 'The dashboard transformed cost visibility and enabled data-driven decision-making across the manufacturing organization.',
-      metrics: [
-        { label: 'Levels of drill-down', value: '4', unit: 'network summary → transaction detail' },
-        { label: 'Decision-making speed', value: '↑40', unit: '%' },
-        { label: 'Procurement optimization', value: '15-20', unit: '% potential savings identified' },
-        { label: 'Manager satisfaction', value: '4.5/5', unit: 'on usability' },
-      ],
-      testimonial: 'The dashboard was transformative for our organization. Managers can now see cost trends in real-time and make data-driven decisions about sourcing and production. The CEO was impressed by how quickly the dashboard helped us identify cost reduction opportunities across the network.',
-    },
-
-    learnings: [
-      'Progressive disclosure in dashboards is critical—executives need summary views while operations teams need transaction-level detail',
-      'Cost categorization and data quality are foundational—the dashboard is only as good as the underlying cost classification',
-      'Benchmarking across comparable units (factories, product lines) drives competitive behavior and operational excellence',
-      'Forecasting capabilities in dashboards enable proactive decision-making rather than reactive cost management',
-      'Cross-functional collaboration (finance, operations, procurement) is essential for building dashboards that truly impact business decisions',
-      'User interviews and testing with actual managers revealed that simpler isn\'t always better—context-aware complexity adds value',
-    ],
-
-    year: 2022,
-    timeline: '4 months',
-  },
 ];
