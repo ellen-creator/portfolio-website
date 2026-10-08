@@ -10,7 +10,7 @@ export default {
         // Editorial type: heavy display serif for the masthead, text serif for reading,
         // bold Helvetica caps for utility labels
         display: ['"DM Serif Display"', 'Georgia', 'serif'],
-        serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+        serif: ['"Crimson Pro"', 'Plantin', 'Georgia', 'serif'],
         sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
