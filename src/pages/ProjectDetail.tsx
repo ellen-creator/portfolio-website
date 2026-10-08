@@ -147,6 +147,38 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         </div>
       </motion.section>
 
+      {/* OUTCOME FIRST: result, then before and after */}
+      {project.result && (
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20 border-y border-earth-600/20 dark:border-earth-50/15 py-12"
+        >
+          {project.scope && (
+            <p className="uppercase tracking-wide text-sm mb-4 text-earth-600 dark:text-earth-300">{project.scope}</p>
+          )}
+          <p className="font-serif text-3xl md:text-4xl leading-snug mb-10 text-earth-900 dark:text-earth-50">
+            {project.result}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {project.before && (
+              <div className="border-l-2 border-earth-300 dark:border-earth-600 pl-5">
+                <p className="font-sans font-bold uppercase text-xs tracking-widest mb-2 text-earth-600 dark:text-earth-300">Before</p>
+                <p className="text-lg leading-relaxed">{project.before}</p>
+              </div>
+            )}
+            {project.after && (
+              <div className="border-l-2 border-accent pl-5">
+                <p className="font-sans font-bold uppercase text-xs tracking-widest mb-2 text-accent">After</p>
+                <p className="text-lg leading-relaxed">{project.after}</p>
+              </div>
+            )}
+          </div>
+        </motion.section>
+      )}
+
       {/* SECTION 2: Situation & Problem (Left 2/3) vs Core Challenge (Right 1/3) */}
       <motion.section
         initial={{ opacity: 0 }}
