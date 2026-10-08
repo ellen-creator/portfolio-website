@@ -3,10 +3,11 @@ import { motion } from 'framer-motion'
 import Home from './pages/Home'
 import ProjectDetail from './pages/ProjectDetail'
 import Private from './pages/Private'
+import Puzzle from './pages/Puzzle'
 import Masthead from './components/Masthead'
 import { useScrollProgress } from './utils/useScrollAnimation'
 
-type Section = 'home' | 'work' | 'private'
+type Section = 'home' | 'work' | 'private' | 'puzzle'
 
 function App() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null)
@@ -26,6 +27,10 @@ function App() {
   }
   const goStory = () => {
     setSection('private')
+    setSelectedProject(null)
+  }
+  const goPuzzle = () => {
+    setSection('puzzle')
     setSelectedProject(null)
   }
   const openProject = (id: string) => {
@@ -57,6 +62,8 @@ function App() {
             <ProjectDetail projectId={selectedProject} onBack={goWork} />
           ) : section === 'private' ? (
             <Private />
+          ) : section === 'puzzle' ? (
+            <Puzzle onBack={goWork} />
           ) : (
             <Home onSelectProject={openProject} onStory={goStory} />
           )}
@@ -68,6 +75,7 @@ function App() {
             <div className="flex flex-wrap gap-x-6 gap-y-2 font-sans font-bold uppercase text-sm tracking-wide">
               <a href="mailto:elllllllenlim@gmail.com" className="hover:opacity-60">Email</a>
               <a href="/resume.pdf" target="_blank" rel="noreferrer" className="hover:opacity-60">Resume</a>
+              <button onClick={goPuzzle} className="hover:opacity-60 uppercase">Puzzle</button>
               <span className="text-earth-500 font-normal normal-case">© 2026</span>
             </div>
           </div>
