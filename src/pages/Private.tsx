@@ -44,8 +44,8 @@ export default function Private() {
     },
     {
       date: '2026-09-15',
-      title: 'Vori Project Begins',
-      content: 'Starting work on AI-powered design system automation as part of UMSI coursework. The goal is to reduce repetitive design work and increase team efficiency through intelligent tooling. Building on my experience bridging design and development at Google.',
+      title: 'Founded Vori, my own startup',
+      content: 'Founded Vori as a solo founder: lightweight smart eyewear that detects early signs of sensory overload in ADHD and ASD children and offers calming visual cues before a meltdown. I led stakeholder research with clinicians, educators and families, and the work earned a University of Michigan DARE to Dream Grant.',
     },
     {
       date: '2026-08-31',
