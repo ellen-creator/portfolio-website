@@ -93,7 +93,7 @@ export default function Private() {
             <img
               src="/images/about/suhyun.jpg"
               alt="Suhyun Lim smiling on a mountain ridge, holding trekking poles"
-              className="w-full aspect-[4/5] object-cover object-top grayscale hover:grayscale-0 transition duration-700"
+              className="w-full h-auto block grayscale hover:grayscale-0 transition duration-700 ease-in-out"
             />
             <figcaption className="mt-3 text-sm text-earth-600 dark:text-earth-300 italic">
               Happiest above the treeline. Hover for color.
