@@ -549,7 +549,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         {/* Vertical Flow Timeline */}
         <div className="relative space-y-32">
           {/* Vertical line connector */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-earth-400 to-transparent dark:from-earth-500 dark:to-transparent" />
+          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-earth-400 to-transparent dark:from-earth-500 dark:to-transparent" />
 
           {project.implementation.changes.map((change, idx) => {
             const isCostOptimization = project.id === 'cost-optimization-dashboard'
@@ -563,11 +563,11 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.7 }}
                 viewport={{ once: false, margin: "-100px" }}
-                className="relative"
+                className="relative pl-10 md:pl-16"
               >
                 {/* Timeline dot */}
                 {!isCostOptimization && (
-                  <div className="absolute left-1/2 top-8 -translate-x-1/2 -translate-y-1/2 z-10">
+                  <div className="absolute left-0 top-8 -translate-x-1/2 -translate-y-1/2 z-10">
                     <div className="w-4 h-4 bg-earth-400 dark:bg-earth-500 rounded-full ring-4 ring-earth-50 dark:ring-navy-900" />
                   </div>
                 )}
