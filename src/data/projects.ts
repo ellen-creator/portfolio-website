@@ -105,7 +105,7 @@ export const projects: CaseStudy[] = [
   {
     id: 'vori',
     title: 'Vori - Neuro-Interventional Smart Eyewear',
-    navLabel: 'VR UI design',
+    navLabel: 'AR UI design',
     subtitle: 'Founder: Gentle & Non-Invasive Assistive Technology for Neurodivergent Children',
     thumbnail: '/images/projects/vori_mockup.png',
     tags: ['Product Strategy', 'Neurotechnology', 'Accessible Design', 'User Research'],
