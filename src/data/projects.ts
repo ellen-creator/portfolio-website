@@ -205,7 +205,7 @@ export const projects: CaseStudy[] = [
     },
     impact: {
       title: "Outcome",
-      description: "Validated concept, now in usability testing. Supported by a University of Michigan DARE to Dream Grant and NSF I-Corps Regional funding support.",
+      description: "Validated concept, now in usability testing. Funded by a University of Michigan DARE to Dream Grant.",
       metrics: [
         {
           label: "Children tested",
@@ -351,7 +351,7 @@ export const projects: CaseStudy[] = [
   ],
     impact: {
       title: "Outcome & Next Steps",
-      description: "Beta deployed to test users; reviews are coming in now. Next: measure 7-day retention and whether the score makes sense.",
+      description: "Beta deployed to test users; reviews are coming in now. Next: measure 7-day retention and whether the score makes sense. Supported by NSF I-Corps Regional funding.",
       metrics: [
         {
           label: "Interviews",
