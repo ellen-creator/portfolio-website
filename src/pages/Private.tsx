@@ -49,8 +49,8 @@ export default function Private() {
     },
     {
       date: '2026-08-31',
-      title: 'Completed Google Accelerator Program',
-      content: 'Wrapped up my role as Account Strategist at Google for Startup Accelerator. Delivered UX redesigns for early-stage AI startups and received company-wide Learning Sharing Award for my work on algorithmic engagement study.',
+      title: 'Completed the Google for Startups Accelerator',
+      content: 'Worked as Account Strategist within the Google for Startups Accelerator, leading UX redesign and marketing strategy for early-stage AI startups, including restructuring web architecture to remove onboarding friction. Also led internal sessions on Generative Engine Optimization that earned the company-wide Learning Sharing Award.',
     },
     {
       date: '2024-07-31',
