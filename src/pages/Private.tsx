@@ -43,7 +43,7 @@ export default function Private() {
       content: 'Started my Master of Science at University of Michigan, focusing on UX design and research methodology. After working at Google and BCG, I wanted deeper, more rigorous learning in design thinking and research. Currently specializing in UX research methodologies and information architecture.',
     },
     {
-      date: '2026-09-15',
+      date: '2026-02-01',
       title: 'Founded Vori, my own startup',
       content: 'Founded Vori as a solo founder: lightweight smart eyewear that detects early signs of sensory overload in ADHD and ASD children and offers calming visual cues before a meltdown. I led stakeholder research with clinicians, educators and families, and the work earned a University of Michigan DARE to Dream Grant.',
     },

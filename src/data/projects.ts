@@ -200,7 +200,7 @@ export const projects: CaseStudy[] = [
     ],
 
     year: 2026,
-    timeline: 'Ongoing (Founded 2024)',
+    timeline: 'Ongoing (Founded Feb 2026)',
   },
 
   {
