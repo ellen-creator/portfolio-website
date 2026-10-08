@@ -25,7 +25,7 @@ export default function Home({ onSelectProject }: HomeProps) {
                 <img
                   src={p.thumbnail}
                   alt={p.title}
-                  className="w-full aspect-[4/3] object-cover hover:scale-[1.02] transition-transform duration-700"
+                  className="w-full aspect-[4/3] object-cover grayscale hover:grayscale-0 hover:scale-[1.02] transition duration-700 ease-in-out"
                 />
               </button>
               <p className="uppercase text-sm tracking-wide mb-2 text-earth-600">
