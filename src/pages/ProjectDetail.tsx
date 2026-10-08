@@ -422,7 +422,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               <motion.img
                 src="/images/projects/arklink_persona1.png"
                 alt="Persona 1"
-                className="w-full max-h-64 rounded-lg object-contain border border-earth-300/30 dark:border-earth-600/30"
+                className="w-full h-auto rounded-lg border border-earth-300/30 dark:border-earth-600/30"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.55, duration: 0.5 }}
@@ -456,7 +456,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               <motion.img
                 src="/images/projects/arklink_persona2.png"
                 alt="Persona 2"
-                className="w-full max-h-64 rounded-lg object-contain border border-earth-300/30 dark:border-earth-600/30"
+                className="w-full h-auto rounded-lg border border-earth-300/30 dark:border-earth-600/30"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
@@ -638,7 +638,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           <motion.img
                             src={(change as any).image}
                             alt={(change as any).title}
-                            className="w-full h-auto max-h-96 object-contain bg-earth-100 dark:bg-earth-800"
+                            className="w-full h-auto object-contain bg-earth-100 dark:bg-earth-800"
                             whileHover={{ scale: 1.05 }}
                           />
                         </motion.div>
@@ -655,7 +655,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           <motion.video
                             src={(change as any).video}
                             controls
-                            className="w-full h-auto max-h-96 object-contain bg-earth-100 dark:bg-earth-800 cursor-pointer"
+                            className="w-full h-auto object-contain bg-earth-100 dark:bg-earth-800 cursor-pointer"
                           />
                         </motion.div>
                       </div>
@@ -671,7 +671,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           <motion.img
                             src={(change as any).image}
                             alt={(change as any).title}
-                            className={`w-full h-auto ${change.wide ? '' : 'max-h-96'} object-contain bg-earth-100 dark:bg-earth-800`}
+                            className="w-full h-auto object-contain bg-earth-100 dark:bg-earth-800"
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2, duration: 0.6 }}
@@ -683,7 +683,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           <motion.video
                             src={(change as any).video}
                             controls
-                            className="w-full h-auto max-h-96 object-contain bg-earth-100 dark:bg-earth-800 cursor-pointer"
+                            className="w-full h-auto object-contain bg-earth-100 dark:bg-earth-800 cursor-pointer"
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2, duration: 0.6 }}
@@ -728,7 +728,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           <motion.img
                             src={img}
                             alt={`${(change as any).title} ${imgIdx + 1}`}
-                            className="w-full h-auto max-h-64 object-contain bg-earth-100 dark:bg-earth-800"
+                            className="w-full h-auto object-contain bg-earth-100 dark:bg-earth-800"
                             whileHover={{ scale: 1.05 }}
                           />
                         </motion.div>
