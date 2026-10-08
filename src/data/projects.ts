@@ -20,6 +20,9 @@ export interface CaseStudy {
   before?: string
   after?: string
 
+  // Usability changes: where it was, where it is now
+  usability?: Array<{ area: string; before: string; after: string }>
+
   // Case Study sections
   overview: string
 
@@ -202,7 +205,7 @@ export const projects: CaseStudy[] = [
     },
     impact: {
       title: "Outcome",
-      description: "Validated concept, now in usability testing. Funded by a University of Michigan DARE to Dream Grant.",
+      description: "Validated concept, now in usability testing. Supported by a University of Michigan DARE to Dream Grant and NSF I-Corps Regional funding support.",
       metrics: [
         {
           label: "Children tested",
@@ -233,8 +236,8 @@ export const projects: CaseStudy[] = [
     subtitle: "From a feature-first app to a calm daily companion",
     thumbnail: "/images/projects/lumi_thumbnail.png",
     tags: ["UI/UX Redesign", "Accessible Design", "Health Tech", "iOS & watchOS"],
-    scope: "Redesign · Beta",
-    result: "Today screen cut from five cards to four blocks. Onboarding, explanation, features and layout rebuilt in order. Beta ready.",
+    scope: "0 → 1 · Beta",
+    result: "Beta is live with test users, who are reviewing it now. Today went from five cards to four focused blocks.",
     before: "Feature-first. Live heart rate on top, five cards, clinical wording.",
     after: "Battery first, one tip, and LUMI grows as you log. Adult wording throughout.",
     role: "Project lead · UX research, IA, UX writing and iOS build",
@@ -299,7 +302,7 @@ export const projects: CaseStudy[] = [
     solution: {
       title: "Solution",
       howMightWe: "How might we turn wearable data into one calm number and one small action that fits this person, today?",
-      description: "One calm number, one small action, and a character that grows when you log.",
+      description: "Three goals: (1) reduce overload by showing one number and one action, not a dashboard; (2) explain the why before asking for anything; (3) reward logging without guilt, so a bad week never costs progress.",
       approach: "Every tip is tied to a PubMed study. Coverage was checked across 2,304 situations. Shipped in SwiftUI with 588 automated tests.",
       tools: ["Interviews (40)", "Information architecture", "UX writing", "WCAG AA", "SwiftUI", "HealthKit", "PubMed evidence"],
     },
@@ -337,9 +340,18 @@ export const projects: CaseStudy[] = [
         },
       ],
     },
+  usability: [
+    { area: "Launch", before: "Feature list, no explanation of the numbers", after: "Four launch screens: what LUMI is, what the battery reads, and why" },
+    { area: "Setup", before: "A \"Connect Watch\" button and manual sync that users forgot", after: "Three-step setup; sync starts automatically after one Health permission" },
+    { area: "Today", before: "Live heart rate first, five cards", after: "Battery first, one tip, then LUMI. Analysis moved into Details" },
+    { area: "Logging", before: "No reward for logging", after: "One-tap check-ins with Undo. Points shrink through the day; rapid taps earn nothing" },
+    { area: "Tips", before: "A static strategy library", after: "Tips chosen by battery, place and recent days. \"This helped\" and \"Not for me\" tune them" },
+    { area: "Warnings", before: "No warning before hard times", after: "Heads-ups before hard times, with the user choosing timing and frequency" },
+    { area: "Accessibility", before: "Light grey text, color-only status, parent-and-teacher wording", after: "WCAG AA text contrast, 52pt buttons, icon-plus-text status, large text scaling, calm view" },
+  ],
     impact: {
       title: "Outcome & Next Steps",
-      description: "Beta build ready. Next: test with 10–20 adults.",
+      description: "Beta deployed to test users; reviews are coming in now. Next: measure 7-day retention and whether the score makes sense.",
       metrics: [
         {
           label: "Interviews",

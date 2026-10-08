@@ -819,6 +819,33 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         </div>
       </motion.section>
 
+      {/* USABILITY: where it was, where it is now */}
+      {project.usability && project.usability.length > 0 && (
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <h2 className="text-4xl font-serif font-light mb-10 text-earth-900 dark:text-earth-50">Usability Changes</h2>
+          <div className="divide-y divide-earth-300/60 dark:divide-earth-600/60 border-y border-earth-300/60 dark:border-earth-600/60">
+            <div className="hidden md:grid grid-cols-12 gap-6 py-3 font-sans font-bold uppercase text-xs tracking-widest text-earth-600 dark:text-earth-300">
+              <span className="col-span-2">Area</span>
+              <span className="col-span-4">Before</span>
+              <span className="col-span-6">After</span>
+            </div>
+            {project.usability.map((row) => (
+              <div key={row.area} className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-6 py-5">
+                <p className="md:col-span-2 font-serif text-xl">{row.area}</p>
+                <p className="md:col-span-4 text-earth-600 dark:text-earth-300 leading-relaxed">{row.before}</p>
+                <p className="md:col-span-6 text-earth-900 dark:text-earth-50 leading-relaxed">{row.after}</p>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+      )}
+
       {/* SECTION 5: Impact & Metrics */}
       <motion.section
         initial={{ opacity: 0 }}
