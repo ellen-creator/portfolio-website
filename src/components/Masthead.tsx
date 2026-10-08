@@ -6,112 +6,119 @@ interface MastheadProps {
   edition: Edition
   compact?: boolean
   onWork: () => void
+  onSkills: () => void
   onStory: () => void
   onSelectProject: (id: string) => void
 }
 
-const EMAIL = 'mailto:elllllllenlim@gmail.com'
-
-// Line illustration for the morning (Work) edition: sun rising over a desk horizon
-function MorningSketch() {
+// Original line drawing of a sitting dog (not a copy of any brand's artwork).
+// Morning: dog awake with a sun. Night: dog asleep with a moon.
+function DogSketch({ night }: { night: boolean }) {
   return (
-    <svg viewBox="0 0 120 80" className="w-28 h-auto" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-      <path d="M8 62h104" />
-      <path d="M30 62a30 30 0 0 1 60 0" />
-      <path d="M60 18v-10M33 29l-7-7M87 29l7-7M22 47h-10M98 47h10" />
-      <path d="M20 72h32M68 72h32" strokeWidth="1.5" />
+    <svg viewBox="0 0 120 110" className="w-24 md:w-28 h-auto" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {/* ground */}
+      <path d="M14 104h92" strokeWidth="1.5" />
+      {/* body and haunch */}
+      <path d="M42 104c-6-14-4-30 6-36 10-4 22-4 30 2 8 6 10 20 6 34" />
+      <path d="M58 70c8 2 14 10 12 22" strokeWidth="1.6" />
+      {/* tail */}
+      <path d="M84 98c14-2 18-14 12-22" />
+      {/* front legs */}
+      <path d="M50 104V92M66 104V92" />
+      {/* head */}
+      <path d="M46 46c0-12 8-20 17-20s17 8 17 20-6 18-17 18-17-6-17-18z" />
+      {/* ears */}
+      <path d="M48 34c-9-2-12 10-8 18 3 2 7 0 8-6" />
+      <path d="M72 34c9-2 12 10 8 18-3 2-7 0-8-6" />
+      {/* face */}
+      {night ? (
+        <>
+          <path d="M55 46q3 3 6 0M65 46q3 3 6 0" strokeWidth="1.8" />
+        </>
+      ) : (
+        <>
+          <circle cx="58" cy="45" r="1.8" fill="currentColor" stroke="none" />
+          <circle cx="68" cy="45" r="1.8" fill="currentColor" stroke="none" />
+        </>
+      )}
+      <path d="M62 52c-2 2-2 3 0 4 2-1 2-2 0-4z" fill="currentColor" stroke="none" />
+      {night ? (
+        <>
+          {/* moon */}
+          <path d="M104 16a9 9 0 1 0 8 13 7 7 0 1 1-8-13z" />
+          <path d="M20 22l1.5 3 3 1-3 1-1.5 3-1.5-3-3-1 3-1z" strokeWidth="1.4" />
+        </>
+      ) : (
+        <>
+          {/* sun */}
+          <circle cx="102" cy="22" r="8" />
+          <path d="M102 6v-3M102 41v-3M86 22h-3M121 22h-3M91 11l-2-2M113 33l2 2M113 11l2-2M91 33l-2 2" strokeWidth="1.8" />
+        </>
+      )}
     </svg>
   )
 }
 
-// Line illustration for the night (Story) edition: crescent moon and stars
-function NightSketch() {
-  return (
-    <svg viewBox="0 0 120 80" className="w-28 h-auto" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M62 14a26 26 0 1 0 30 36A22 22 0 1 1 62 14z" />
-      <path d="M24 20l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" />
-      <path d="M104 14l1.5 3.5 3.5 1.5-3.5 1.5-1.5 3.5-1.5-3.5-3.5-1.5 3.5-1.5z" />
-      <path d="M16 62h88" strokeWidth="1.5" />
-    </svg>
-  )
-}
-
-export default function Masthead({ edition, compact = false, onWork, onStory, onSelectProject }: MastheadProps) {
+export default function Masthead({ edition, compact = false, onWork, onSkills, onStory, onSelectProject }: MastheadProps) {
   const isNight = edition === 'story'
+  const navBtn = 'uppercase font-sans font-bold text-[13px] tracking-wider hover:opacity-60'
 
   return (
-    <header className="max-w-7xl mx-auto px-4 md:px-8">
-      {/* Utility bar */}
-      <div className="flex items-center justify-between py-4 font-sans text-[13px] md:text-sm font-bold uppercase tracking-wide">
-        <nav className="flex items-center gap-4 md:gap-6">
-          <button onClick={onWork} className={'uppercase ' + (edition === 'work' ? 'underline underline-offset-4 decoration-2' : 'hover:opacity-60')}>
-            Work
+    <header className="max-w-6xl mx-auto px-4 md:px-8">
+      {/* Top menu */}
+      <nav className="flex items-center justify-between py-5">
+        <div className="flex items-center gap-6 md:gap-8">
+          <button onClick={onWork} className={`${navBtn} ${edition === 'work' ? 'underline underline-offset-4 decoration-2' : ''}`}>
+            Portfolio
           </button>
-          <button onClick={onStory} className={'uppercase ' + (edition === 'story' ? 'underline underline-offset-4 decoration-2' : 'hover:opacity-60')}>
-            Story
+          <button onClick={onSkills} className={navBtn}>Skills</button>
+          <button onClick={onStory} className={`${navBtn} ${edition === 'story' ? 'underline underline-offset-4 decoration-2' : ''}`}>
+            About
           </button>
-          <a href="/resume.pdf" target="_blank" rel="noreferrer" className="hover:opacity-60">
-            Resume
-          </a>
-        </nav>
-        <div className="flex items-center gap-4 md:gap-6">
-          <a href={EMAIL} className="hidden sm:inline hover:opacity-60">Email</a>
-          <a href={EMAIL} className="bg-accent text-white px-4 md:px-6 py-3 hover:brightness-110">
-            Get in touch
-          </a>
         </div>
-      </div>
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noreferrer"
+          className="bg-accent text-white px-4 md:px-5 py-2.5 font-sans font-bold text-[13px] uppercase tracking-wider hover:brightness-110"
+        >
+          Resume
+        </a>
+      </nav>
 
-      {/* Masthead */}
       {compact ? (
         <div className="border-t border-earth-900 dark:border-earth-50 py-3 text-center">
-          <button onClick={onWork} className="font-display text-3xl md:text-4xl tracking-wide uppercase">
+          <button onClick={onWork} className="font-display uppercase text-3xl md:text-4xl tracking-wide whitespace-nowrap">
             Suhyun Lim
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-6 pt-2 pb-6">
-          <div className="hidden md:flex flex-col items-start gap-3">
-            {isNight ? <NightSketch /> : <MorningSketch />}
-            <p className="text-lg leading-snug">
-              {isNight ? 'Night edition: the person' : 'Morning edition: the work'}
-              <br />
-              <span className="text-earth-600 dark:text-earth-300">Currently studying in Ann Arbor</span>
-            </p>
+        <div className="grid grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr] items-center gap-3 md:gap-6 pt-2 pb-4 border-t-[3px] border-double border-earth-900 dark:border-earth-50">
+          <div className="flex justify-start text-earth-900 dark:text-earth-50 w-16 md:w-auto">
+            <DogSketch night={isNight} />
           </div>
-
-          <button onClick={onWork} className="text-center">
-            <span className="block font-display uppercase leading-none tracking-[0.02em] text-[15vw] md:text-[7.5rem] lg:text-[9rem]">
+          <button onClick={onWork} className="text-center md:col-auto whitespace-nowrap">
+            <span className="block font-display font-bold uppercase leading-none tracking-[0.01em] text-[clamp(1.6rem,7vw,7.5rem)]">
               Suhyun Lim
             </span>
-            <span className="block font-serif text-lg md:text-xl tracking-[0.5em] mt-2 text-earth-600 dark:text-earth-300">임수현</span>
+            <span className="block font-serif text-sm md:text-lg tracking-[0.5em] mt-2 text-earth-600 dark:text-earth-300">임수현</span>
           </button>
-
-          <div className="hidden md:block text-right text-lg leading-snug">
-            <p className="font-sans font-bold uppercase text-xs tracking-widest text-accent mb-2">
-              {isNight ? 'Vol. 1 · Night' : 'Vol. 1 · Morning'}
-            </p>
-            <p>
-              {projects.length} case studies,
-              <br />
-              <span className="text-earth-600 dark:text-earth-300">2021 – today</span>
-            </p>
+          <div className="hidden md:flex justify-end text-right font-sans text-xs uppercase tracking-wider text-earth-600 dark:text-earth-300 leading-relaxed">
+            <span>{isNight ? 'Night edition' : 'Morning edition'}<br />Ann Arbor, MI</span>
           </div>
         </div>
       )}
 
-      {/* Section nav */}
-      <nav className="border-y border-earth-900/80 dark:border-earth-50/60 py-4 flex flex-wrap justify-center gap-y-2 font-serif uppercase text-[15px] md:text-lg tracking-wide">
+      {/* Case study bar */}
+      <nav className="border-y border-earth-900/80 dark:border-earth-50/60 py-3 flex flex-wrap justify-center gap-y-2 font-sans font-bold uppercase text-[12px] md:text-[13px] tracking-wider">
         {projects.map((p, i) => (
           <span key={p.id} className="flex items-center">
-            {i > 0 && <span className="mx-3 md:mx-4 text-earth-400" aria-hidden="true">|</span>}
-            <button onClick={() => onSelectProject(p.id)} className="uppercase hover:underline underline-offset-4">
+            {i > 0 && <span className="mx-3 md:mx-4 text-earth-400 font-normal" aria-hidden="true">|</span>}
+            <button onClick={() => onSelectProject(p.id)} className="hover:underline underline-offset-4">
               {p.navLabel ?? p.title}
             </button>
           </span>
         ))}
-        <span className="mx-3 md:mx-4 text-earth-400" aria-hidden="true">|</span>
-        <button onClick={onStory} className="uppercase hover:underline underline-offset-4">Story</button>
       </nav>
     </header>
   )

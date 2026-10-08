@@ -33,6 +33,11 @@ function App() {
     setSection('puzzle')
     setSelectedProject(null)
   }
+  const goSkills = () => {
+    goWork()
+    // Home renders on the next tick after goWork; scroll once it exists
+    setTimeout(() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' }), 80)
+  }
   const openProject = (id: string) => {
     setSelectedProject(id)
     setSection('work')
@@ -53,6 +58,7 @@ function App() {
           edition={isNight ? 'story' : 'work'}
           compact={showingDetail}
           onWork={goWork}
+          onSkills={goSkills}
           onStory={goStory}
           onSelectProject={openProject}
         />
