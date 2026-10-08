@@ -98,7 +98,7 @@ export default function Masthead({ edition, compact = false, onWork, onSkills, o
             <DogSketch night={isNight} />
           </div>
           <button onClick={onWork} className="text-center md:col-auto whitespace-nowrap">
-            <span className="block font-display font-bold uppercase leading-none tracking-[0.01em] text-[clamp(1.6rem,7vw,7.5rem)]">
+            <span className="block font-display uppercase leading-none tracking-[0.01em] text-[clamp(1.6rem,7vw,7.5rem)]">
               Suhyun Lim
             </span>
             <span className="block font-serif text-sm md:text-lg tracking-[0.5em] mt-2 text-earth-600 dark:text-earth-300">임수현</span>

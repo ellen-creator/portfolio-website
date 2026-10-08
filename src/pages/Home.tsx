@@ -3,7 +3,6 @@ import { projects } from '@data/projects'
 
 interface HomeProps {
   onSelectProject: (id: string) => void
-  onStory: () => void
 }
 
 const skills = [
@@ -13,39 +12,11 @@ const skills = [
   { title: 'Content & conversation', body: 'UX writing and chatbot flows that reassure people before they are asked for anything.' },
 ]
 
-export default function Home({ onSelectProject, onStory }: HomeProps) {
+export default function Home({ onSelectProject }: HomeProps) {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="max-w-6xl mx-auto px-4 md:px-8 pt-10">
-      {/* Intro */}
-      <section className="grid md:grid-cols-12 gap-10 items-center">
-        <div className="md:col-span-7">
-          <p className="uppercase tracking-wide text-sm mb-4">UX research &amp; design</p>
-          <h1 className="font-serif text-4xl md:text-6xl leading-[1.08] mb-6">
-            I design for the people data leaves out.
-          </h1>
-          <p className="text-lg text-earth-700 max-w-xl mb-8 leading-relaxed">
-            Former social worker, consultant at Kearney and BCG, Google account strategist. Now an M.S. Information
-            student at the University of Michigan.
-          </p>
-          <button
-            onClick={onStory}
-            className="bg-accent text-white px-6 py-3 font-sans font-bold uppercase text-sm tracking-wider hover:brightness-110"
-          >
-            Read my story
-          </button>
-        </div>
-        <figure className="md:col-span-5">
-          <img
-            src="/images/about/suhyun.jpg"
-            alt="Suhyun Lim smiling on a mountain ridge, holding trekking poles"
-            className="w-full aspect-[4/5] object-cover object-top grayscale hover:grayscale-0 transition duration-700"
-          />
-          <figcaption className="mt-2 text-sm text-earth-600 italic">Hover for color.</figcaption>
-        </figure>
-      </section>
-
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="max-w-6xl mx-auto px-4 md:px-8 pt-8">
       {/* Portfolio */}
-      <section className="mt-20">
+      <section>
         <h2 className="border-t-2 border-earth-900 pt-3 font-sans font-bold uppercase text-sm tracking-widest mb-10">Portfolio</h2>
         <div className="grid md:grid-cols-2 gap-x-10 gap-y-14">
           {projects.map((p) => (

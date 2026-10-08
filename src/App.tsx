@@ -71,7 +71,7 @@ function App() {
           ) : section === 'puzzle' ? (
             <Puzzle onBack={goWork} />
           ) : (
-            <Home onSelectProject={openProject} onStory={goStory} />
+            <Home onSelectProject={openProject} />
           )}
         </main>
 

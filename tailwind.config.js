@@ -9,7 +9,7 @@ export default {
       fontFamily: {
         // Editorial type: heavy display serif for the masthead, text serif for reading,
         // bold Helvetica caps for utility labels
-        display: ['"Bodoni Moda"', '"DM Serif Display"', 'Georgia', 'serif'],
+        display: ['"DM Serif Display"', 'Georgia', 'serif'],
         serif: ['"Source Serif 4"', 'Georgia', 'serif'],
         sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
       },
