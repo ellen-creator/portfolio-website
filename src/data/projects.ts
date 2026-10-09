@@ -640,7 +640,7 @@ export const projects: CaseStudy[] = [
   },
 
   {
-    id: "cost-optimization-dashboard",
+    id: "internal-ops-dashboard",
     title: "Internal Operations Dashboard",
     navLabel: "Data architecture and dashboard",
     subtitle: "One dashboard that connects Salesforce and ERP, used by every department",

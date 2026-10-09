@@ -479,51 +479,6 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           </motion.div>
         </div>
         </motion.section>
-      ) : project.id === 'cost-optimization-dashboard' && project.solution.dashboards ? (
-        <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.8 }}
-        className="mb-20"
-      >
-        <h2 className="text-4xl font-serif mb-12 text-earth-900 dark:text-earth-50">
-          Solution: Progressive Disclosure Dashboard
-        </h2>
-
-        <div className="space-y-16">
-          {project.solution.dashboards.map((dashboard, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + idx * 0.1, duration: 0.6 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch"
-            >
-              {/* Left: Image (2 columns - 2/3 width) */}
-              <div className="md:col-span-2">
-                <motion.img
-                  src={dashboard.image}
-                  alt={dashboard.title}
-                  className="w-full h-full object-cover rounded-2xl border border-earth-300/30 dark:border-earth-600/30 shadow-md hover:shadow-lg transition-shadow duration-300"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.55 + idx * 0.1, duration: 0.6 }}
-                />
-              </div>
-
-              {/* Right: Text (1 column - 1/3 width) */}
-              <div className="md:col-span-1 flex flex-col justify-center">
-                <h3 className="text-2xl font-serif mb-4 text-earth-900 dark:text-earth-50">
-                  {dashboard.title}
-                </h3>
-                <p className="text-base text-earth-700 dark:text-earth-200 leading-relaxed">
-                  {dashboard.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
       ) : (
       <motion.section
         initial={{ opacity: 0 }}
@@ -584,7 +539,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-earth-400 to-transparent dark:from-earth-500 dark:to-transparent" />
 
           {project.implementation.changes.map((change, idx) => {
-            const isCostOptimization = project.id === 'cost-optimization-dashboard'
+            const isCostOptimization = false
             const hasImage = (change as any).image
             const hasImages = (change as any).images && (change as any).images.length > 0
 
