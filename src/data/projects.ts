@@ -119,36 +119,36 @@ export const projects: CaseStudy[] = [
     navLabel: "AR UI design",
     subtitle: "Smart eyewear that detects sensory overload in neurodivergent children",
     thumbnail: "/images/projects/vori_mockup.png",
-    tags: ["Product Strategy", "Neurotechnology", "Accessible Design", "User Research"],
+    tags: ["Product Strategy", "Neurotechnology", "Accessible Design", "Usability Testing"],
     scope: "0 → 1 · Solo founder",
     result: "Concept validated with 121 children in usability testing. 87% early-detection accuracy in EEG data.",
     before: "No product. Teachers and parents see a meltdown only after it starts.",
     after: "Everyday-looking glasses that cue calm 30–60 seconds before escalation.",
     role: "Founder · research, interaction and UI design",
     team: "Solo, with 50+ clinicians, educators and parents as advisors",
-    outcome: "121 children in usability testing; 87% early-detection accuracy",
+    outcome: "121 children in usability testing (60 neurotypical vs 61 neurodivergent); 87% early-detection accuracy",
     overview: "Lightweight smart eyewear that detects early signs of sensory overload in ADHD and ASD children and responds with calm peripheral cues.",
     insights: [
       {
         source: "Students",
-        finding: "Kids feared being seen in anything \"medical\" and rejected heavy headsets over 200g.",
-        implication: "The device must look like everyday glasses and weigh under 90g.",
+        finding: "Kids feared being seen in anything \"medical\" and felt uncomfortable with heavy gadgets.",
+        implication: "The device must look like everyday glasses and weigh far less than conventional headsets.",
       },
       {
         source: "Educators & parents",
-        finding: "Distress is masked until a visible meltdown.",
+        finding: "Distress is masked until a visible meltdown. Teachers want some hint from children who are not expressive.",
         implication: "Detection must happen before behavior changes.",
       },
       {
         source: "Clinicians",
-        finding: "Diagnosis relies on subjective reports.",
-        implication: "The same signals should give clinicians objective data.",
+        finding: "Diagnosis relies on subjective reports, or on how often a child visits the special education room.",
+        implication: "The same signals should give clinicians a comprehensive, objective understanding of each child.",
       },
     ],
     decisions: [
       {
         question: "What form should it take?",
-        options: ["EEG headset", "Wristband", "Everyday glasses"],
+        options: ["Sensors for brain-power analysis (alpha, beta, theta)", "Sensors for bio-signal analysis", "Everyday glasses"],
         chose: "Everyday glasses",
         why: "Headsets failed on weight and stigma. Glasses carry the sensors and look ordinary.",
       },
@@ -170,18 +170,18 @@ export const projects: CaseStudy[] = [
       title: "Situation",
       description: "Children with ADHD and ASD hide distress until it becomes a visible meltdown.",
       context: "Teachers and parents only see the crisis. Existing tools are clinical, heavy or reactive.",
-      keywords: ["Hidden Distress", "Late Detection", "Stigma"],
+      keywords: ["Reactive than Proactive", "Hidden Distress", "Late Detection", "Stigma"],
     },
     problem: {
       title: "Problem",
       description: "Research with students, parents, educators and clinicians surfaced four needs:",
-      painPoints: ["Students avoid anything that looks medical", "Headsets over 200g are uncomfortable", "Adults see the build-up too late", "Clinicians lack objective data"],
+      painPoints: ["Students having a hard time sitting still in class", "Teachers struggle to catch the biological signs when a child does not say anything", "Parents see the build-up too late", "Clinicians lack objective data"],
     },
     solution: {
       title: "Solution",
       howMightWe: "How might we build an invisible, clinically grounded tool that prevents a crisis instead of managing it?",
-      description: "Glasses under 90g with temple-mounted EEG sensors and eye tracking. Peripheral cues appear only when early overload signs are detected, so central vision stays clear.",
-      tools: ["EEG algorithm design", "AWS + React", "Python ML", "Clinical research"],
+      description: "Very light glasses with temple-mounted EEG sensors and eye tracking. Peripheral cues appear only when early overload signs are detected, so central vision stays clear.",
+      tools: ["EEG algorithm design", "AWS + React", "Unity", "Python ML", "Clinical research"],
     },
     implementation: {
       title: "Approach",
@@ -189,7 +189,7 @@ export const projects: CaseStudy[] = [
       changes: [
         {
           title: "1 · Research",
-          description: "Interviews with 50+ clinicians, educators, parents and community leaders.",
+          description: "Interviews with 50+ clinicians, educators, parents and community leaders. Many of my hypotheses were challenged in real life, from the user's perspective.",
           image: "/images/projects/vori_glasses.png",
         },
         {
@@ -200,7 +200,7 @@ export const projects: CaseStudy[] = [
         },
         {
           title: "3 · Testing",
-          description: "121 children (60 controls, 61 ADHD/ASD) in classrooms and at home.",
+          description: "Needs to be done soon, in collaboration with Pearson Elementary School in Michigan.",
           images: ["/images/projects/vori_report1.png", "/images/projects/vori_report2.png"],
         },
       ],
@@ -210,7 +210,7 @@ export const projects: CaseStudy[] = [
       description: "Validated concept, now in usability testing. Funded by a University of Michigan DARE to Dream Grant.",
       metrics: [
         {
-          label: "Children tested",
+          label: "Children's brain waves tested for detecting overstimulation",
           value: "121",
           unit: "60 controls + 61 ADHD/ASD",
         },
@@ -228,7 +228,7 @@ export const projects: CaseStudy[] = [
     },
     learnings: ["Research with the people who live the problem shaped every technical choice.", "Clinical efficacy is not enough. If children refuse to wear it, it does not work.", "Predicting a crisis is a different product from reacting to one."],
     year: 2026,
-    timeline: "Ongoing · Founded Feb 2026",
+    timeline: "Ongoing · Research started in 2025, founded Feb 2026",
   },
 
   {
@@ -240,12 +240,12 @@ export const projects: CaseStudy[] = [
     tags: ["UI/UX Redesign", "Accessible Design", "Health Tech", "iOS & watchOS"],
     scope: "0 → 1 · Beta",
     result: "Beta is live with test users, who are reviewing it now. Today went from five cards to four focused blocks.",
-    before: "Feature-first. Live heart rate on top, five cards, clinical wording.",
+    before: "Feature-first. Live heart rate on top, no retention strategy, five cards, clinical wording. No users.",
     after: "Battery first, one tip, and LUMI grows as you log. Adult wording throughout.",
     role: "Project lead · UX research, IA, UX writing and iOS build",
-    team: "Built on the LUMI-ND team's adult app",
-    outcome: "Today screen 5 → 4 blocks; beta ready",
-    overview: "An iPhone and Apple Watch app for adults who burn out easily. I reordered the whole experience around 40 interviews: onboarding, explanation, features, then layout.",
+    team: "I am the CPO of this team.",
+    outcome: "From a feature-focused app to a user-focused app; beta published",
+    overview: "An iPhone and Apple Watch app for adults (version 1) and children (version 2) who burn out easily. I redesigned the whole product, which had started feature-first, to reflect customers' needs based on about 40 interviews: onboarding, explanation, features, retention strategy, then layout.",
     insights: [
       {
         source: "40 interviews",
@@ -266,8 +266,8 @@ export const projects: CaseStudy[] = [
     decisions: [
       {
         question: "What should the main number measure?",
-        options: ["Stress score", "Body battery 0–100", "Energy 1–10"],
-        chose: "Energy 1–10",
+        options: ["Stress score", "Body battery 0–100", "Energy 1–10 to reduce cognitive load for people who are easily burnt out"],
+        chose: "Energy 1–10 to reduce cognitive load for people who are easily burnt out",
         why: "Falling energy says what to do (\"pace yourself\"). Ten segments read at a glance.",
       },
       {
@@ -299,7 +299,7 @@ export const projects: CaseStudy[] = [
     problem: {
       title: "Problem",
       description: "What the interviews surfaced:",
-      painPoints: ["Too many numbers, no clear next step", "Generic tips that ignored energy and place", "Clinical labels in an app people open daily", "Manual sync and no warning before hard times"],
+      painPoints: ["Too many numbers, no clear next step", "Generic tips that ignored energy and place", "Clinical labels in an app people should open daily", "Manual sync and no warning before hard times"],
     },
     solution: {
       title: "Solution",
@@ -388,21 +388,21 @@ export const projects: CaseStudy[] = [
     navLabel: "Professional website",
     subtitle: "Persona-driven landing page and chatbot redesign",
     thumbnail: "/images/projects/arklink_thumnail.png",
-    tags: ["UX Design", "Lead Generation", "Chatbot Design"],
+    tags: ["Focusing 2 types of persona", "User flow map", "Lead Generation", "Chatbot Design"],
     scope: "Redesign · Client project",
     year: 2025,
     timeline: "2 months",
     result: "Lead quality +42%, CTA click-through +55%, and 68% of chatbot conversations completed.",
-    before: "Under 1% conversion. A generic chatbot and a company-first landing page.",
+    before: "Under 1% conversion. A generic chatbot and a technology-first landing page.",
     after: "Two persona flows: reassurance for people in crisis, proof of expertise for researchers.",
     role: "UX strategy, persona research and conversation design",
-    team: "With Arklink executive leadership",
+    team: "Multiple meetings with the CEO and the marketing team lead",
     outcome: "Lead quality +42%; CTA click-through +55%",
-    overview: "I redesigned 200+ client websites and app landing pages for higher-performing ads. For each client I analyzed the primary target persona and ad performance, then decided which actions to track against business goals. Arklink is one of them: a legal platform for intimate image crimes that needed conversions. Traffic was fine; the conversation was failing.",
+    overview: "I redesigned 200+ clients' web and app landing pages for better-performing ads, by analyzing each client's primary target persona and ad performance, and by deciding which actions to track against business goals. This is one of the websites I redesigned: a legal platform for intimate image crimes that needed conversions. Traffic was fine; the conversation was failing.",
     insights: [
       {
         source: "Funnel analysis",
-        finding: "5–10% of visitors opened the chatbot, but almost none converted inside it.",
+        finding: "5–10% of visitors opened the chatbot, but almost none converted inside it, based on GA4.",
         implication: "The leak was the conversation, not the ads.",
       },
       {
@@ -461,13 +461,13 @@ export const projects: CaseStudy[] = [
         },
         {
           title: "Persona 2 · Technical research",
-          description: "Offer technical documentation and methodology up front. Lead quality improved.",
+          description: "Offer technical documentation and methodology up front. Lead quality improved as customers understood what Arklink provided first.",
           images: ["/images/projects/arklink_persona2_cj.png", "/images/projects/arklink_chatbot2.png"],
           captions: ["Persona 2's journey: comparing police and private services, reading reviews and checking credibility, then submitting a request and paying securely.", "Chatbot reply for researchers: the company introduction PDF is offered right away, so they can check credibility before deciding."],
         },
         {
           title: "Direct inquiry bar",
-          description: "A \"Quick Inquiry\" bar on the homepage removed the multi-page search for contact details.",
+          description: "Without a chatbot, it was hard for users to find where to talk, and how to connect with the service right away. Based on my experience with legal website redesigns, when people look for urgent help, the icon must be big and vivid so people can leave a request. I applied that to the Arklink landing page, and it raised the number of leads.",
           image: "/images/projects/arklink_inquirybar.png",
           caption: "A \"Quick Inquiry\" bar at the bottom of the homepage: name, contact and incident type, submitted in one step.",
         },
@@ -555,7 +555,7 @@ export const projects: CaseStudy[] = [
       title: "Situation",
       description: "The client sold through TV and an app. As customers moved to mobile, app revenue fell.",
       context: "The UI was so unintuitive that even experienced users struggled to buy.",
-      keywords: ["Declining Revenue", "Poor UI", "No Segmentation"],
+      keywords: ["Declining Revenue", "Poor UI, poor rating", "No Segmentation"],
     },
     problem: {
       title: "Problem",

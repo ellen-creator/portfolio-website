@@ -107,7 +107,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               Focus
             </h3>
             <div className="flex flex-wrap gap-2">
-              {project.tags.slice(0, 3).map((tag, idx) => (
+              {project.tags.slice(0, 4).map((tag, idx) => (
                 <motion.span
                   key={tag}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -439,7 +439,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               </p>
               <h4 className="font-serif text-earth-900 dark:text-earth-50 mb-3 text-lg">Design Solution</h4>
               <p className="text-earth-700 dark:text-earth-200 leading-relaxed">
-                Emotionally reassuring UX copy with time-bound action commitment. Chatbot opens with personal accountability: "I will personally ensure your data doesn't spread." Direct Inquiry Bar for instant consultation.
+                Emotionally reassuring UX copy with time-bound action commitment. Chatbot opens with personal accountability: "I will personally ensure your data doesn't spread." Direct Inquiry Bar for instant consultation. The chatbot expresses deep empathy for urgent and panic situations.
               </p>
             </div>
           </motion.div>
@@ -466,14 +466,14 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             {/* Content */}
             <div className="flex-1 flex flex-col">
               <h3 className="text-2xl font-serif mb-3 text-earth-900 dark:text-earth-50">
-                Persona 2: Technical & Platform Research
+                Persona 2: People looking for ‘technical’ reliability
               </h3>
               <p className="text-sm text-earth-600 dark:text-earth-400 mb-6 pb-6 border-b border-earth-300/30 dark:border-earth-600/30">
                 <strong>Psychology:</strong> Rational validation, seeking technical credibility. Researching specific platforms & solutions.
               </p>
               <h4 className="font-serif text-earth-900 dark:text-earth-50 mb-3 text-lg">Design Solution</h4>
               <p className="text-earth-700 dark:text-earth-200 leading-relaxed">
-                Technical credibility-first messaging with platform-specific expertise. Downloadable technical summaries and malware analysis methodologies. Direct Inquiry Bar for qualified consultation.
+                Technical credibility-first messaging with platform-specific expertise. Downloadable technical summaries and malware analysis methodologies are given right away when people enter their data.
               </p>
             </div>
           </motion.div>
