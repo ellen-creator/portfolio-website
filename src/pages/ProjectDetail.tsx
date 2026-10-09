@@ -650,6 +650,12 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   </motion.div>
                 )}
 
+                {(change as any).caption && (
+                  <p className="max-w-3xl mx-auto mt-4 text-sm leading-relaxed text-earth-600 dark:text-earth-300">
+                    {(change as any).caption}
+                  </p>
+                )}
+
                 {/* Multi-image layout */}
                 {!isCostOptimization && hasImages && (
                   <motion.div
@@ -671,8 +677,8 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     {/* Image Grid */}
                     <div className="max-w-3xl mx-auto flex flex-col gap-6">
                       {(change as any).images.map((img: string, imgIdx: number) => (
+                        <div key={imgIdx} className="flex flex-col gap-3">
                         <motion.div
-                          key={imgIdx}
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 + imgIdx * 0.1, duration: 0.5 }}
@@ -687,6 +693,12 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                             whileHover={{ scale: 1.05 }}
                           />
                         </motion.div>
+                        {(change as any).captions?.[imgIdx] && (
+                          <p className="text-sm leading-relaxed text-earth-600 dark:text-earth-300">
+                            {(change as any).captions[imgIdx]}
+                          </p>
+                        )}
+                        </div>
                       ))}
                     </div>
 

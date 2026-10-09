@@ -84,6 +84,8 @@ export interface CaseStudy {
       afterImage?: string
       wide?: boolean
       images?: string[]
+      captions?: string[]
+      caption?: string
       image?: string
       video?: string
       title?: string
@@ -396,7 +398,7 @@ export const projects: CaseStudy[] = [
     role: "UX strategy, persona research and conversation design",
     team: "With Arklink executive leadership",
     outcome: "Lead quality +42%; CTA click-through +55%",
-    overview: "A legal platform for intimate image crimes needed conversions. Traffic was fine; the conversation was failing.",
+    overview: "I redesigned 200+ client websites and app landing pages for higher-performing ads. For each client I analyzed the primary target persona and ad performance, then decided which actions to track against business goals. Arklink is one of them: a legal platform for intimate image crimes that needed conversions. Traffic was fine; the conversation was failing.",
     insights: [
       {
         source: "Funnel analysis",
@@ -455,16 +457,19 @@ export const projects: CaseStudy[] = [
           title: "Persona 1 · Urgent help",
           description: "Lead with reassurance and personal accountability. Conversion rose among high-urgency users.",
           images: ["/images/projects/arklink_persona1_cj.png", "/images/projects/arklink_chatbot1.png"],
+          captions: ["Persona 1's journey: becoming a victim, searching, choosing a private service, requesting help and paying. The landing page answers each worry on this path.", "Chatbot reply for urgent users: \"Don't blame yourself. Time matters, so let us help now.\" Confidentiality is stated before any question is asked."],
         },
         {
           title: "Persona 2 · Technical research",
           description: "Offer technical documentation and methodology up front. Lead quality improved.",
           images: ["/images/projects/arklink_persona2_cj.png", "/images/projects/arklink_chatbot2.png"],
+          captions: ["Persona 2's journey: comparing police and private services, reading reviews and checking credibility, then submitting a request and paying securely.", "Chatbot reply for researchers: the company introduction PDF is offered right away, so they can check credibility before deciding."],
         },
         {
           title: "Direct inquiry bar",
           description: "A \"Quick Inquiry\" bar on the homepage removed the multi-page search for contact details.",
           image: "/images/projects/arklink_inquirybar.png",
+          caption: "A \"Quick Inquiry\" bar at the bottom of the homepage: name, contact and incident type, submitted in one step.",
         },
       ],
     },
