@@ -580,7 +580,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
 
                     {/* Image/Video - Parallel layout if both exist */}
                     {(change as any).image && (change as any).video ? (
-                      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="max-w-4xl mx-auto flex flex-col gap-6">
                         {/* Image */}
                         <motion.div
                           initial={{ opacity: 0, x: -20 }}
@@ -669,7 +669,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     </div>
 
                     {/* Image Grid */}
-                    <div className="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="max-w-3xl mx-auto flex flex-col gap-6">
                       {(change as any).images.map((img: string, imgIdx: number) => (
                         <motion.div
                           key={imgIdx}
