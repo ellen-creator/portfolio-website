@@ -638,4 +638,121 @@ export const projects: CaseStudy[] = [
     },
     learnings: ["One-size-fits-all UX leaves revenue on the table.", "Age-appropriate design is a revenue driver, not an edge case.", "Cross-functional work decides whether segment features ship."],
   },
+
+  {
+    id: "cost-optimization-dashboard",
+    title: "Cost Optimization Dashboard",
+    navLabel: "Data architecture and dashboard",
+    subtitle: "A tiered cost dashboard that turns scattered SAP data into factory-level decisions",
+    thumbnail: "/images/projects/dashboard1.png",
+    tags: ["Dashboard Design", "Data Analysis", "Business Intelligence"],
+    scope: "Data · Client project",
+    year: 2021,
+    timeline: "4 months",
+    result: "Cost drivers visible for every factory in one tiered dashboard. 15–20% procurement savings delivered.",
+    before: "Cost data sat unsorted in SAP. Factories making the same product could not be compared.",
+    after: "A tiered dashboard, from network summary to factory and cost-lever detail, shared by managers in real time.",
+    role: "Business Analyst, Kearney · cost-driver analysis, dashboard design and forecasting",
+    team: "Consulting team with the client's finance, operations and procurement managers",
+    outcome: "15–20% procurement savings delivered; 4 levels of drill-down",
+    overview: "A food manufacturer hit by higher import prices after COVID needed one view of what drove its costs.",
+    insights: [
+      {
+        source: "Internal & external interviews",
+        finding: "Cost data was piling up in SAP, but no one had grouped it into comparable cost levers.",
+        implication: "Re-categorize costs, starting from the bill of materials, before drawing any chart.",
+      },
+      {
+        source: "Factory comparison",
+        finding: "Factories making similar products had very different costs, driven by productivity and raw-material waste.",
+        implication: "Side-by-side factory views come first.",
+      },
+      {
+        source: "Manager needs",
+        finding: "Executives wanted a one-screen summary. Operations teams needed transaction-level detail.",
+        implication: "Layer the depth so everyone starts from the same summary.",
+      },
+    ],
+    decisions: [
+      {
+        question: "One dashboard or layers?",
+        options: ["One detailed dashboard", "Separate reports per team", "Tiered drill-down"],
+        chose: "Tiered drill-down",
+        why: "Everyone starts from the same network summary and goes only as deep as their job needs.",
+      },
+      {
+        question: "How do we forecast price hikes with missing data?",
+        options: ["Wait for complete data", "Decision trees and random forests on what exists"],
+        chose: "Decision trees and random forests on what exists",
+        why: "Data was incomplete, but the models still forecast procurement price hikes and ranked the levers.",
+      },
+    ],
+    hypothesisCheck: "Supported: despite missing data, the models forecast procurement price hikes and backed recommendations on recipes, suppliers, materials and buying formulas.",
+    situation: {
+      title: "Situation",
+      description: "Post-COVID import prices squeezed a food manufacturer's margins.",
+      context: "Cost data existed in SAP but was not unified, so managers could not tell which factors drove the problem.",
+      keywords: ["Fragmented Data", "No Cost Visibility", "Rising Costs"],
+    },
+    problem: {
+      title: "Problem",
+      description: "Analysis showed three gaps:",
+      painPoints: ["No clear cost categories across raw materials, overhead and labor", "Factories could not be compared", "Procurement price hikes could not be forecast"],
+    },
+    solution: {
+      title: "Solution",
+      howMightWe: "How might we turn fragmented cost data into one view that helps procurement and factories act?",
+      description: "Re-categorized cost levers from the bill of materials, then built a tiered dashboard and forecasting models on top.",
+      approach: "Cost-lever re-categorization, internal and external interviews, SAP data integration, tiered dashboards, and forecasting models.",
+      tools: ["Python", "SQL", "Excel", "Power BI", "Decision trees", "Random forests"],
+    },
+    implementation: {
+      title: "Implementation",
+      description: "Four dashboards, one drill-down path.",
+      changes: [
+        {
+          title: "Dashboard A · Factory performance",
+          description: "Raw-material waste, operational efficiency, labor productivity and utilization, by factory.",
+          image: "/images/projects/dashboard1.png",
+        },
+        {
+          title: "Dashboard B · Cost summary",
+          description: "Total cost and cost per unit by lever and factory, to see which factors differ between similar sites.",
+          image: "/images/projects/dashboard2.png",
+        },
+        {
+          title: "Dashboard C · Detailed cost analysis",
+          description: "Materials, labor, overhead and sourcing decisions for buying and supplier choices.",
+          image: "/images/projects/dashboard3.png",
+        },
+        {
+          title: "Dashboard D · Forecasting & scenarios",
+          description: "Price-hike forecasts and the impact of sourcing and supplier alternatives.",
+          image: "/images/projects/dashboard4.png",
+        },
+      ],
+    },
+    impact: {
+      title: "Outcome",
+      description: "The CEO was satisfied with the impact. Managers could compare factories in real time.",
+      metrics: [
+        {
+          label: "Procurement savings",
+          value: "15–20",
+          unit: "% delivered",
+        },
+        {
+          label: "Drill-down levels",
+          value: "4",
+          unit: "network → factory → lever → detail",
+        },
+        {
+          label: "Dashboards",
+          value: "4",
+          unit: "A–D, one data model",
+        },
+      ],
+    },
+    learnings: ["Re-categorize before you visualize: the dashboard is only as good as the cost classification.", "Layered depth serves executives and operators from one source of truth.", "Models can still help with incomplete data, if you say what they can and cannot tell you."],
+  },
 ];
