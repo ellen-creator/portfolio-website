@@ -200,7 +200,7 @@ export const projects: CaseStudy[] = [
         },
         {
           title: "3 · Testing",
-          description: "Needs to be done soon, in collaboration with Pearson Elementary School in Michigan.",
+          description: "In progress, pending permission: a collaboration with Pearson Elementary School in Michigan.",
           images: ["/images/projects/vori_report1.png", "/images/projects/vori_report2.png"],
         },
       ],
@@ -245,7 +245,7 @@ export const projects: CaseStudy[] = [
     role: "Project lead · UX research, IA, UX writing and iOS build",
     team: "I am the CPO of this team.",
     outcome: "From a feature-focused app to a user-focused app; beta published",
-    overview: "An iPhone and Apple Watch app for adults (version 1) and children (version 2) who burn out easily. I redesigned the whole product, which had started feature-first, to reflect customers' needs based on about 40 interviews: onboarding, explanation, features, retention strategy, then layout.",
+    overview: "An iPhone and Apple Watch app for adults who burn out easily. I built the adult version first; the long-term goal is a version for children. The product had started feature-first, so I redesigned it around customers' needs, based on about 40 interviews: onboarding, explanation, features, retention strategy, then layout.",
     insights: [
       {
         source: "40 interviews",
