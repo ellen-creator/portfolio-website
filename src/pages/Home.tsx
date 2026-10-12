@@ -5,6 +5,24 @@ interface HomeProps {
   onSelectProject: (id: string) => void
 }
 
+const softSkills = [
+  {
+    title: 'Team leadership',
+    body: 'Led collaboration across every department in my consulting work, bringing designers, developers and client teams to one plan.',
+    where: 'Consulting · all departments',
+  },
+  {
+    title: 'Communication',
+    body: 'Adjusted how I explain the same idea to each audience, from children to truck drivers, older customers and executives.',
+    where: 'Lab research · part-time work · client meetings',
+  },
+  {
+    title: 'Fast learning',
+    body: 'Moved across social work, consulting, Google and UX research, and built working software (SwiftUI, React, Python) myself.',
+    where: 'Career changes · LUMI and Vori builds',
+  },
+]
+
 const skills = [
   { title: 'Research', body: 'Interviews, audits and behavioral data, turned into the few insights that change a design.' },
   { title: 'Accessible design', body: 'Contrast, touch targets, plain language and calm defaults for neurodivergent users.' },
@@ -50,6 +68,17 @@ export default function Home({ onSelectProject }: HomeProps) {
             <div key={s.title} className="border-t border-earth-300 pt-4">
               <h3 className="font-serif text-2xl mb-2">{s.title}</h3>
               <p className="text-earth-700 leading-relaxed">{s.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <h3 className="font-sans font-bold uppercase text-sm tracking-widest mt-20 mb-10 border-t-2 border-earth-900 pt-3">Soft skills</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-10">
+          {softSkills.map((s) => (
+            <div key={s.title} className="border-t border-earth-300 pt-4">
+              <h4 className="font-serif text-2xl mb-2">{s.title}</h4>
+              <p className="text-earth-700 leading-relaxed mb-3">{s.body}</p>
+              <p className="text-sm uppercase tracking-wide text-earth-600">{s.where}</p>
             </div>
           ))}
         </div>
