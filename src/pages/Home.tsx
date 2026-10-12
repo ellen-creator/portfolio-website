@@ -13,8 +13,8 @@ const softSkills = [
   },
   {
     title: 'Communication',
-    body: 'Adjusted how I explain the same idea to each audience, from children to truck drivers, older customers and executives.',
-    where: 'Lab research · part-time work · client meetings',
+    body: 'Built rapport with truck drivers at a logistics center, taught digital skills to older adults as a volunteer, and calmed angry customers at an air-conditioner repair center.',
+    where: 'Lotte logistics center · digital education volunteer · AC repair center',
   },
   {
     title: 'Fast learning',
