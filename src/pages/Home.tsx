@@ -13,7 +13,7 @@ const softSkills = [
   },
   {
     title: 'Communication',
-    body: 'Turned every conversation into a good one. Made friends with truck drivers at a logistics center, taught grandparents their first smartphone apps, and turned angry customers at an air-conditioner repair center into calm ones.',
+    body: 'Talking with people is my research method. I got to know truck drivers at a logistics center, taught grandparents their first smartphone apps, and calmed angry customers at an air-conditioner repair center. Each conversation taught me to listen before I answer.',
     where: 'Lotte logistics center · digital education volunteer · AC repair center',
   },
   {

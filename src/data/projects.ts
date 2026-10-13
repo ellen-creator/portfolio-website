@@ -23,6 +23,12 @@ export interface CaseStudy {
   // Usability changes: where it was, where it is now
   usability?: Array<{ area: string; before: string; after: string }>
 
+  // Research methods used in this case
+  methods?: string[]
+
+  // Research to mock-up: one row per stage, with the method and what it produced
+  process?: Array<{ stage: string; method: string; output: string }>
+
   // Case Study sections
   overview: string
 
@@ -127,6 +133,14 @@ export const projects: CaseStudy[] = [
     role: "Project lead · UX research, IA, UX writing and iOS build",
     team: "I am the CPO of this team.",
     outcome: "From a feature-focused app to a user-focused app; beta published",
+    methods: ["40 interviews", "Competitive review", "Research synthesis", "PubMed evidence review", "Coverage check (2,304 situations)"],
+    process: [
+      { stage: "Research", method: "40 interviews with clinicians, faculty and people who burn out", output: "New users need onboarding and explanation before features" },
+      { stage: "Onboarding", method: "Screens rebuilt in the order people meet the app", output: "Launch story, one-time setup, then how the 1–10 score is explained" },
+      { stage: "Features", method: "Tips matched to 29 PubMed studies, with heads-up rules", output: "55 tips chosen by battery, place and recent days" },
+      { stage: "Main layout", method: "Battery first, one tip, and points that grow only when you log", output: "Today screen: five cards → four" },
+      { stage: "Build & test", method: "SwiftUI, 588 automated tests, WCAG AA check", output: "Beta with test users; reviews coming in" },
+    ],
     overview: "An iPhone and Apple Watch app for adults who burn out easily. I built the adult version first; the long-term goal is a version for children. The product had started feature-first, so I redesigned it around customers' needs, based on about 40 interviews: onboarding, explanation, features, retention strategy, then layout.",
     insights: [
       {
@@ -278,6 +292,14 @@ export const projects: CaseStudy[] = [
     role: "Founder · research, interaction and UI design",
     team: "Solo, with 50+ clinicians, educators and parents as advisors",
     outcome: "121 children in usability testing (60 neurotypical vs 61 neurodivergent); 87% early-detection accuracy",
+    methods: ["Stakeholder interviews (50+)", "Form and cue comparisons", "EEG signal analysis (121 children)", "Usability testing (in progress)"],
+    process: [
+      { stage: "Research", method: "Interviews with 50+ clinicians, educators, parents and students", output: "Kids avoid anything \"medical\"; distress hides until a meltdown" },
+      { stage: "Form", method: "Compared heavy headsets, bio-signal sensors and everyday glasses", output: "Everyday glasses at about 90g" },
+      { stage: "Cue", method: "Compared sound or vibration, center of vision and peripheral field", output: "Peripheral cue only, 30–60s before escalation" },
+      { stage: "Signal", method: "EEG data from 121 children (61 ADHD/ASD, 60 controls)", output: "87% early-detection accuracy" },
+      { stage: "Usability test", method: "Classroom testing with Pearson Elementary, pending permission", output: "In progress" },
+    ],
     overview: "Lightweight smart eyewear that detects early signs of sensory overload in ADHD and ASD children and responds with calm peripheral cues.",
     insights: [
       {
@@ -398,6 +420,7 @@ export const projects: CaseStudy[] = [
     role: "UX strategy, persona research and conversation design",
     team: "Multiple meetings with the CEO and the marketing team lead",
     outcome: "Lead quality +42%; CTA click-through +55%",
+    methods: ["GA4 funnel analysis", "User interviews", "Page audit", "Persona and journey mapping", "Chatbot conversation design"],
     overview: "I redesigned 200+ clients' web and app landing pages for better-performing ads, by analyzing each client's primary target persona and ad performance, and by deciding which actions to track against business goals. This is one of the websites I redesigned: a legal platform for intimate image crimes that needed conversions. Traffic was fine; the conversation was failing.",
     insights: [
       {
@@ -518,6 +541,7 @@ export const projects: CaseStudy[] = [
     role: "Business Analyst · segmentation, UI audit and UI rationale",
     team: "Kearney team with the client's designers and developers",
     outcome: "Google Play 2.8 → 4.8; conversion +45%",
+    methods: ["Heuristic walkthrough", "Customer data analysis", "App store review analysis", "Segmentation", "Accessibility audit"],
     overview: "A TV-and-app shopping business was losing revenue as customers moved to mobile. The app was too hard to buy from.",
     insights: [
       {
@@ -660,6 +684,7 @@ export const projects: CaseStudy[] = [
     role: "Business Analyst, Kearney · data architecture, dashboard design and cost analysis",
     team: "Project team with the client's finance, operations and department leads",
     outcome: "20% cost reduction; adoption rose across departments",
+    methods: ["Team interviews", "Cost data review", "Data architecture", "Time-series analysis"],
     overview: "A client needed its Salesforce and ERP data in one place, usable by non-technical teams, and a way to find cost savings in the data.",
     insights: [
       {

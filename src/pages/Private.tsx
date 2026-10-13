@@ -119,6 +119,11 @@ export default function Private() {
               Engine Optimization that earned a company-wide Learning Sharing Award.
             </p>
             <p>
+              <strong className="font-semibold">So I&apos;m moving into UX research.</strong> Consulting taught me to answer
+              what the numbers say. Building Vori with clinicians, teachers and families taught me to ask what people feel
+              before the numbers show it. I want that work every day: research that changes the product.
+            </p>
+            <p>
               <strong className="font-semibold">Now I&apos;m designing for the people data leaves out.</strong> I&apos;m an M.S. in
               Information student at the University of Michigan and a Mayleben Grant nominee. I&apos;m rebuilding the UMSI Career
               Development Office website for accessibility, and building Vori and LUMI for neurodivergent people. I believe the

@@ -97,6 +97,27 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             </motion.dl>
           )}
 
+          {/* Research methods used in this case */}
+          {project.methods && project.methods.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.6 }}
+            >
+              <h3 className="text-lg font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
+                Research methods
+              </h3>
+              <ul className="space-y-2">
+                {project.methods.map((method) => (
+                  <li key={method} className="flex gap-3 text-earth-900 dark:text-earth-100 leading-snug">
+                    <span className="text-earth-400 dark:text-earth-500 flex-shrink-0">▸</span>
+                    <span>{method}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+
           {/* Focus Section */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -517,6 +538,31 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           </div>
         </div>
       </motion.section>
+      )}
+
+      {/* PROCESS: research to mock-up, one row per stage */}
+      {project.process && project.process.length > 0 && (
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">From research to mock-up</h2>
+          <p className="text-earth-600 dark:text-earth-300 mb-10">Each stage, the method behind it, and what it produced.</p>
+          <ol className="grid grid-cols-1 md:grid-cols-5 border-y border-earth-300/60 dark:border-earth-600/60 divide-y md:divide-y-0 md:divide-x divide-earth-300/60 dark:divide-earth-600/60">
+            {project.process.map((step, idx) => (
+              <li key={step.stage} className="flex flex-col gap-3 py-6 md:px-5 first:md:pl-0 last:md:pr-0">
+                <p className="font-sans font-bold text-xs uppercase tracking-widest text-accent">
+                  {String(idx + 1).padStart(2, '0')} · {step.stage}
+                </p>
+                <p className="text-sm text-earth-600 dark:text-earth-300 leading-relaxed">{step.method}</p>
+                <p className="mt-auto pt-3 font-serif text-lg leading-snug text-earth-900 dark:text-earth-50">{step.output}</p>
+              </li>
+            ))}
+          </ol>
+        </motion.section>
       )}
 
       {/* SECTION 4: Implementation (Vertical Flow) */}
