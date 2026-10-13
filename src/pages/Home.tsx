@@ -8,17 +8,17 @@ interface HomeProps {
 const softSkills = [
   {
     title: 'Team leadership',
-    body: 'Led collaboration across every department in my consulting work, bringing designers, developers and client teams to one plan.',
+    body: 'Got every department pulling in the same direction. In consulting, I brought designers, developers and client teams to one plan, and made the meetings fun.',
     where: 'Consulting · all departments',
   },
   {
     title: 'Communication',
-    body: 'Built rapport with truck drivers at a logistics center, taught digital skills to older adults as a volunteer, and calmed angry customers at an air-conditioner repair center.',
+    body: 'Turned every conversation into a good one. Made friends with truck drivers at a logistics center, taught grandparents their first smartphone apps, and turned angry customers at an air-conditioner repair center into calm ones.',
     where: 'Lotte logistics center · digital education volunteer · AC repair center',
   },
   {
     title: 'Fast learning',
-    body: 'Moved across social work, consulting, Google and UX research, and built working software (SwiftUI, React, Python) myself.',
+    body: 'Learns a new world fast. From social work to consulting, Google and UX research, I keep up, then build the thing myself: SwiftUI, React and Python.',
     where: 'Career changes · LUMI and Vori builds',
   },
 ]
@@ -63,7 +63,8 @@ export default function Home({ onSelectProject }: HomeProps) {
 
       {/* Skills */}
       <section id="skills" className="mt-24 scroll-mt-6">
-        <h2 className="border-t-2 border-earth-900 pt-3 font-sans font-bold uppercase text-sm tracking-widest mb-10">Skills</h2>
+        <h2 className="border-t-2 border-earth-900 pt-3 font-sans font-bold uppercase text-sm tracking-widest mb-2">Skills</h2>
+        <p className="font-serif text-2xl md:text-3xl mb-10">Research-led UX designer: I find the real problem, then design the answer.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">
           {skills.map((s) => (
             <div key={s.title} className="border-t border-earth-300 pt-4">
