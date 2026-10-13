@@ -233,7 +233,7 @@ export const projects: CaseStudy[] = [
         {
           title: "Step 4 · Main Layout",
           description: "Battery first, then one tip. LUMI grows only when you log: 10, 8, 6, 4, then 2 points through the day.",
-          image: "/images/projects/lumi_today.jpg",
+          image: "/images/projects/lumi_today.png",
           wide: true,
         },
       ],
