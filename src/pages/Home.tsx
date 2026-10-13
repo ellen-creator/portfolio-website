@@ -64,7 +64,7 @@ export default function Home({ onSelectProject }: HomeProps) {
       {/* Skills */}
       <section id="skills" className="mt-24 scroll-mt-6">
         <h2 className="border-t-2 border-earth-900 pt-3 font-sans font-bold uppercase text-sm tracking-widest mb-2">Skills</h2>
-        <p className="font-serif text-2xl md:text-3xl mb-10">Research-led UX designer: I find the real problem, then design the answer.</p>
+        <p className="font-serif text-2xl md:text-3xl mb-10">UX researcher: I find out what people really need, then prove it with data.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">
           {skills.map((s) => (
             <div key={s.title} className="border-t border-earth-300 pt-4">
