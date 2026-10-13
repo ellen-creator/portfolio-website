@@ -24,10 +24,10 @@ const softSkills = [
 ]
 
 const skills = [
-  { title: 'Research', body: 'Interviews, audits and behavioral data, turned into the few insights that change a design.' },
-  { title: 'Accessible design', body: 'Contrast, touch targets, plain language and calm defaults for neurodivergent users.' },
-  { title: 'Journeys & conversion', body: 'Lead-generation and checkout flows, from first inquiry to completion.' },
-  { title: 'Content & conversation', body: 'UX writing and chatbot flows that reassure people before they are asked for anything.' },
+  { title: 'User research', body: 'Interviews, observation and behavioral data, turned into the few insights that change a product.' },
+  { title: 'Product strategy', body: 'Defining what to build first, from 0 to 1 (Vori) to a redesign of a live app (LUMI).' },
+  { title: 'Data-informed decisions', body: 'Analytics, ad performance and cost data (Python, SQL, GA4), used to choose what to measure and what to change.' },
+  { title: 'Accessible design', body: 'Research with neurodivergent users; contrast, touch targets and calm defaults built in from the start.' },
 ]
 
 export default function Home({ onSelectProject }: HomeProps) {
@@ -35,7 +35,8 @@ export default function Home({ onSelectProject }: HomeProps) {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="max-w-6xl mx-auto px-4 md:px-8 pt-8">
       {/* Portfolio */}
       <section>
-        <h2 className="border-t-2 border-earth-900 pt-3 font-sans font-bold uppercase text-sm tracking-widest mb-10">Portfolio</h2>
+        <h2 className="border-t-2 border-earth-900 pt-3 font-sans font-bold uppercase text-sm tracking-widest mb-2">Portfolio</h2>
+        <p className="text-earth-700 mb-10">UX research and product strategy: find the real problem with people, prove it with data, then change the product.</p>
         <div className="grid md:grid-cols-2 gap-x-10 gap-y-14">
           {projects.map((p) => (
             <article key={p.id}>

@@ -114,124 +114,6 @@ export interface CaseStudy {
 
 export const projects: CaseStudy[] = [
   {
-    id: "vori",
-    title: "Vori - Neuro-Interventional Smart Eyewear",
-    navLabel: "AR UI design",
-    subtitle: "Smart eyewear that detects sensory overload in neurodivergent children",
-    thumbnail: "/images/projects/vori_mockup.png",
-    tags: ["Product Strategy", "Neurotechnology", "Accessible Design", "Usability Testing"],
-    scope: "0 → 1 · Solo founder",
-    result: "Concept validated with 121 children in usability testing. 87% early-detection accuracy in EEG data.",
-    before: "No product. Teachers and parents see a meltdown only after it starts.",
-    after: "Everyday-looking glasses that cue calm 30–60 seconds before escalation.",
-    role: "Founder · research, interaction and UI design",
-    team: "Solo, with 50+ clinicians, educators and parents as advisors",
-    outcome: "121 children in usability testing (60 neurotypical vs 61 neurodivergent); 87% early-detection accuracy",
-    overview: "Lightweight smart eyewear that detects early signs of sensory overload in ADHD and ASD children and responds with calm peripheral cues.",
-    insights: [
-      {
-        source: "Students",
-        finding: "Kids feared being seen in anything \"medical\" and felt uncomfortable with heavy gadgets.",
-        implication: "The device must look like everyday glasses and weigh far less than conventional headsets.",
-      },
-      {
-        source: "Educators & parents",
-        finding: "Distress is masked until a visible meltdown. Teachers want some hint from children who are not expressive.",
-        implication: "Detection must happen before behavior changes.",
-      },
-      {
-        source: "Clinicians",
-        finding: "Diagnosis relies on subjective reports, or on how often a child visits the special education room.",
-        implication: "The same signals should give clinicians a comprehensive, objective understanding of each child.",
-      },
-    ],
-    decisions: [
-      {
-        question: "What form should it take?",
-        options: ["Sensors for brain-power analysis (alpha, beta, theta)", "Sensors for bio-signal analysis", "Everyday glasses"],
-        chose: "Everyday glasses",
-        why: "Headsets failed on weight and stigma. Glasses carry the sensors and look ordinary.",
-      },
-      {
-        question: "Where should the calming cue appear?",
-        options: ["Sound or vibration", "Center of vision", "Peripheral field only"],
-        chose: "Peripheral field only",
-        why: "The child keeps a clear view of the teacher and board, and peers never notice.",
-      },
-      {
-        question: "When should it intervene?",
-        options: ["After a meltdown", "On a fixed schedule", "30–60s before escalation"],
-        chose: "30–60s before escalation",
-        why: "Once behavior is visible, it is too late. Early neural markers give a window to prevent the crisis.",
-      },
-    ],
-    hypothesisCheck: "Partly answered: early EEG data (61 ADHD/ASD vs 60 controls) shows distinct signatures. Still open: whether cues calm children in real classrooms, which the current phase tests.",
-    situation: {
-      title: "Situation",
-      description: "Children with ADHD and ASD hide distress until it becomes a visible meltdown.",
-      context: "Teachers and parents only see the crisis. Existing tools are clinical, heavy or reactive.",
-      keywords: ["Reactive than Proactive", "Hidden Distress", "Late Detection", "Stigma"],
-    },
-    problem: {
-      title: "Problem",
-      description: "Research with students, parents, educators and clinicians surfaced four needs:",
-      painPoints: ["Students having a hard time sitting still in class", "Teachers struggle to catch the biological signs when a child does not say anything", "Parents see the build-up too late", "Clinicians lack objective data"],
-    },
-    solution: {
-      title: "Solution",
-      howMightWe: "How might we build an invisible, clinically grounded tool that prevents a crisis instead of managing it?",
-      description: "Very light glasses with temple-mounted EEG sensors and eye tracking. Peripheral cues appear only when early overload signs are detected, so central vision stays clear.",
-      tools: ["EEG algorithm design", "AWS + React", "Unity", "Python ML", "Clinical research"],
-    },
-    implementation: {
-      title: "Approach",
-      description: "Research first, hardware last.",
-      changes: [
-        {
-          title: "1 · Research",
-          description: "Interviews with 50+ clinicians, educators, parents and community leaders. Many of my hypotheses were challenged in real life, from the user's perspective.",
-          image: "/images/projects/vori_glasses.png",
-        },
-        {
-          title: "2 · Design",
-          description: "Peripheral-only cues, a 90g form, and predictions 30–60 seconds before escalation.",
-          image: "/images/projects/vori_eyetracking.png",
-          video: "/images/projects/vori_visual_mockup.mp4",
-        },
-        {
-          title: "3 · Testing",
-          description: "In progress, pending permission: a collaboration with Pearson Elementary School in Michigan.",
-          images: ["/images/projects/vori_report1.png", "/images/projects/vori_report2.png"],
-        },
-      ],
-    },
-    impact: {
-      title: "Outcome",
-      description: "Validated concept, now in usability testing. Funded by a University of Michigan DARE to Dream Grant.",
-      metrics: [
-        {
-          label: "Children's brain waves tested for detecting overstimulation",
-          value: "121",
-          unit: "60 controls + 61 ADHD/ASD",
-        },
-        {
-          label: "Early-detection accuracy",
-          value: "87",
-          unit: "% in EEG data",
-        },
-        {
-          label: "Stakeholders consulted",
-          value: "50+",
-          unit: "clinicians, educators, parents",
-        },
-      ],
-    },
-    learnings: ["Research with the people who live the problem shaped every technical choice.", "Clinical efficacy is not enough. If children refuse to wear it, it does not work.", "Predicting a crisis is a different product from reacting to one."],
-    year: 2026,
-    timeline: "Ongoing · Research started in 2025, founded Feb 2026",
-  },
-
-  {
     id: "lumi-redesign",
     title: "LUMI - Body Battery App UI/UX Redesign",
     navLabel: "App usability redesign",
@@ -380,6 +262,124 @@ export const projects: CaseStudy[] = [
     learnings: ["Research reorders the roadmap: people needed onboarding and explanation before features.", "Fewer numbers, more understanding. Detail lives one tap away.", "Personalize without labeling.", "Reward without punishing: no streaks."],
     year: 2026,
     timeline: "Beta redesign · Oct 2026",
+  },
+
+  {
+    id: "vori",
+    title: "Vori - Neuro-Interventional Smart Eyewear",
+    navLabel: "AR UI design",
+    subtitle: "Smart eyewear that detects sensory overload in neurodivergent children",
+    thumbnail: "/images/projects/vori_mockup.png",
+    tags: ["Product Strategy", "Neurotechnology", "Accessible Design", "Usability Testing"],
+    scope: "0 → 1 · Solo founder",
+    result: "Concept validated with 121 children in usability testing. 87% early-detection accuracy in EEG data.",
+    before: "No product. Teachers and parents see a meltdown only after it starts.",
+    after: "Everyday-looking glasses that cue calm 30–60 seconds before escalation.",
+    role: "Founder · research, interaction and UI design",
+    team: "Solo, with 50+ clinicians, educators and parents as advisors",
+    outcome: "121 children in usability testing (60 neurotypical vs 61 neurodivergent); 87% early-detection accuracy",
+    overview: "Lightweight smart eyewear that detects early signs of sensory overload in ADHD and ASD children and responds with calm peripheral cues.",
+    insights: [
+      {
+        source: "Students",
+        finding: "Kids feared being seen in anything \"medical\" and felt uncomfortable with heavy gadgets.",
+        implication: "The device must look like everyday glasses and weigh far less than conventional headsets.",
+      },
+      {
+        source: "Educators & parents",
+        finding: "Distress is masked until a visible meltdown. Teachers want some hint from children who are not expressive.",
+        implication: "Detection must happen before behavior changes.",
+      },
+      {
+        source: "Clinicians",
+        finding: "Diagnosis relies on subjective reports, or on how often a child visits the special education room.",
+        implication: "The same signals should give clinicians a comprehensive, objective understanding of each child.",
+      },
+    ],
+    decisions: [
+      {
+        question: "What form should it take?",
+        options: ["Sensors for brain-power analysis (alpha, beta, theta)", "Sensors for bio-signal analysis", "Everyday glasses"],
+        chose: "Everyday glasses",
+        why: "Headsets failed on weight and stigma. Glasses carry the sensors and look ordinary.",
+      },
+      {
+        question: "Where should the calming cue appear?",
+        options: ["Sound or vibration", "Center of vision", "Peripheral field only"],
+        chose: "Peripheral field only",
+        why: "The child keeps a clear view of the teacher and board, and peers never notice.",
+      },
+      {
+        question: "When should it intervene?",
+        options: ["After a meltdown", "On a fixed schedule", "30–60s before escalation"],
+        chose: "30–60s before escalation",
+        why: "Once behavior is visible, it is too late. Early neural markers give a window to prevent the crisis.",
+      },
+    ],
+    hypothesisCheck: "Partly answered: early EEG data (61 ADHD/ASD vs 60 controls) shows distinct signatures. Still open: whether cues calm children in real classrooms, which the current phase tests.",
+    situation: {
+      title: "Situation",
+      description: "Children with ADHD and ASD hide distress until it becomes a visible meltdown.",
+      context: "Teachers and parents only see the crisis. Existing tools are clinical, heavy or reactive.",
+      keywords: ["Reactive than Proactive", "Hidden Distress", "Late Detection", "Stigma"],
+    },
+    problem: {
+      title: "Problem",
+      description: "Research with students, parents, educators and clinicians surfaced four needs:",
+      painPoints: ["Students having a hard time sitting still in class", "Teachers struggle to catch the biological signs when a child does not say anything", "Parents see the build-up too late", "Clinicians lack objective data"],
+    },
+    solution: {
+      title: "Solution",
+      howMightWe: "How might we build an invisible, clinically grounded tool that prevents a crisis instead of managing it?",
+      description: "Very light glasses with temple-mounted EEG sensors and eye tracking. Peripheral cues appear only when early overload signs are detected, so central vision stays clear.",
+      tools: ["EEG algorithm design", "AWS + React", "Unity", "Python ML", "Clinical research"],
+    },
+    implementation: {
+      title: "Approach",
+      description: "Research first, hardware last.",
+      changes: [
+        {
+          title: "1 · Research",
+          description: "Interviews with 50+ clinicians, educators, parents and community leaders. Many of my hypotheses were challenged in real life, from the user's perspective.",
+          image: "/images/projects/vori_glasses.png",
+        },
+        {
+          title: "2 · Design",
+          description: "Peripheral-only cues, a 90g form, and predictions 30–60 seconds before escalation.",
+          image: "/images/projects/vori_eyetracking.png",
+          video: "/images/projects/vori_visual_mockup.mp4",
+        },
+        {
+          title: "3 · Testing",
+          description: "In progress, pending permission: a collaboration with Pearson Elementary School in Michigan.",
+          images: ["/images/projects/vori_report1.png", "/images/projects/vori_report2.png"],
+        },
+      ],
+    },
+    impact: {
+      title: "Outcome",
+      description: "Validated concept, now in usability testing. Funded by a University of Michigan DARE to Dream Grant.",
+      metrics: [
+        {
+          label: "Children's brain waves tested for detecting overstimulation",
+          value: "121",
+          unit: "60 controls + 61 ADHD/ASD",
+        },
+        {
+          label: "Early-detection accuracy",
+          value: "87",
+          unit: "% in EEG data",
+        },
+        {
+          label: "Stakeholders consulted",
+          value: "50+",
+          unit: "clinicians, educators, parents",
+        },
+      ],
+    },
+    learnings: ["Research with the people who live the problem shaped every technical choice.", "Clinical efficacy is not enough. If children refuse to wear it, it does not work.", "Predicting a crisis is a different product from reacting to one."],
+    year: 2026,
+    timeline: "Ongoing · Research started in 2025, founded Feb 2026",
   },
 
   {
