@@ -45,7 +45,7 @@ export default function Private() {
     {
       date: '2026-02-01',
       title: 'Founded Vori, my own startup',
-      content: 'Founded Vori as a solo founder: lightweight smart eyewear that detects early signs of sensory overload in ADHD and ASD children and offers calming visual cues before a meltdown. I led stakeholder research with clinicians, educators and families, and the work earned a University of Michigan DARE to Dream Grant.',
+      content: 'Founded Vori as a solo founder: lightweight smart eyewear that detects early signs of sensory overload in ADHD and ASD children and offers calming visual cues before a meltdown. I led stakeholder research with clinicians, educators and families, and the work earned a University of Michigan DARE to Dream Grant, and a 모두의 창업 grant of KRW 20M (about USD 16K) from the Korean government.',
     },
     {
       date: '2026-08-31',
@@ -152,6 +152,7 @@ export default function Private() {
               <span className="block">+Impact Studio (accelerator program)</span>
               <span className="block">Google Learning Sharing Award</span>
               <span className="block">U-M DARE to Dream Grant (Vori)</span>
+              <span className="block">모두의 창업 grant, KRW 20M (about USD 16K)</span>
             </dd>
           </div>
           <div>
