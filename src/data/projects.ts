@@ -680,7 +680,7 @@ export const projects: CaseStudy[] = [
     id: "internal-ops-dashboard",
     title: "Internal Operations Dashboard",
     navLabel: "Data architecture and dashboard",
-    subtitle: "One dashboard that connects Salesforce and ERP, used by every department",
+    subtitle: "One dashboard that unites Salesforce, ERP, BOM and factory inventory by SKU, with each source's update timing shown",
     thumbnail: "/images/projects/dashboard-system-mock.png",
     tags: ["Dashboard Design", "Data Architecture", "Business Intelligence"],
     scope: "Data · Client project · NDA",
@@ -693,7 +693,7 @@ export const projects: CaseStudy[] = [
     team: "Project team with the client's finance, operations and department leads",
     outcome: "20% cost reduction; adoption rose across departments",
     methods: ["Team interviews", "Cost data review", "Data architecture", "Time-series analysis"],
-    overview: "A client needed its Salesforce and ERP data in one place, usable by non-technical teams, and a way to find cost savings in the data.",
+    overview: "Each group company's production team kept its BOM in Excel, factory inventory was counted once a week, and ERP changed far more often than Salesforce. Each team read a different system, so no one saw the same picture.",
     insights: [
       {
         source: "Team interviews",
@@ -740,17 +740,17 @@ export const projects: CaseStudy[] = [
     solution: {
       title: "Solution",
       howMightWe: "How might we give every department one readable view of its data, and find cost savings in that data?",
-      description: "Connected Salesforce and ERP into one data model, then built a readable dashboard for every department and a time-series cost analysis.",
-      approach: "Data architecture across both systems, role-based dashboard views, plain labels and large type, and time-series cost analysis.",
-      tools: ["Salesforce", "ERP", "Data architecture", "Dashboard design", "Time-series analysis"],
+      description: "Matched BOM, factory inventory, Salesforce and ERP by SKU, and showed each source's update timing on the dashboard. We started with the top 20% of SKUs, which accounted for 98% of revenue, as quick wins to match across sources first.",
+      approach: "SKU-level data architecture across four sources, role-based dashboard views, plain labels and large type, and time-series cost analysis.",
+      tools: ["Salesforce", "ERP", "BOM (Excel)", "Factory inventory", "SKU matching", "Dashboard design", "Time-series analysis"],
     },
     implementation: {
       title: "Implementation",
       description: "The real screens are confidential under NDA, so these are mock-ups with placeholder figures.",
       changes: [
         {
-          title: "Connect both systems",
-          description: "One data model for Salesforce and ERP, so each department sees the same underlying data.",
+          title: "Match every source by SKU",
+          description: "BOM, factory inventory, Salesforce and ERP joined on SKU. Each source's update timing is shown, so teams can tell how fresh each number is.",
           image: "/images/projects/dashboard-system-mock.png",
         },
         {
