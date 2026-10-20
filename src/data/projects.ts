@@ -26,6 +26,9 @@ export interface CaseStudy {
   // Research methods used in this case
   methods?: string[]
 
+  // User flows revisited before the redesign (images with captions)
+  userFlows?: Array<{ image: string; title: string; caption: string }>
+
   // Research to mock-up: one row per stage, with the method and what it produced
   process?: Array<{ stage: string; method: string; output: string }>
 
@@ -93,6 +96,7 @@ export interface CaseStudy {
       captions?: string[]
       caption?: string
       image?: string
+      phone?: boolean
       video?: string
       title?: string
       description?: string
@@ -204,6 +208,10 @@ export const projects: CaseStudy[] = [
       approach: "Every tip is tied to a PubMed study. Coverage was checked across 2,304 situations. Shipped in SwiftUI with 588 automated tests.",
       tools: ["Interviews (40)", "Information architecture", "UX writing", "WCAG AA", "SwiftUI", "HealthKit", "PubMed evidence"],
     },
+    userFlows: [
+      { image: "/images/projects/lumi_flow_new.png", title: "New user flow", caption: "The designed flow from install to the 14-day beta survey: intro, sign-in, setup, sync, first Today screen, and the first nights of data." },
+      { image: "/images/projects/lumi_flow_existing.png", title: "Existing user flow", caption: "The designed daily loop: how people come in (watch, app or body-signal alert), read Today, log, and move to Journal, Analysis or Energizer." },
+    ],
     implementation: {
       title: "Implementation & Changes",
       description: "Rebuilt in the order people meet the app.",
@@ -234,7 +242,7 @@ export const projects: CaseStudy[] = [
           title: "Step 4 · Main Layout",
           description: "Battery first, then one tip. LUMI grows only when you log: 10, 8, 6, 4, then 2 points through the day.",
           image: "/images/projects/lumi_today.png",
-          wide: true,
+          phone: true,
         },
       ],
     },

@@ -540,6 +540,36 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
       </motion.section>
       )}
 
+      {/* USER FLOWS: the flows that were revisited before the redesign */}
+      {project.userFlows && project.userFlows.length > 0 && (
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">User flow, revisited</h2>
+          <p className="text-earth-600 dark:text-earth-300 mb-10">The beta flow I designed. The redesigned screens follow it.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {project.userFlows.map((flow) => (
+              <figure key={flow.image} className="flex flex-col gap-3">
+                <img
+                  src={flow.image}
+                  alt={flow.title}
+                  loading="lazy"
+                  className="w-full h-auto rounded-xl border border-earth-300/40 dark:border-earth-600/40 bg-earth-50"
+                />
+                <figcaption>
+                  <p className="font-serif text-xl mb-1">{flow.title}</p>
+                  <p className="text-sm leading-relaxed text-earth-600 dark:text-earth-300">{flow.caption}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </motion.section>
+      )}
+
       {/* PROCESS: research to mock-up, one row per stage */}
       {project.process && project.process.length > 0 && (
         <motion.section
@@ -666,7 +696,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           if ((change as any).image) setSelectedMedia({ type: 'image', src: (change as any).image })
                           else if ((change as any).video) setSelectedMedia({ type: 'video', src: (change as any).video })
                         }}
-                        className={`${change.wide ? 'max-w-5xl' : 'max-w-2xl'} mx-auto cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow`}
+                        className={`${change.phone ? 'max-w-[360px]' : change.wide ? 'max-w-5xl' : 'max-w-2xl'} mx-auto cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow`}
                       >
                         {(change as any).image && (
                           <motion.img
