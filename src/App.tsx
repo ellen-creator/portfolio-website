@@ -75,7 +75,7 @@ function App() {
           )}
         </main>
 
-        <footer className="max-w-7xl mx-auto px-4 md:px-8 mt-24 pb-12">
+        <footer className="max-w-7xl mx-auto px-4 md:px-8 mt-16 pb-10">
           <div className="border-t-2 border-earth-900 dark:border-earth-50 pt-6 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <p className="font-display uppercase text-4xl tracking-wide">Suhyun Lim</p>
             <div className="flex flex-wrap gap-x-6 gap-y-2 font-sans font-bold uppercase text-sm tracking-wide">

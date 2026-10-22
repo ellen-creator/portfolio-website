@@ -69,7 +69,7 @@ export default function Private() {
   // ]
 
   return (
-    <div className="max-w-4xl mx-auto px-8 py-20">
+    <div className="max-w-4xl mx-auto px-5 md:px-8 py-10">
       {/* About: photo + bio + quick facts */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
@@ -100,7 +100,7 @@ export default function Private() {
             </figcaption>
           </figure>
 
-          <div id="my-story" className="scroll-mt-8 md:col-span-7 text-lg leading-relaxed space-y-5 text-earth-900 dark:text-earth-100">
+          <div id="my-story" className="scroll-mt-8 md:col-span-7 text-xl leading-relaxed space-y-5 text-earth-900 dark:text-earth-100">
             <p className="text-xl md:text-2xl leading-snug font-serif">
               I&apos;ve always wanted to know how people actually experience the world, and then make that experience a little kinder.
             </p>
@@ -170,7 +170,7 @@ export default function Private() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.8 }}
-        className="mb-32 border-t border-earth-600/15 dark:border-earth-50/10 pt-20"
+        className="mb-20 border-t border-earth-600/15 dark:border-earth-50/10 pt-12"
       >
         <h2 className="text-4xl font-serif mb-12 text-earth-900 dark:text-earth-50">
           Work Experience
@@ -198,7 +198,7 @@ export default function Private() {
                   {experience.location}
                 </p>
               </div>
-              <p className="text-earth-900 dark:text-earth-100 leading-relaxed mb-4">
+              <p className="text-earth-900 dark:text-earth-100 leading-relaxed text-lg mb-4">
                 {experience.description}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -221,7 +221,7 @@ export default function Private() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8 }}
-        className="mb-32 border-t border-earth-600/15 dark:border-earth-50/10 pt-20"
+        className="mb-20 border-t border-earth-600/15 dark:border-earth-50/10 pt-12"
       >
         <h2 className="text-4xl font-serif mb-12 text-earth-900 dark:text-earth-50">
           Recent Reflections
@@ -254,7 +254,7 @@ export default function Private() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.8 }}
-        className="border-t border-earth-600/15 dark:border-earth-50/10 pt-20"
+        className="border-t border-earth-600/15 dark:border-earth-50/10 pt-12"
       >
         <h2 className="text-4xl font-serif mb-8 text-earth-900 dark:text-earth-50">
           Design Philosophy

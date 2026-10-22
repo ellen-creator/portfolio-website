@@ -34,14 +34,14 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="max-w-6xl mx-auto px-6 py-16 text-earth-900 dark:text-earth-50"
+      className="max-w-6xl mx-auto px-5 md:px-6 py-8 text-earth-900 dark:text-earth-50"
     >
       {/* Back Button */}
       <motion.button
         whileHover={{ x: -6 }}
         whileTap={{ scale: 0.95 }}
         onClick={onBack}
-        className="mb-12 text-earth-600 dark:text-earth-300 hover:text-earth-900 dark:hover:text-earth-50 transition-all duration-300 flex items-center gap-2 text-sm tracking-widest uppercase"
+        className="mb-6 text-earth-600 dark:text-earth-300 hover:text-earth-900 dark:hover:text-earth-50 transition-all duration-300 flex items-center gap-2 text-base tracking-widest uppercase"
       >
         ← Back to Work
       </motion.button>
@@ -51,11 +51,11 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20 border-b border-earth-600/15 dark:border-earth-50/10 pb-16"
+        className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-14 border-b border-earth-600/15 dark:border-earth-50/10 pb-16"
       >
         {/* Left: Title + Overview */}
         <div className="md:col-span-7">
-          <p className="uppercase tracking-wide text-[15px] mb-3">{project.tags[0]}</p>
+          <p className="uppercase tracking-wide text-base mb-3">{project.tags[0]}</p>
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -68,7 +68,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-lg leading-relaxed text-earth-700 dark:text-earth-200"
+            className="text-xl leading-relaxed text-earth-700 dark:text-earth-200"
           >
             {project.overview}
           </motion.p>
@@ -134,7 +134,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + idx * 0.1, duration: 0.4 }}
-                  className="px-3 py-1.5 text-earth-900 dark:text-earth-100 uppercase text-xs tracking-wide border border-earth-900/70 dark:border-earth-200/70"
+                  className="px-3 py-1.5 text-earth-900 dark:text-earth-100 uppercase text-sm tracking-wide border border-earth-900/70 dark:border-earth-200/70"
                 >
                   {tag}
                 </motion.span>
@@ -158,7 +158,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6 + idx * 0.05, duration: 0.4 }}
-                  className="px-3 py-1 bg-earth-100 dark:bg-earth-800 text-earth-800 dark:text-earth-200 text-sm"
+                  className="px-3 py-1 bg-earth-100 dark:bg-earth-800 text-earth-800 dark:text-earth-200 text-base"
                 >
                   {tool}
                 </motion.span>
@@ -175,7 +175,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-20 border-y border-earth-600/20 dark:border-earth-50/15 py-12"
+          className="mb-14 border-y border-earth-600/20 dark:border-earth-50/15 py-8"
         >
           {project.scope && (
             <p className="uppercase tracking-wide text-sm mb-4 text-earth-600 dark:text-earth-300">{project.scope}</p>
@@ -186,13 +186,13 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {project.before && (
               <div className="border-l-2 border-earth-300 dark:border-earth-600 pl-5">
-                <p className="font-sans font-bold uppercase text-xs tracking-widest mb-2 text-earth-600 dark:text-earth-300">Before</p>
+                <p className="font-sans font-bold uppercase text-sm tracking-widest mb-2 text-earth-600 dark:text-earth-300">Before</p>
                 <p className="text-lg leading-relaxed">{project.before}</p>
               </div>
             )}
             {project.after && (
               <div className="border-l-2 border-accent pl-5">
-                <p className="font-sans font-bold uppercase text-xs tracking-widest mb-2 text-accent">After</p>
+                <p className="font-sans font-bold uppercase text-sm tracking-widest mb-2 text-accent">After</p>
                 <p className="text-lg leading-relaxed">{project.after}</p>
               </div>
             )}
@@ -205,7 +205,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.8 }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-20 md:items-center"
+        className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-14 md:items-center"
       >
         {/* Left: Situation + Problem (2 columns out of 3) */}
         <motion.div
@@ -287,7 +287,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                       initial={{ opacity: 0, x: 10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.55 + idx * 0.1, duration: 0.5 }}
-                      className="text-earth-700 dark:text-earth-200 text-base leading-relaxed"
+                      className="text-earth-700 dark:text-earth-200 text-lg leading-relaxed"
                     >
                       {line.trim()}
                     </motion.li>
@@ -304,7 +304,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.6 }}
-        className="mb-20 text-center max-w-3xl mx-auto"
+        className="mb-14 text-center max-w-3xl mx-auto"
       >
         <p className="text-earth-600 dark:text-earth-400 text-lg mb-6">
           So what's the hypothesis?
@@ -313,7 +313,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           "{project.solution.howMightWe}"
         </blockquote>
         {project.solution.approach && (
-          <p className="text-earth-700 dark:text-earth-200 text-base leading-relaxed">
+          <p className="text-earth-700 dark:text-earth-200 text-lg leading-relaxed">
             {project.solution.approach}
           </p>
         )}
@@ -326,7 +326,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-20"
+          className="mb-14"
         >
           {project.insights && project.insights.length > 0 && (
             <div className="mb-16">
@@ -419,7 +419,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
-        className="mb-20"
+        className="mb-14"
       >
         <div className="mb-12 text-center max-w-2xl mx-auto">
           <h2 className="text-4xl font-serif mb-4 text-earth-900 dark:text-earth-50">
@@ -505,7 +505,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
-        className="mb-20"
+        className="mb-14"
       >
         <h2 className="text-4xl font-serif mb-12 text-earth-900 dark:text-earth-50">
           Solution
@@ -547,7 +547,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-14"
         >
           <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">User flow, revisited</h2>
           <p className="text-earth-600 dark:text-earth-300 mb-10">The beta flow I designed. The redesigned screens follow it.</p>
@@ -577,7 +577,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-14"
         >
           <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">From research to mock-up</h2>
           <p className="text-earth-600 dark:text-earth-300 mb-10">Each stage, the method behind it, and what it produced.</p>
@@ -600,12 +600,12 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.8 }}
-        className="mb-20"
+        className="mb-14"
       >
         <h2 className="text-4xl font-serif mb-6 text-earth-900 dark:text-earth-50">
           Implementation & Changes
         </h2>
-        <p className="text-lg text-sage-700 dark:text-sage-300 leading-relaxed mb-20 max-w-3xl">
+        <p className="text-lg text-sage-700 dark:text-sage-300 leading-relaxed mb-14 max-w-3xl">
           {project.implementation.description}
         </p>
 
@@ -869,7 +869,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-14"
         >
           <h2 className="text-4xl font-serif font-light mb-10 text-earth-900 dark:text-earth-50">Usability Changes</h2>
           <div className="divide-y divide-earth-300/60 dark:divide-earth-600/60 border-y border-earth-300/60 dark:border-earth-600/60">
@@ -894,7 +894,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.8 }}
-        className="mb-20 border-t border-earth-600/15 dark:border-earth-50/10 pt-16"
+        className="mb-14 border-t border-earth-600/15 dark:border-earth-50/10 pt-10"
       >
         <h2 className="text-4xl font-serif mb-6 text-earth-900 dark:text-earth-50">
           {project.impact.title}
