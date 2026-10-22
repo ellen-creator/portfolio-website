@@ -193,7 +193,7 @@ export const projects: CaseStudy[] = [
     situation: {
       title: "Situation",
       description: "LUMI-ND was built feature-first, for parents watching a child.",
-      context: "Today opened on live heart rate and stacked five cards. Wording came from parent and teacher contexts (\"Meltdown\", IEP).",
+      context: "Feature first, not users, so it made users hard to follow the feature.",
       keywords: ["Feature-First", "Data Overload", "Wrong Audience"],
     },
     problem: {

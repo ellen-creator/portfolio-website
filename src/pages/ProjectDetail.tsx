@@ -104,7 +104,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.6 }}
             >
-              <h3 className="text-lg font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
+              <h3 className="text-xl font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
                 Research methods
               </h3>
               <ul className="space-y-2">
@@ -124,7 +124,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <h3 className="text-lg font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
+            <h3 className="text-xl font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
               Focus
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -134,7 +134,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + idx * 0.1, duration: 0.4 }}
-                  className="px-3 py-1.5 text-earth-900 dark:text-earth-100 uppercase text-sm tracking-wide border border-earth-900/70 dark:border-earth-200/70"
+                  className="px-3 py-1.5 text-earth-900 dark:text-earth-100 uppercase text-base tracking-wide border border-earth-900/70 dark:border-earth-200/70"
                 >
                   {tag}
                 </motion.span>
@@ -148,7 +148,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <h3 className="text-lg font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
+            <h3 className="text-xl font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
               Tools & Methods
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -178,7 +178,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           className="mb-14 border-y border-earth-600/20 dark:border-earth-50/15 py-8"
         >
           {project.scope && (
-            <p className="uppercase tracking-wide text-sm mb-4 text-earth-600 dark:text-earth-300">{project.scope}</p>
+            <p className="uppercase tracking-wide text-base mb-4 text-earth-600 dark:text-earth-300">{project.scope}</p>
           )}
           <p className="font-serif text-3xl md:text-4xl leading-snug mb-10 text-earth-900 dark:text-earth-50">
             {project.result}
@@ -186,14 +186,14 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {project.before && (
               <div className="border-l-2 border-earth-300 dark:border-earth-600 pl-5">
-                <p className="font-sans font-bold uppercase text-sm tracking-widest mb-2 text-earth-600 dark:text-earth-300">Before</p>
-                <p className="text-lg leading-relaxed">{project.before}</p>
+                <p className="font-sans font-bold uppercase text-base tracking-widest mb-2 text-earth-600 dark:text-earth-300">Before</p>
+                <p className="text-xl leading-relaxed">{project.before}</p>
               </div>
             )}
             {project.after && (
               <div className="border-l-2 border-accent pl-5">
-                <p className="font-sans font-bold uppercase text-sm tracking-widest mb-2 text-accent">After</p>
-                <p className="text-lg leading-relaxed">{project.after}</p>
+                <p className="font-sans font-bold uppercase text-base tracking-widest mb-2 text-accent">After</p>
+                <p className="text-xl leading-relaxed">{project.after}</p>
               </div>
             )}
           </div>
@@ -216,12 +216,12 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         >
           {/* Situation Section */}
           {project.situation.keywords && (
-            <div className="mb-8 pb-8">
+            <div className="mb-6">
               <h4 className="text-xs text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-6">
                 ▸ Situation
               </h4>
               {/* Keywords with hanging lines */}
-              <div className="flex flex-wrap gap-3 mb-4 relative pb-6 justify-start">
+              <div className="flex flex-wrap md:flex-nowrap justify-between gap-x-3 gap-y-3 mb-3 relative pb-5">
                 {project.situation.keywords.map((keyword, idx) => (
                   <motion.div
                     key={idx}
@@ -230,7 +230,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     transition={{ delay: 0.45 + idx * 0.05, duration: 0.5 }}
                     className="relative"
                   >
-                    <span className="text-base font-serif text-earth-700 dark:text-earth-200 italic whitespace-nowrap">
+                    <span className="text-xl font-serif text-earth-700 dark:text-earth-200 italic whitespace-nowrap">
                       {keyword}
                     </span>
                     {/* Vertical dotted line */}
@@ -257,7 +257,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   transition={{ delay: 0.5 + idx * 0.05, duration: 0.5 }}
                   className="bg-earth-50/70 dark:bg-earth-800/40 px-4 py-3 rounded-lg border border-earth-300/30 dark:border-earth-600/30"
                 >
-                  <p className="text-earth-700 dark:text-earth-300 text-sm">
+                  <p className="text-earth-700 dark:text-earth-300 text-base">
                     {point}
                   </p>
                 </motion.div>
@@ -287,7 +287,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                       initial={{ opacity: 0, x: 10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.55 + idx * 0.1, duration: 0.5 }}
-                      className="text-earth-700 dark:text-earth-200 text-lg leading-relaxed"
+                      className="text-earth-700 dark:text-earth-200 text-xl leading-relaxed"
                     >
                       {line.trim()}
                     </motion.li>
@@ -306,14 +306,14 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         transition={{ delay: 0.5, duration: 0.6 }}
         className="mb-14 text-center max-w-3xl mx-auto"
       >
-        <p className="text-earth-600 dark:text-earth-400 text-lg mb-6">
+        <p className="text-earth-600 dark:text-earth-400 text-xl mb-6">
           So what's the hypothesis?
         </p>
         <blockquote className="text-3xl md:text-4xl font-serif italic text-earth-900 dark:text-earth-50 leading-relaxed mb-8">
           "{project.solution.howMightWe}"
         </blockquote>
         {project.solution.approach && (
-          <p className="text-earth-700 dark:text-earth-200 text-lg leading-relaxed">
+          <p className="text-earth-700 dark:text-earth-200 text-xl leading-relaxed">
             {project.solution.approach}
           </p>
         )}
@@ -352,7 +352,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     <p className="text-earth-900 dark:text-earth-100 leading-relaxed mb-5 flex-1">
                       {insight.finding}
                     </p>
-                    <p className="text-sm text-earth-900 dark:text-earth-200 leading-relaxed border-t border-earth-100/40 dark:border-earth-600/40 pt-4">
+                    <p className="text-base text-earth-900 dark:text-earth-200 leading-relaxed border-t border-earth-100/40 dark:border-earth-600/40 pt-4">
                       <span className="text-earth-600 dark:text-earth-600 mr-1">→</span>
                       {insight.implication}
                     </p>
@@ -392,8 +392,8 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                               key={option}
                               className={
                                 chosen
-                                  ? 'px-3 py-1 rounded-full text-sm font-normal bg-earth-900 text-earth-50 dark:bg-earth-200 dark:text-earth-900'
-                                  : 'px-3 py-1 rounded-full text-sm text-earth-600 dark:text-earth-600 border border-earth-600/30 dark:border-earth-600/60 line-through decoration-earth-600/50'
+                                  ? 'px-3 py-1 rounded-full text-base font-normal bg-earth-900 text-earth-50 dark:bg-earth-200 dark:text-earth-900'
+                                  : 'px-3 py-1 rounded-full text-base text-earth-600 dark:text-earth-600 border border-earth-600/30 dark:border-earth-600/60 line-through decoration-earth-600/50'
                               }
                             >
                               {chosen && '✓ '}{option}
@@ -425,7 +425,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           <h2 className="text-4xl font-serif mb-4 text-earth-900 dark:text-earth-50">
             Solution
           </h2>
-          <p className="text-earth-700 dark:text-earth-200 text-lg">
+          <p className="text-earth-700 dark:text-earth-200 text-xl">
             Two distinct user personas required two completely different approaches to messaging, UI flows, and immediate action pathways.
           </p>
         </div>
@@ -455,10 +455,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               <h3 className="text-2xl font-serif mb-3 text-earth-900 dark:text-earth-50">
                 Persona 1: Urgent Help & Immediate Rescue
               </h3>
-              <p className="text-sm text-earth-600 dark:text-earth-400 mb-6 pb-6 border-b border-earth-300/30 dark:border-earth-600/30">
+              <p className="text-base text-earth-600 dark:text-earth-400 mb-6 pb-6 border-b border-earth-300/30 dark:border-earth-600/30">
                 <strong>Psychology:</strong> Acute panic, extreme anxiety, time pressure. Needs immediate reassurance and action pathway.
               </p>
-              <h4 className="font-serif text-earth-900 dark:text-earth-50 mb-3 text-lg">Design Solution</h4>
+              <h4 className="font-serif text-earth-900 dark:text-earth-50 mb-3 text-xl">Design Solution</h4>
               <p className="text-earth-700 dark:text-earth-200 leading-relaxed">
                 Emotionally reassuring UX copy with time-bound action commitment. Chatbot opens with personal accountability: "I will personally ensure your data doesn't spread." Direct Inquiry Bar for instant consultation. The chatbot expresses deep empathy for urgent and panic situations.
               </p>
@@ -489,10 +489,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               <h3 className="text-2xl font-serif mb-3 text-earth-900 dark:text-earth-50">
                 Persona 2: People looking for ‘technical’ reliability
               </h3>
-              <p className="text-sm text-earth-600 dark:text-earth-400 mb-6 pb-6 border-b border-earth-300/30 dark:border-earth-600/30">
+              <p className="text-base text-earth-600 dark:text-earth-400 mb-6 pb-6 border-b border-earth-300/30 dark:border-earth-600/30">
                 <strong>Psychology:</strong> Rational validation, seeking technical credibility. Researching specific platforms & solutions.
               </p>
-              <h4 className="font-serif text-earth-900 dark:text-earth-50 mb-3 text-lg">Design Solution</h4>
+              <h4 className="font-serif text-earth-900 dark:text-earth-50 mb-3 text-xl">Design Solution</h4>
               <p className="text-earth-700 dark:text-earth-200 leading-relaxed">
                 Technical credibility-first messaging with platform-specific expertise. Downloadable technical summaries and malware analysis methodologies are given right away when people enter their data.
               </p>
@@ -532,7 +532,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         {/* Concise Description */}
         <div className="mb-12 max-w-3xl mx-auto space-y-6">
           <div>
-            <p className="text-lg text-earth-700 dark:text-earth-200 leading-relaxed">
+            <p className="text-xl text-earth-700 dark:text-earth-200 leading-relaxed">
               {project.solution.description}
             </p>
           </div>
@@ -562,7 +562,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                 />
                 <figcaption>
                   <p className="font-serif text-xl mb-1">{flow.title}</p>
-                  <p className="text-sm leading-relaxed text-earth-600 dark:text-earth-300">{flow.caption}</p>
+                  <p className="text-base leading-relaxed text-earth-600 dark:text-earth-300">{flow.caption}</p>
                 </figcaption>
               </figure>
             ))}
@@ -587,8 +587,8 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                 <p className="font-sans font-bold text-xs uppercase tracking-widest text-accent">
                   {String(idx + 1).padStart(2, '0')} · {step.stage}
                 </p>
-                <p className="text-sm text-earth-600 dark:text-earth-300 leading-relaxed">{step.method}</p>
-                <p className="mt-auto pt-3 font-serif text-lg leading-snug text-earth-900 dark:text-earth-50">{step.output}</p>
+                <p className="text-base text-earth-600 dark:text-earth-300 leading-relaxed">{step.method}</p>
+                <p className="mt-auto pt-3 font-serif text-xl leading-snug text-earth-900 dark:text-earth-50">{step.output}</p>
               </li>
             ))}
           </ol>
@@ -605,7 +605,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         <h2 className="text-4xl font-serif mb-6 text-earth-900 dark:text-earth-50">
           Implementation & Changes
         </h2>
-        <p className="text-lg text-sage-700 dark:text-sage-300 leading-relaxed mb-14 max-w-3xl">
+        <p className="text-xl text-sage-700 dark:text-sage-300 leading-relaxed mb-14 max-w-3xl">
           {project.implementation.description}
         </p>
 
@@ -649,7 +649,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                       <h3 className="text-3xl font-serif text-earth-900 dark:text-earth-50">
                         {(change as any).title}
                       </h3>
-                      <p className="text-lg text-earth-700 dark:text-earth-200 leading-relaxed">
+                      <p className="text-xl text-earth-700 dark:text-earth-200 leading-relaxed">
                         {(change as any).description}
                       </p>
                     </div>
@@ -727,7 +727,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                 )}
 
                 {(change as any).caption && (
-                  <p className="max-w-3xl mx-auto mt-4 text-sm leading-relaxed text-earth-600 dark:text-earth-300">
+                  <p className="max-w-3xl mx-auto mt-4 text-base leading-relaxed text-earth-600 dark:text-earth-300">
                     {(change as any).caption}
                   </p>
                 )}
@@ -745,7 +745,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                       <h3 className="text-3xl font-serif mb-4 text-earth-900 dark:text-earth-50">
                         {(change as any).title}
                       </h3>
-                      <p className="text-lg text-earth-700 dark:text-earth-200 leading-relaxed mb-8">
+                      <p className="text-xl text-earth-700 dark:text-earth-200 leading-relaxed mb-8">
                         {(change as any).description}
                       </p>
                     </div>
@@ -770,7 +770,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           />
                         </motion.div>
                         {(change as any).captions?.[imgIdx] && (
-                          <p className="text-sm leading-relaxed text-earth-600 dark:text-earth-300">
+                          <p className="text-base leading-relaxed text-earth-600 dark:text-earth-300">
                             {(change as any).captions[imgIdx]}
                           </p>
                         )}
@@ -832,7 +832,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     <h3 className="text-3xl font-serif text-earth-900 dark:text-earth-50">
                       {(change as any).title}
                     </h3>
-                    <p className="text-lg text-earth-900 dark:text-earth-200 leading-relaxed whitespace-pre-line">
+                    <p className="text-xl text-earth-900 dark:text-earth-200 leading-relaxed whitespace-pre-line">
                       {(change as any).description}
                     </p>
                   </motion.div>
@@ -849,7 +849,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   >
                     <h3 className="text-2xl font-serif text-earth-900 dark:text-earth-50">{change.before}</h3>
                     <div className="bg-earth-100/40 dark:bg-earth-700/20 border border-earth-300/30 dark:border-earth-600/30 rounded-xl p-6 md:p-8">
-                      <p className="text-lg text-earth-700 dark:text-earth-200 italic leading-relaxed">"{change.after}"</p>
+                      <p className="text-xl text-earth-700 dark:text-earth-200 italic leading-relaxed">"{change.after}"</p>
                     </div>
                     <div className="bg-earth-50/50 dark:bg-earth-800/20 border border-earth-200/30 dark:border-earth-700/30 rounded-lg p-6">
                       <p className="text-earth-700 dark:text-earth-300 leading-relaxed text-base">{change.explanation}</p>
@@ -899,7 +899,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         <h2 className="text-4xl font-serif mb-6 text-earth-900 dark:text-earth-50">
           {project.impact.title}
         </h2>
-        <p className="text-lg text-earth-700 dark:text-earth-200 mb-12 leading-relaxed">
+        <p className="text-xl text-earth-700 dark:text-earth-200 mb-12 leading-relaxed">
           {project.impact.description}
         </p>
 
@@ -921,7 +921,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   {metric.unit}
                 </p>
               )}
-              <p className="text-sm text-earth-600 dark:text-earth-400 tracking-wide">
+              <p className="text-base text-earth-600 dark:text-earth-400 tracking-wide">
                 {metric.label}
               </p>
             </motion.div>
@@ -934,7 +934,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="italic text-earth-700 dark:text-earth-200 pl-8 border-l-4 border-earth-400 dark:border-earth-500 text-lg leading-relaxed bg-earth-100/30 dark:bg-earth-700/20 p-6 rounded-lg"
+            className="italic text-earth-700 dark:text-earth-200 pl-8 border-l-4 border-earth-400 dark:border-earth-500 text-xl leading-relaxed bg-earth-100/30 dark:bg-earth-700/20 p-6 rounded-lg"
           >
             "{project.impact.testimonial}"
           </motion.blockquote>
@@ -952,10 +952,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             <p className="text-xs uppercase tracking-widest text-earth-600 dark:text-earth-600 mb-3">
               Back to the hypothesis
             </p>
-            <p className="text-lg font-serif italic text-earth-600 dark:text-earth-600 mb-4 leading-relaxed">
+            <p className="text-xl font-serif italic text-earth-600 dark:text-earth-600 mb-4 leading-relaxed">
               "{project.solution.howMightWe}"
             </p>
-            <p className="text-lg text-earth-900 dark:text-earth-100 leading-relaxed">
+            <p className="text-xl text-earth-900 dark:text-earth-100 leading-relaxed">
               {project.hypothesisCheck}
             </p>
           </motion.div>
@@ -979,7 +979,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7 + idx * 0.05, duration: 0.5 }}
-              className="flex gap-4 text-earth-700 dark:text-earth-200 text-lg leading-relaxed"
+              className="flex gap-4 text-earth-700 dark:text-earth-200 text-xl leading-relaxed"
             >
               <span className="text-earth-400 dark:text-earth-500 mt-1 flex-shrink-0">▸</span>
               <span>{learning}</span>

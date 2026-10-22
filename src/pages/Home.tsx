@@ -36,7 +36,7 @@ export default function Home({ onSelectProject }: HomeProps) {
       {/* Portfolio */}
       <section>
         <h2 className="border-t-2 border-earth-900 pt-3 font-sans font-bold uppercase text-sm tracking-widest mb-2">Portfolio</h2>
-        <p className="text-lg md:text-xl text-earth-700 mb-8">UX research and product strategy: find the real problem with people, prove it with data, then change the product.</p>
+        <p className="text-xl md:text-xl text-earth-700 mb-8">UX research and product strategy: find the real problem with people, prove it with data, then change the product.</p>
         <div className="grid md:grid-cols-2 gap-x-10 gap-y-14">
           {projects.map((p) => (
             <article key={p.id}>
@@ -47,7 +47,7 @@ export default function Home({ onSelectProject }: HomeProps) {
                   className="w-full h-auto block grayscale hover:grayscale-0 hover:scale-[1.02] transition duration-700 ease-in-out"
                 />
               </button>
-              <p className="uppercase text-base tracking-wide mb-2 text-earth-600">
+              <p className="uppercase text-lg tracking-wide mb-2 text-earth-600">
                 {p.tags[0]} · {p.year}
               </p>
               <button onClick={() => onSelectProject(p.id)} className="text-left">
@@ -55,7 +55,7 @@ export default function Home({ onSelectProject }: HomeProps) {
                   {p.title}
                 </h3>
               </button>
-              <p className="text-base md:text-lg text-earth-700 mt-2 leading-snug">{p.subtitle}</p>
+              <p className="text-lg md:text-xl text-earth-700 mt-2 leading-snug">{p.subtitle}</p>
             </article>
           ))}
         </div>
@@ -69,18 +69,18 @@ export default function Home({ onSelectProject }: HomeProps) {
           {skills.map((s) => (
             <div key={s.title} className="border-t border-earth-300 pt-4">
               <h3 className="font-serif text-2xl mb-2">{s.title}</h3>
-              <p className="text-lg text-earth-700 leading-relaxed">{s.body}</p>
+              <p className="text-xl text-earth-700 leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>
 
-        <h3 className="font-sans font-bold uppercase text-base tracking-widest mt-14 mb-8 border-t-2 border-earth-900 pt-3">Soft skills</h3>
+        <h3 className="font-sans font-bold uppercase text-lg tracking-widest mt-14 mb-8 border-t-2 border-earth-900 pt-3">Soft skills</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-10">
           {softSkills.map((s) => (
             <div key={s.title} className="border-t border-earth-300 pt-4">
               <h4 className="font-serif text-2xl mb-2">{s.title}</h4>
-              <p className="text-lg text-earth-700 leading-relaxed mb-3">{s.body}</p>
-              <p className="text-base uppercase tracking-wide text-earth-600">{s.where}</p>
+              <p className="text-xl text-earth-700 leading-relaxed mb-3">{s.body}</p>
+              <p className="text-lg uppercase tracking-wide text-earth-600">{s.where}</p>
             </div>
           ))}
         </div>

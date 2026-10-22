@@ -61,7 +61,7 @@ function DogSketch({ night }: { night: boolean }) {
 
 export default function Masthead({ edition, compact = false, onWork, onSkills, onStory, onSelectProject }: MastheadProps) {
   const isNight = edition === 'story'
-  const navBtn = 'uppercase font-sans font-bold text-[15px] tracking-wider hover:opacity-60'
+  const navBtn = 'uppercase font-sans font-bold text-[17px] tracking-wider hover:opacity-60'
 
   return (
     <header className="max-w-6xl mx-auto px-4 md:px-8">
@@ -80,7 +80,7 @@ export default function Masthead({ edition, compact = false, onWork, onSkills, o
           href="/resume.pdf"
           target="_blank"
           rel="noreferrer"
-          className="bg-accent text-white px-4 md:px-5 py-2.5 font-sans font-bold text-[15px] uppercase tracking-wider hover:brightness-110"
+          className="bg-accent text-white px-4 md:px-5 py-2.5 font-sans font-bold text-[17px] uppercase tracking-wider hover:brightness-110"
         >
           Resume
         </a>
@@ -110,7 +110,7 @@ export default function Masthead({ edition, compact = false, onWork, onSkills, o
       )}
 
       {/* Case study bar */}
-      <nav className="border-y border-earth-900/80 dark:border-earth-50/60 py-3 flex flex-wrap justify-center gap-y-2 font-sans font-bold uppercase text-[14px] md:text-[16px] tracking-wider">
+      <nav className="border-y border-earth-900/80 dark:border-earth-50/60 py-3 flex flex-wrap justify-center gap-y-2 font-sans font-bold uppercase text-[16px] md:text-[18px] tracking-wider">
         {projects.map((p, i) => (
           <span key={p.id} className="flex items-center">
             {i > 0 && <span className="mx-3 md:mx-4 text-earth-400 font-normal" aria-hidden="true">|</span>}

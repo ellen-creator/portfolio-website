@@ -83,7 +83,7 @@ export default function Private() {
         </h1>
         <a
           href="#my-story"
-          className="inline-block bg-accent text-white px-6 py-3 font-sans font-bold uppercase text-sm tracking-wider hover:brightness-110 mb-12"
+          className="inline-block bg-accent text-white px-6 py-3 font-sans font-bold uppercase text-base tracking-wider hover:brightness-110 mb-12"
         >
           Read my story
         </a>
@@ -95,12 +95,12 @@ export default function Private() {
               alt="Suhyun Lim smiling on a mountain ridge, holding trekking poles"
               className="w-full h-auto block"
             />
-            <figcaption className="mt-3 text-sm text-earth-600 dark:text-earth-300 italic">
+            <figcaption className="mt-3 text-base text-earth-600 dark:text-earth-300 italic">
               Happiest above the treeline.
             </figcaption>
           </figure>
 
-          <div id="my-story" className="scroll-mt-8 md:col-span-7 text-xl leading-relaxed space-y-5 text-earth-900 dark:text-earth-100">
+          <div id="my-story" className="scroll-mt-8 md:col-span-7 text-2xl leading-relaxed space-y-5 text-earth-900 dark:text-earth-100">
             <p className="text-xl md:text-2xl leading-snug font-serif">
               I&apos;ve always wanted to know how people actually experience the world, and then make that experience a little kinder.
             </p>
@@ -141,7 +141,7 @@ export default function Private() {
             <dt className="font-sans font-bold uppercase text-xs tracking-widest mb-2">Education</dt>
             <dd className="leading-snug">
               M.S. Information, University of Michigan
-              <span className="block text-earth-600 dark:text-earth-300 text-sm mt-1">UX design &amp; research · 2026 – 2028</span>
+              <span className="block text-earth-600 dark:text-earth-300 text-base mt-1">UX design &amp; research · 2026 – 2028</span>
               <span className="block mt-3">B.A. Social Work &amp; Business Design, The University of Hong Kong</span>
             </dd>
           </div>
@@ -191,14 +191,14 @@ export default function Private() {
                 <h3 className="text-2xl font-serif text-earth-900 dark:text-earth-50 mt-2">
                   {experience.role}
                 </h3>
-                <p className="text-lg text-earth-600 dark:text-earth-200">
+                <p className="text-xl text-earth-600 dark:text-earth-200">
                   {experience.company}
                 </p>
-                <p className="text-sm text-earth-600 dark:text-earth-300">
+                <p className="text-base text-earth-600 dark:text-earth-300">
                   {experience.location}
                 </p>
               </div>
-              <p className="text-earth-900 dark:text-earth-100 leading-relaxed text-lg mb-4">
+              <p className="text-earth-900 dark:text-earth-100 leading-relaxed text-xl mb-4">
                 {experience.description}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -241,7 +241,7 @@ export default function Private() {
               <h3 className="text-2xl font-serif mt-3 mb-4 text-earth-900 dark:text-earth-50">
                 {entry.title}
               </h3>
-              <p className="text-earth-900 dark:text-earth-100 leading-relaxed text-lg">
+              <p className="text-earth-900 dark:text-earth-100 leading-relaxed text-xl">
                 {entry.content}
               </p>
             </motion.article>
@@ -259,7 +259,7 @@ export default function Private() {
         <h2 className="text-4xl font-serif mb-8 text-earth-900 dark:text-earth-50">
           Design Philosophy
         </h2>
-        <div className="space-y-6 text-earth-900 dark:text-earth-100 leading-relaxed text-lg">
+        <div className="space-y-6 text-earth-900 dark:text-earth-100 leading-relaxed text-xl">
           <p>
             I believe in starting from observation. Before designing, I listen. I watch how people actually use products,
             identify friction points, and understand the real problems beneath what they initially ask for.
