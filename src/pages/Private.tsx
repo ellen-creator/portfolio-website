@@ -81,12 +81,6 @@ export default function Private() {
         <h1 className="font-serif text-4xl md:text-6xl leading-[1.1] mb-6 text-earth-900 dark:text-earth-50">
           Hello, I&apos;m Suhyun (Ellen) Lim.
         </h1>
-        <a
-          href="#my-story"
-          className="inline-block bg-accent text-white px-6 py-3 font-sans font-bold uppercase text-base tracking-wider hover:brightness-110 mb-12"
-        >
-          Read my story
-        </a>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <figure className="md:col-span-5">
