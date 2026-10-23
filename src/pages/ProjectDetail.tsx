@@ -10,11 +10,14 @@ interface ProjectDetailProps {
 export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps) {
   const project = projects.find(p => p.id === projectId)
   const [selectedMedia, setSelectedMedia] = useState<{ type: 'image' | 'video'; src: string } | null>(null)
+  const [zoomSrc, setZoomSrc] = useState<string | null>(null)
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        if (selectedMedia) {
+        if (zoomSrc) {
+          setZoomSrc(null)
+        } else if (selectedMedia) {
           setSelectedMedia(null)
         } else {
           onBack()
@@ -23,7 +26,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [onBack, selectedMedia])
+  }, [onBack, selectedMedia, zoomSrc])
 
   if (!project) {
     return <div className="text-center py-20 text-earth-900 dark:text-earth-100">Project not found</div>
@@ -68,7 +71,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-xl leading-relaxed text-earth-700 dark:text-earth-200"
+            className="text-2xl leading-relaxed text-earth-700 dark:text-earth-200"
           >
             {project.overview}
           </motion.p>
@@ -187,13 +190,13 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             {project.before && (
               <div className="border-l-2 border-earth-300 dark:border-earth-600 pl-5">
                 <p className="font-sans font-bold uppercase text-base tracking-widest mb-2 text-earth-600 dark:text-earth-300">Before</p>
-                <p className="text-xl leading-relaxed">{project.before}</p>
+                <p className="text-2xl leading-relaxed">{project.before}</p>
               </div>
             )}
             {project.after && (
               <div className="border-l-2 border-accent pl-5">
                 <p className="font-sans font-bold uppercase text-base tracking-widest mb-2 text-accent">After</p>
-                <p className="text-xl leading-relaxed">{project.after}</p>
+                <p className="text-2xl leading-relaxed">{project.after}</p>
               </div>
             )}
           </div>
@@ -287,7 +290,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                       initial={{ opacity: 0, x: 10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.55 + idx * 0.1, duration: 0.5 }}
-                      className="text-earth-700 dark:text-earth-200 text-xl leading-relaxed"
+                      className="text-earth-700 dark:text-earth-200 text-2xl leading-relaxed"
                     >
                       {line.trim()}
                     </motion.li>
@@ -313,7 +316,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           "{project.solution.howMightWe}"
         </blockquote>
         {project.solution.approach && (
-          <p className="text-earth-700 dark:text-earth-200 text-xl leading-relaxed">
+          <p className="text-earth-700 dark:text-earth-200 text-2xl leading-relaxed">
             {project.solution.approach}
           </p>
         )}
@@ -558,16 +561,26 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                   src={flow.image}
                   alt={flow.title}
                   loading="lazy"
-                  className="w-full h-auto rounded-xl border border-earth-300/40 dark:border-earth-600/40 bg-earth-50"
+                  onClick={() => setZoomSrc(flow.image)}
+                  className="w-full h-auto rounded-xl border border-earth-300/40 dark:border-earth-600/40 bg-earth-50 cursor-zoom-in"
                 />
                 <figcaption>
                   <p className="font-serif text-xl mb-1">{flow.title}</p>
-                  <p className="text-base leading-relaxed text-earth-600 dark:text-earth-300">{flow.caption}</p>
+                  <p className="text-lg leading-relaxed text-earth-600 dark:text-earth-300">{flow.caption}</p>
                 </figcaption>
               </figure>
             ))}
           </div>
         </motion.section>
+      )}
+
+      {zoomSrc && (
+        <div
+          onClick={() => setZoomSrc(null)}
+          className="fixed inset-0 z-50 bg-earth-900/85 flex items-center justify-center p-4 cursor-zoom-out"
+        >
+          <img src={zoomSrc} alt="Enlarged user flow" className="max-h-[94vh] max-w-[96vw] w-auto h-auto object-contain rounded-lg bg-earth-50" />
+        </div>
       )}
 
       {/* PROCESS: research to mock-up, one row per stage */}
@@ -727,7 +740,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                 )}
 
                 {(change as any).caption && (
-                  <p className="max-w-3xl mx-auto mt-4 text-base leading-relaxed text-earth-600 dark:text-earth-300">
+                  <p className="max-w-3xl mx-auto mt-4 text-lg leading-relaxed text-earth-600 dark:text-earth-300">
                     {(change as any).caption}
                   </p>
                 )}
@@ -770,7 +783,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           />
                         </motion.div>
                         {(change as any).captions?.[imgIdx] && (
-                          <p className="text-base leading-relaxed text-earth-600 dark:text-earth-300">
+                          <p className="text-lg leading-relaxed text-earth-600 dark:text-earth-300">
                             {(change as any).captions[imgIdx]}
                           </p>
                         )}
@@ -900,7 +913,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           {project.impact.title}
         </h2>
         <p className="text-xl text-earth-700 dark:text-earth-200 mb-12 leading-relaxed">
-          {project.impact.description}
+          {project.impact.description.split(/(?<=\.)\s+/).map((line, i) => (<span key={i} className="block">{line}</span>))}
         </p>
 
         {/* Metrics Grid */}
@@ -917,7 +930,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                 {metric.value}
               </p>
               {metric.unit && (
-                <p className="text-xs text-earth-600 dark:text-earth-400 tracking-wide mb-3">
+                <p className="text-sm text-earth-600 dark:text-earth-400 tracking-wide mb-3">
                   {metric.unit}
                 </p>
               )}
@@ -934,7 +947,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="italic text-earth-700 dark:text-earth-200 pl-8 border-l-4 border-earth-400 dark:border-earth-500 text-xl leading-relaxed bg-earth-100/30 dark:bg-earth-700/20 p-6 rounded-lg"
+            className="italic text-earth-700 dark:text-earth-200 pl-8 border-l-4 border-earth-400 dark:border-earth-500 text-2xl leading-relaxed bg-earth-100/30 dark:bg-earth-700/20 p-6 rounded-lg"
           >
             "{project.impact.testimonial}"
           </motion.blockquote>
@@ -979,7 +992,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7 + idx * 0.05, duration: 0.5 }}
-              className="flex gap-4 text-earth-700 dark:text-earth-200 text-xl leading-relaxed"
+              className="flex gap-4 text-earth-700 dark:text-earth-200 text-2xl leading-relaxed"
             >
               <span className="text-earth-400 dark:text-earth-500 mt-1 flex-shrink-0">▸</span>
               <span>{learning}</span>

@@ -189,7 +189,7 @@ export const projects: CaseStudy[] = [
         why: "A bad week should not cost progress. That is when logging matters most.",
       },
     ],
-    hypothesisCheck: "Not yet answered. The beta with 10–20 adults will test whether the score makes sense and whether people come back (7-day retention target: 50%).",
+    hypothesisCheck: "Not yet answered: the beta tests whether people understand the score and come back.",
     situation: {
       title: "Situation",
       description: "LUMI-ND was built feature-first, for parents watching a child.",
@@ -260,6 +260,11 @@ export const projects: CaseStudy[] = [
       description: "Beta deployed to test users; reviews are coming in now. Next: measure 7-day retention and whether the score makes sense. Supported by NSF I-Corps Regional funding.",
       metrics: [
         {
+          label: "Korean government grant",
+          value: "20M",
+          unit: "KRW (모두의 창업, about USD 16K)",
+        },
+        {
           label: "Interviews",
           value: "40",
           unit: "experts, clinicians & users",
@@ -270,9 +275,9 @@ export const projects: CaseStudy[] = [
           unit: "cards, battery first",
         },
         {
-          label: "Research-backed tips",
+          label: "App credibility",
           value: "55",
-          unit: "from 29 PubMed studies",
+          unit: "research-backed tips from 29 PubMed studies",
         },
         {
           label: "Situations checked",

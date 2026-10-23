@@ -55,7 +55,7 @@ export default function Home({ onSelectProject }: HomeProps) {
                   {p.title}
                 </h3>
               </button>
-              <p className="text-lg md:text-xl text-earth-700 mt-2 leading-snug">{p.subtitle}</p>
+              <p className="text-xl md:text-2xl text-earth-700 mt-2 leading-snug">{p.subtitle}</p>
             </article>
           ))}
         </div>
