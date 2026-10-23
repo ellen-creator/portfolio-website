@@ -270,11 +270,6 @@ export const projects: CaseStudy[] = [
           unit: "experts, clinicians & users",
         },
         {
-          label: "Today screen",
-          value: "5 → 4",
-          unit: "cards, battery first",
-        },
-        {
           label: "App credibility",
           value: "55",
           unit: "research-backed tips from 29 PubMed studies",
