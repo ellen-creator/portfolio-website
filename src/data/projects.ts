@@ -133,7 +133,7 @@ export const projects: CaseStudy[] = [
     scope: "0 → 1 · Beta",
     result: "Beta is live with test users, who are reviewing it now. Today went from five cards to four focused blocks.",
     before: "Feature-first. Live heart rate on top, no retention strategy, five cards, clinical wording. No users.",
-    after: "Battery first, one tip, and LUMI grows as you log. Adult wording throughout.",
+    after: "User behavior first, without any \"medical\" wording. User-centric throughout.",
     role: "Project lead · UX research, IA, UX writing and iOS build",
     team: "I am the CPO of this team.",
     outcome: "From a feature-focused app to a user-focused app; beta published",
