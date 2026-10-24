@@ -10,14 +10,11 @@ interface ProjectDetailProps {
 export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps) {
   const project = projects.find(p => p.id === projectId)
   const [selectedMedia, setSelectedMedia] = useState<{ type: 'image' | 'video'; src: string } | null>(null)
-  const [zoomSrc, setZoomSrc] = useState<string | null>(null)
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        if (zoomSrc) {
-          setZoomSrc(null)
-        } else if (selectedMedia) {
+        if (selectedMedia) {
           setSelectedMedia(null)
         } else {
           onBack()
@@ -26,7 +23,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [onBack, selectedMedia, zoomSrc])
+  }, [onBack, selectedMedia])
 
   if (!project) {
     return <div className="text-center py-20 text-earth-900 dark:text-earth-100">Project not found</div>
@@ -543,8 +540,8 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
       </motion.section>
       )}
 
-      {/* USER FLOWS: the flows that were revisited before the redesign */}
-      {project.userFlows && project.userFlows.length > 0 && (
+      {/* USER FLOWS: defined and redrawn during the redesign */}
+      {project.flows && project.flows.length > 0 && (
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -552,35 +549,43 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           viewport={{ once: true }}
           className="mb-14"
         >
-          <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">User flow, revisited</h2>
-          <p className="text-earth-600 dark:text-earth-300 mb-10">The beta flow I designed. The redesigned screens follow it.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {project.userFlows.map((flow) => (
-              <figure key={flow.image} className="flex flex-col gap-3">
-                <img
-                  src={flow.image}
-                  alt={flow.title}
-                  loading="lazy"
-                  onClick={() => setZoomSrc(flow.image)}
-                  className="w-full h-auto rounded-xl border border-earth-300/40 dark:border-earth-600/40 bg-earth-50 cursor-zoom-in"
-                />
-                <figcaption>
-                  <p className="font-serif text-xl mb-1">{flow.title}</p>
-                  <p className="text-lg leading-relaxed text-earth-600 dark:text-earth-300">{flow.caption}</p>
-                </figcaption>
-              </figure>
+          <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">User flow, redrawn</h2>
+          <p className="text-xl text-earth-600 dark:text-earth-300 mb-12">
+            There was no user flow before. During the redesign, we defined the users, then redrew the flow.
+          </p>
+          <div className="space-y-14">
+            {project.flows.map((flow) => (
+              <div key={flow.title}>
+                <p className="font-sans font-bold uppercase text-base tracking-widest text-accent mb-2">{flow.title}</p>
+                <p className="text-lg text-earth-600 dark:text-earth-300 mb-6">{flow.caption}</p>
+                <ol className="flex flex-wrap items-stretch gap-y-4">
+                  {flow.steps.map((step, idx) => (
+                    <li key={idx} className="flex items-center">
+                      <div
+                        className={`w-48 md:w-52 min-h-[8rem] p-4 rounded-lg border ${
+                          step.decision
+                            ? 'border-dashed border-accent bg-accent/10'
+                            : 'border-earth-300 dark:border-earth-600 bg-white dark:bg-earth-800'
+                        }`}
+                      >
+                        <p className="text-sm font-bold uppercase tracking-wide text-accent mb-1">
+                          {idx + 1}{step.decision ? ' · decision' : ''}
+                        </p>
+                        <p className="font-serif text-xl leading-snug text-earth-900 dark:text-earth-50">{step.title}</p>
+                        {step.note && (
+                          <p className="text-base mt-2 leading-snug text-earth-600 dark:text-earth-300">{step.note}</p>
+                        )}
+                      </div>
+                      {idx < flow.steps.length - 1 && (
+                        <span className="px-2 text-3xl text-earth-400" aria-hidden="true">→</span>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </div>
             ))}
           </div>
         </motion.section>
-      )}
-
-      {zoomSrc && (
-        <div
-          onClick={() => setZoomSrc(null)}
-          className="fixed inset-0 z-50 bg-earth-900/85 flex items-center justify-center p-4 cursor-zoom-out"
-        >
-          <img src={zoomSrc} alt="Enlarged user flow" className="max-h-[94vh] max-w-[96vw] w-auto h-auto object-contain rounded-lg bg-earth-50" />
-        </div>
       )}
 
       {/* PROCESS: research to mock-up, one row per stage */}

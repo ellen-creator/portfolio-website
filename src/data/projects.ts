@@ -26,8 +26,8 @@ export interface CaseStudy {
   // Research methods used in this case
   methods?: string[]
 
-  // User flows revisited before the redesign (images with captions)
-  userFlows?: Array<{ image: string; title: string; caption: string }>
+  // User flows, redrawn during the redesign (horizontal steps)
+  flows?: Array<{ title: string; caption: string; steps: Array<{ title: string; note?: string; decision?: boolean }> }>
 
   // Research to mock-up: one row per stage, with the method and what it produced
   process?: Array<{ stage: string; method: string; output: string }>
@@ -208,9 +208,46 @@ export const projects: CaseStudy[] = [
       approach: "Every tip is tied to a PubMed study. Coverage was checked across 2,304 situations. Shipped in SwiftUI with 588 automated tests.",
       tools: ["Interviews (40)", "Information architecture", "UX writing", "WCAG AA", "SwiftUI", "HealthKit", "PubMed evidence"],
     },
-    userFlows: [
-      { image: "/images/projects/lumi_flow_new.png", title: "New user flow", caption: "The designed flow from install to the 14-day beta survey: intro, sign-in, setup, sync, first Today screen, and the first nights of data." },
-      { image: "/images/projects/lumi_flow_existing.png", title: "Existing user flow", caption: "The designed daily loop: how people come in (watch, app or body-signal alert), read Today, log, and move to Journal, Analysis or Energizer." },
+    flows: [
+      {
+        title: "New user flow",
+        caption: "From install to the 14-day beta survey.",
+        steps: [
+          { title: "Install and 4 intro pages", note: "Battery = the room you have left" },
+          { title: "Sign in with email" },
+          { title: "Profile on the server?", note: "Yes: skip setup and go to Today", decision: true },
+          { title: "Setup", note: "About you, choose your Lumi, how you work, your devices" },
+          { title: "Health allowed?", note: "No: can still start; asked again later", decision: true },
+          { title: "Sync and reminders", note: "Calendar strongly recommended" },
+          { title: "Start LUMI", note: "Saves profile; Watch starts recording" },
+          { title: "6-step app tour" },
+          { title: "First Today screen", note: "Tap battery: what does it mean?" },
+          { title: "First log?", note: "Feed: Lumi reacts, +1 growth day", decision: true },
+          { title: "First night", note: "Sleeps wearing the Watch" },
+          { title: "Sleep recorded?", note: "No: 'When did you sleep?' for under 3 nights", decision: true },
+          { title: "First morning body battery", note: "Learning 1/14 days" },
+          { title: "Lumi grows", note: "Talks day 3, helps day 7, patterns day 14" },
+          { title: "Beta survey, day 14" },
+        ],
+      },
+      {
+        title: "Existing user flow",
+        caption: "The daily loop, from coming in to closing the app.",
+        steps: [
+          { title: "Come in", note: "Any time of day" },
+          { title: "How did they come in?", note: "Watch quick log, app or reminder, or body-signal alert", decision: true },
+          { title: "Open the app", note: "Restore session; Watch auto-sync" },
+          { title: "Synced?", note: "No: Connect button", decision: true },
+          { title: "Last night missing?", note: "Yes: morning sleep check", decision: true },
+          { title: "Today", note: "Battery = room left" },
+          { title: "Battery 1–2?", note: "Yes: let's rest, with rest tips", decision: true },
+          { title: "Feed card", note: "Feelings, meds, meal" },
+          { title: "Reward left?", note: "5 a day, with cooldown", decision: true },
+          { title: "Lumi reacts + points", note: "Level-up banner, Undo" },
+          { title: "Where next?", note: "Journal, Analysis, Energizer or Settings", decision: true },
+          { title: "Close the app", note: "Watch keeps recording" },
+        ],
+      },
     ],
     implementation: {
       title: "Implementation & Changes",
