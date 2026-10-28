@@ -822,7 +822,7 @@ export const projects: CaseStudy[] = [
   },
   {
     id: "accessibility-audit",
-    title: "Accessibility Audit: Bon Bon Bon Online Shop",
+    title: "Accessibility Audit",
     navLabel: "Accessibility audit",
     subtitle: "WAVE, aXe and manual testing of three shop pages, with recommendations for each barrier",
     thumbnail: "/images/projects/accessibility_audit_thumbnail.png",
@@ -831,10 +831,9 @@ export const projects: CaseStudy[] = [
     result: "Across three pages: 249 WAVE contrast errors, 291 WAVE alerts and 120 aXe issues, with a recommendation for each barrier.",
     before: "Text contrast as low as 1.03:1, vague alt text, image links that go nowhere, and no skip-to-content link.",
     after: "Prioritized fixes: contrast, descriptive alt text, working links, keyboard navigation, and zoom-safe image sizing.",
-    role: "Team member · slide writing, alt text and actionable-text guidance, slide editing",
     team: "Group 9 (5 students): Suhyun Lim, Bonnie Baffoe-Bonnie, Hayden Gandolfi, Jordan Brady, Emrys Yang",
     outcome: "Audited the Homepage, Shop All and Wholesale pages with automated tools and manual testing.",
-    overview: "We audited the homepage, Shop All and Wholesale pages of an online food shop against accessibility standards. We used automated scans and manual keyboard, screen reader and zoom tests, and each finding came with a recommendation.",
+    overview: "We audited an online shop's homepage, Shop All and Wholesale pages for people who are colour-blind, who use only a keyboard, or who are blind. For them the site was barely usable. A site can look good and still exclude people, so accessibility has to be checked in the design process, not after launch.",
     insights: [
       {
         source: "Automated scans",
@@ -854,13 +853,13 @@ export const projects: CaseStudy[] = [
     ],
     situation: {
       title: "Situation",
-      description: "Barriers on the site stop people with low vision, blindness or motor disabilities from using it.",
-      context: "The shop has a homepage, a Shop All page and a Wholesale page. Each page was tested with the same tools and checks.",
+      description: "About 1 in 6 people worldwide lives with a disability (WHO). U-M Services for Students with Disabilities reports a disability rate above 20% on campus.",
+      context: "The site was checked for colour-blind users, keyboard-only users and blind users. Each page was tested with the same tools and checks.",
       keywords: ["Low Contrast", "Vague Alt Text", "No Skip Link"],
     },
     problem: {
       title: "Problem",
-      description: "Barriers found in the audit:",
+      description: "A site that fails these users excludes them before they reach a single product. Barriers found:",
       painPoints: [
         "Text contrast as low as 1.03:1, below WCAG AA",
         "Vague alt text, such as \"sliding-image\"",
@@ -897,9 +896,9 @@ export const projects: CaseStudy[] = [
       ],
     },
     learnings: [
-      "Automated tools find contrast and alt-text problems fast; keyboard and zoom tests find what they miss.",
-      "Good alt text describes what the image shows, not its file name.",
-      "Accessibility fixes help everyone, not only people with disabilities.",
+      "About 1 in 6 people worldwide lives with a disability, so an inaccessible site leaves them out from the first screen.",
+      "Good visual design is not enough. A site has to work without colour, without a mouse and without sight.",
+      "Accessibility checks belong in the design process, and they make the site better for everyone.",
     ],
     year: 2026,
     timeline: "UMSI course project · Group of 5",
