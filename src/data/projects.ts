@@ -577,7 +577,7 @@ export const projects: CaseStudy[] = [
     team: "Kearney team with the client's designers and developers",
     outcome: "Google Play 2.8 → 4.8; conversion +45%",
     methods: ["Heuristic walkthrough", "Customer data analysis", "App store review analysis", "Segmentation", "Accessibility audit"],
-    overview: "A TV-and-app shopping business was losing revenue as customers moved to mobile. The app was too hard to buy from.",
+    overview: "Customers were moving their purchases from TV to mobile, and the client's app revenue kept falling. I analyzed the app, the customer data and competitors. The app was hard to buy from, so I proposed revisiting the whole UI based on customer segments. The work ran in three steps: segment the customers from data, suggest UI designs with the rationale for each, then discuss attractiveness and feasibility with the client and its designers and developers.",
     insights: [
       {
         source: "Heuristic walkthrough",
@@ -625,7 +625,7 @@ export const projects: CaseStudy[] = [
       title: "Solution",
       howMightWe: "How might we design segment-specific mobile experiences that turn abandonment into purchase?",
       description: "Customer segmentation drove eight UX changes: accessibility for older users, social proof, cross-selling, and light gamification.",
-      approach: "Segmentation, UI audit, rationale for each change, then feasibility review with the client.",
+      approach: "Customer-data segmentation, a benchmark of same- and cross-industry e-commerce apps, a UI audit, a rationale for each suggestion, then a feasibility review with the client.",
       tools: ["Customer data analytics", "Figma", "Accessibility audit", "Behavioral analysis"],
     },
     implementation: {
@@ -635,48 +635,48 @@ export const projects: CaseStudy[] = [
         {
           image: "/images/projects/ec1.png",
           title: "Awareness strategy",
-          description: "Segments by churn and purchase stage shaped the engagement plan.",
+          description: "An overview for setting up customized UI strategies, built from segments by churn and purchase stage.",
         },
         {
           image: "/images/projects/ec2.png",
           title: "Segment-focused design",
-          description: "Higher contrast and active elements for silver customers.",
+          description: "Customers in their 50s and 60s contribute the most to sales. Based on customer data, market research and competitor analysis, we suggested higher contrast and more comfortable, active elements, with a differently designed UI for different customer types.",
         },
         {
           image: "/images/projects/ec3.png",
           title: "TV-to-app integration",
-          description: "Let TV viewers complete purchases in the app.",
+          description: "For active customers, cross-selling starts with their purchasing behavior: growing the sales bucket per customer. Targeted reviews from other buyers bring people back to the product page.",
         },
         {
           image: "/images/projects/ec4.png",
           title: "Social proof",
-          description: "Review messaging to ease purchase anxiety.",
+          description: "Customers keep reconsidering until payment. Continual exposure to other buyers' satisfaction, plus limited-time offers on related products, keep them moving toward purchase.",
         },
         {
           image: "/images/projects/ec5.png",
           title: "Purchase confirmation",
-          description: "Related products at checkout, using \"others also bought\".",
+          description: "At checkout, related products are shown with \"others also bought\", so the purchase can grow into a second item.",
         },
         {
           image: "/images/projects/ec6.png",
           title: "Senior-friendly accessibility",
-          description: "Stronger contrast, voice input and repeat exposure.",
+          description: "Stronger contrast, voice input, and repeat exposure, so older customers can read, tap and buy without strain.",
         },
         {
           image: "/images/projects/ec7.png",
           title: "Engagement gamification",
-          description: "Quizzes tied to loyalty points. Session time rose 30%.",
+          description: "Mobile-first customers enjoy live commerce. We suggested more entertaining functions, such as quizzes tied to loyalty points, to add touch points with the host, the app and the product. Session time rose 30%.",
         },
         {
           image: "/images/projects/ec8.png",
           title: "Data-driven segmentation",
-          description: "Cross-analysis of behavior and purchases to refine segments.",
+          description: "Cross-analysis of behavior and purchases refined the segments. Every design choice above was tied back to this segmentation.",
         },
       ],
     },
     impact: {
       title: "Outcome",
-      description: "Rating, conversion and repeat purchases all improved.",
+      description: "Rating, conversion and repeat purchases all improved. Reviews moved from \"the application just stopped\" to \"the page itself gets really cleaned, fast and easy to log in\".",
       metrics: [
         {
           label: "Google Play rating",
@@ -700,7 +700,7 @@ export const projects: CaseStudy[] = [
         },
       ],
     },
-    learnings: ["One-size-fits-all UX leaves revenue on the table.", "Age-appropriate design is a revenue driver, not an edge case.", "Cross-functional work decides whether segment features ship."],
+    learnings: ["One-size-fits-all UX leaves revenue on the table.", "Age-appropriate design is a revenue driver, not an edge case.", "Cross-functional work decides whether segment features ship.", "Agreeing on terms with designers and developers early took longer than the analysis itself."],
   },
 
   {
