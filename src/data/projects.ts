@@ -189,7 +189,7 @@ export const projects: CaseStudy[] = [
         why: "A bad week should not cost progress. That is when logging matters most.",
       },
     ],
-    hypothesisCheck: "Not yet answered: the beta tests whether people understand the score and come back.",
+    hypothesisCheck: "Not yet answered: if first open shows one number, its reason and one action, more new users log and return by day 7 (target 50%).",
     situation: {
       title: "Situation",
       description: "LUMI-ND was built feature-first, for parents watching a child.",
@@ -203,7 +203,7 @@ export const projects: CaseStudy[] = [
     },
     solution: {
       title: "Solution",
-      howMightWe: "How might we turn wearable data into one calm number and one small action that fits this person, today?",
+      howMightWe: "How might we help a burned-out adult know what to do today without first learning the app, and in what order should LUMI show it?",
       description: "Three goals: (1) reduce overload by showing one number and one action, not a dashboard; (2) explain the why before asking for anything; (3) reward logging without guilt, so a bad week never costs progress.",
       approach: "Every tip is tied to a PubMed study. Coverage was checked across 2,304 situations. Shipped in SwiftUI with 588 automated tests.",
       tools: ["Interviews (40)", "Information architecture", "UX writing", "WCAG AA", "SwiftUI", "HealthKit", "PubMed evidence"],
