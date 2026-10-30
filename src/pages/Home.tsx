@@ -32,8 +32,11 @@ const skills = [
   { title: 'Accessible design', body: 'Research with neurodivergent users; contrast, touch targets and calm defaults built in from the start. Audits with WAVE, aXe, screen readers, keyboard-only and 400% zoom checks.' },
 ]
 
-// A link sent with one application (?for=doordash) opens with a special-edition strip for that team
-const forDoorDash = new URLSearchParams(window.location.search).get('for') === 'doordash'
+// A link sent with one application (?for=doordash) opens with a special-edition strip for that team.
+// The GitHub Pages build sets VITE_SPECIAL_EDITION=off, so the strip only exists on the Vercel site.
+const forDoorDash =
+  import.meta.env.VITE_SPECIAL_EDITION !== 'off' &&
+  new URLSearchParams(window.location.search).get('for') === 'doordash'
 
 export default function Home({ onSelectProject, onSelectNote }: HomeProps) {
   const [showEdition, setShowEdition] = useState(true)
