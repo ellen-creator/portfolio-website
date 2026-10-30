@@ -4,13 +4,15 @@ import Home from './pages/Home'
 import ProjectDetail from './pages/ProjectDetail'
 import Private from './pages/Private'
 import Puzzle from './pages/Puzzle'
+import NoteDetail from './pages/NoteDetail'
 import Masthead from './components/Masthead'
 import { useScrollProgress } from './utils/useScrollAnimation'
 
-type Section = 'home' | 'work' | 'private' | 'puzzle'
+type Section = 'home' | 'work' | 'private' | 'puzzle' | 'note'
 
 function App() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null)
+  const [selectedNote, setSelectedNote] = useState<string | null>(null)
   const [section, setSection] = useState<Section>('home')
   const scrollProgress = useScrollProgress()
 
@@ -19,7 +21,7 @@ function App() {
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
-  }, [section, selectedProject])
+  }, [section, selectedProject, selectedNote])
 
   const goWork = () => {
     setSection('home')
@@ -43,11 +45,23 @@ function App() {
     setSection('work')
   }
 
-  const showingDetail = Boolean(selectedProject && section === 'work')
+  const openNote = (id: string) => {
+    setSelectedNote(id)
+    setSection('note')
+  }
+
+  const showingDetail = Boolean((selectedProject && section === 'work') || (selectedNote && section === 'note'))
 
   return (
     <div className={isNight ? 'dark' : ''}>
       <div className="min-h-screen bg-earth-50 dark:bg-navy-950 text-earth-900 dark:text-earth-50 transition-colors duration-700">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-earth-900 focus:text-earth-50 focus:px-4 focus:py-2 font-sans font-bold uppercase tracking-wider"
+        >
+          Skip to main content
+        </a>
+
         {/* Scroll progress */}
         <motion.div
           className="fixed top-0 left-0 right-0 h-1 bg-accent z-50 origin-left"
@@ -63,15 +77,17 @@ function App() {
           onSelectProject={openProject}
         />
 
-        <main>
-          {showingDetail && selectedProject ? (
+        <main id="main" tabIndex={-1} className="focus:outline-none">
+          {section === 'note' && selectedNote ? (
+            <NoteDetail noteId={selectedNote} onBack={goWork} />
+          ) : showingDetail && selectedProject ? (
             <ProjectDetail projectId={selectedProject} onBack={goWork} />
           ) : section === 'private' ? (
             <Private />
           ) : section === 'puzzle' ? (
             <Puzzle onBack={goWork} />
           ) : (
-            <Home onSelectProject={openProject} />
+            <Home onSelectProject={openProject} onSelectNote={openNote} />
           )}
         </main>
 

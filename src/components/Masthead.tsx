@@ -110,7 +110,7 @@ export default function Masthead({ edition, compact = false, onWork, onSkills, o
       )}
 
       {/* Case study bar */}
-      <nav className="border-y border-earth-900/80 dark:border-earth-50/60 py-3 flex flex-wrap justify-center gap-y-2 font-sans font-bold uppercase text-[16px] md:text-[18px] tracking-wider">
+      <nav aria-label="Case studies" className={`border-y border-earth-900/80 dark:border-earth-50/60 py-3 ${compact ? 'hidden md:flex' : 'flex'} flex-wrap justify-center gap-y-2 font-sans font-bold uppercase text-[16px] md:text-[18px] tracking-wider`}>
         {projects.map((p, i) => (
           <span key={p.id} className="flex items-center">
             {i > 0 && <span className="mx-3 md:mx-4 text-earth-400 font-normal" aria-hidden="true">|</span>}

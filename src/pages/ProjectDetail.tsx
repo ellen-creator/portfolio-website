@@ -7,9 +7,13 @@ interface ProjectDetailProps {
   onBack: () => void
 }
 
+function Phase({ n, label }: { n: number; label: string }) {
+  return <p className="font-sans font-bold text-sm uppercase tracking-widest text-accent mb-3">Phase {n} · {label}</p>
+}
+
 export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps) {
   const project = projects.find(p => p.id === projectId)
-  const [selectedMedia, setSelectedMedia] = useState<{ type: 'image' | 'video'; src: string } | null>(null)
+  const [selectedMedia, setSelectedMedia] = useState<{ type: 'image' | 'video'; src: string; alt?: string } | null>(null)
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -90,7 +94,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                 ['Outcome', project.outcome],
               ].filter(([, value]) => value).map(([label, value]) => (
                 <div key={label} className="grid grid-cols-[5.5rem_1fr] gap-3 border-b border-earth-100/50 dark:border-earth-600/50 pb-3">
-                  <dt className="text-xs uppercase tracking-widest text-earth-600 dark:text-earth-600 pt-1">{label}</dt>
+                  <dt className="text-sm uppercase tracking-widest text-earth-600 dark:text-earth-600 pt-1">{label}</dt>
                   <dd className="text-earth-900 dark:text-earth-100 leading-relaxed">{value}</dd>
                 </div>
               ))}
@@ -104,9 +108,9 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.6 }}
             >
-              <h3 className="text-xl font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
+              <h2 className="text-xl font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
                 Research methods
-              </h3>
+              </h2>
               <ul className="space-y-2">
                 {project.methods.map((method) => (
                   <li key={method} className="flex gap-3 text-earth-900 dark:text-earth-100 leading-snug">
@@ -124,9 +128,9 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <h3 className="text-xl font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
+            <h2 className="text-xl font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
               Focus
-            </h3>
+            </h2>
             <div className="flex flex-wrap gap-2">
               {project.tags.slice(0, 4).map((tag, idx) => (
                 <motion.span
@@ -148,9 +152,9 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <h3 className="text-xl font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
+            <h2 className="text-xl font-serif mb-4 border-b border-earth-300 dark:border-earth-600 pb-2 text-earth-900 dark:text-earth-50">
               Tools & Methods
-            </h3>
+            </h2>
             <div className="flex flex-wrap gap-2">
               {project.solution.tools?.map((tool, idx) => (
                 <motion.span
@@ -200,6 +204,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         </motion.section>
       )}
 
+      <Phase n={1} label="Problem discovery" />
       {/* SECTION 2: Situation & Problem (Left 2/3) vs Core Challenge (Right 1/3) */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -217,7 +222,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           {/* Situation Section */}
           {project.situation.keywords && (
             <div className="mb-6">
-              <h4 className="text-xs text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-6">
+              <h4 className="text-sm text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-6">
                 ▸ Situation
               </h4>
               {/* Keywords with hanging lines */}
@@ -245,7 +250,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
 
           {/* Problem Section */}
           <div>
-            <h4 className="text-xs text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-4">
+            <h4 className="text-sm text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-4">
               ▸ Problem
             </h4>
             <div className="space-y-3">
@@ -276,9 +281,9 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           <div className="flex items-start gap-4">
             <span className="text-3xl text-earth-400 dark:text-earth-500 flex-shrink-0 pt-1">▶</span>
             <div className="flex-1">
-              <h3 className="text-xs text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-4">
+              <h2 className="text-sm text-earth-600 dark:text-earth-400 uppercase tracking-widest mb-4">
                 Core Challenge
-              </h3>
+              </h2>
               <ul className="space-y-4">
                 {project.situation.context.split('\n\n').map((line, idx) => (
                   line.trim() && (
@@ -299,28 +304,8 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         </motion.div>
       </motion.section>
 
-      {/* SECTION 2B: How Might We (Hypothesis) */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        className="mb-14 text-center max-w-3xl mx-auto"
-      >
-        <p className="text-earth-600 dark:text-earth-400 text-xl mb-6">
-          So what's the hypothesis?
-        </p>
-        <blockquote className="text-3xl md:text-4xl font-serif italic text-earth-900 dark:text-earth-50 leading-relaxed mb-8">
-          "{project.solution.howMightWe}"
-        </blockquote>
-        {project.solution.approach && (
-          <p className="text-earth-700 dark:text-earth-200 text-2xl leading-relaxed">
-            {project.solution.approach}
-          </p>
-        )}
-      </motion.section>
-
-      {/* SECTION 2C: Thinking process — Insights → Decisions */}
-      {(project.insights?.length || project.decisions?.length) ? (
+      {/* SECTION 2B: Research synthesis — what we learned, and the rules it produced */}
+      {(project.insights?.length || project.rules?.length) ? (
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -328,6 +313,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           viewport={{ once: true, margin: "-100px" }}
           className="mb-14"
         >
+          <Phase n={2} label="Research synthesis" />
           {project.insights && project.insights.length > 0 && (
             <div className="mb-16">
               <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">
@@ -346,7 +332,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     viewport={{ once: true }}
                     className="flex flex-col p-6 rounded-2xl border border-earth-100/40 dark:border-earth-600/40 bg-earth-100/30 dark:bg-earth-900/15"
                   >
-                    <p className="text-xs uppercase tracking-widest text-earth-600 dark:text-earth-600 mb-4">
+                    <p className="text-sm uppercase tracking-widest text-earth-600 dark:text-earth-600 mb-4">
                       {insight.source}
                     </p>
                     <p className="text-earth-900 dark:text-earth-100 leading-relaxed mb-5 flex-1">
@@ -362,56 +348,56 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             </div>
           )}
 
-          {project.decisions && project.decisions.length > 0 && (
-            <div>
-              <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">
-                Key Decisions
-              </h2>
-              <p className="text-earth-600 dark:text-earth-600 mb-8">
-                The options I weighed, and why I chose what I did.
-              </p>
-              <div className="space-y-6">
-                {project.decisions.map((decision, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.08, duration: 0.5 }}
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 pb-6 border-b border-earth-100/40 dark:border-earth-600/40"
-                  >
-                    <h3 className="md:col-span-4 text-xl font-serif text-earth-900 dark:text-earth-50 leading-snug">
-                      {decision.question}
-                    </h3>
-                    <div className="md:col-span-8 space-y-3">
-                      <div className="flex flex-wrap gap-2">
-                        {decision.options.map((option) => {
-                          const chosen = option === decision.chose
-                          return (
-                            <span
-                              key={option}
-                              className={
-                                chosen
-                                  ? 'px-3 py-1 rounded-full text-base font-normal bg-earth-900 text-earth-50 dark:bg-earth-200 dark:text-earth-900'
-                                  : 'px-3 py-1 rounded-full text-base text-earth-600 dark:text-earth-600 border border-earth-600/30 dark:border-earth-600/60 line-through decoration-earth-600/50'
-                              }
-                            >
-                              {chosen && '✓ '}{option}
-                            </span>
-                          )
-                        })}
-                      </div>
-                      <p className="text-earth-900 dark:text-earth-200 leading-relaxed">
-                        {decision.why}
-                      </p>
-                    </div>
-                  </motion.div>
+          {project.rules && project.rules.length > 0 && (
+            <div className="mb-16">
+              <h3 className="text-2xl font-serif mb-2 text-earth-900 dark:text-earth-50">Findings turned into rules</h3>
+              <p className="text-earth-600 dark:text-earth-300 mb-6">Read each row left to right: what the research showed, the rule written from it, and where it shows up.</p>
+              <div className="border-t border-earth-900/20 dark:border-earth-50/20">
+                <div className="hidden md:grid grid-cols-12 gap-6 py-3 font-sans font-bold uppercase text-sm tracking-widest text-earth-600 dark:text-earth-300">
+                  <span className="col-span-5">What we found</span><span className="col-span-3">So the rule is</span><span className="col-span-4">On screen</span>
+                </div>
+                {project.rules.map((r) => (
+                  <div key={r.rule} className="grid grid-cols-1 md:grid-cols-12 gap-1 md:gap-6 py-4 border-t border-earth-900/10 dark:border-earth-50/10 text-lg leading-relaxed">
+                    <p className="md:col-span-5 text-earth-900 dark:text-earth-100">{r.found}</p>
+                    <p className="md:col-span-3 font-bold text-earth-900 dark:text-earth-50"><span className="md:hidden text-earth-500" aria-hidden="true">→ </span>{r.rule}</p>
+                    <p className="md:col-span-4 text-earth-700 dark:text-earth-300">{r.onScreen}</p>
+                  </div>
                 ))}
               </div>
             </div>
           )}
         </motion.section>
       ) : null}
+
+      {/* SECTION 2C: How Might We (Hypothesis) */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+        className="mb-14 text-center max-w-3xl mx-auto"
+      >
+        <p className="text-earth-600 dark:text-earth-400 text-xl mb-6">
+          So what's the hypothesis?
+        </p>
+        <blockquote className="text-3xl md:text-4xl font-serif italic text-earth-900 dark:text-earth-50 leading-relaxed mb-8">
+          "{project.solution.howMightWe}"
+        </blockquote>
+        {project.hypothesis && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-left mb-8">
+            {([['If we', project.hypothesis.ifWe], ['Then', project.hypothesis.then], ['Measured by', project.hypothesis.measuredBy]] as const).map(([k, v]) => (
+              <div key={k} className="p-5 rounded-2xl border border-earth-300/40 dark:border-earth-600/40">
+                <p className="font-sans font-bold text-sm uppercase tracking-widest text-earth-600 dark:text-earth-300 mb-2">{k}</p>
+                <p className="text-lg leading-relaxed text-earth-900 dark:text-earth-100">{v}</p>
+              </div>
+            ))}
+          </div>
+        )}
+        {project.solution.approach && (
+          <p className="text-earth-700 dark:text-earth-200 text-2xl leading-relaxed">
+            {project.solution.approach}
+          </p>
+        )}
+      </motion.section>
 
       {/* SECTION 3: Solution */}
       {project.id === 'arklink-lead-generation' ? (
@@ -549,9 +535,10 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           viewport={{ once: true }}
           className="mb-14"
         >
+          <Phase n={3} label="Iterative prototyping" />
           <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">User flow, redrawn</h2>
           <p className="text-xl text-earth-600 dark:text-earth-300 mb-12">
-            There was no user flow before. During the redesign, we defined the users, then redrew the flow.
+            The first flow measured stress. The redesign follows one day instead.
           </p>
           <div className="space-y-14">
             {project.flows.map((flow) => (
@@ -602,7 +589,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
           <ol className="grid grid-cols-1 md:grid-cols-5 border-y border-earth-300/60 dark:border-earth-600/60 divide-y md:divide-y-0 md:divide-x divide-earth-300/60 dark:divide-earth-600/60">
             {project.process.map((step, idx) => (
               <li key={step.stage} className="flex flex-col gap-3 py-6 md:px-5 first:md:pl-0 last:md:pr-0">
-                <p className="font-sans font-bold text-xs uppercase tracking-widest text-accent">
+                <p className="font-sans font-bold text-sm uppercase tracking-widest text-accent">
                   {String(idx + 1).padStart(2, '0')} · {step.stage}
                 </p>
                 <p className="text-base text-earth-600 dark:text-earth-300 leading-relaxed">{step.method}</p>
@@ -620,6 +607,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         transition={{ delay: 0.5, duration: 0.8 }}
         className="mb-14"
       >
+        {!project.flows?.length && <Phase n={3} label="Iterative prototyping" />}
         <h2 className="text-4xl font-serif mb-6 text-earth-900 dark:text-earth-50">
           Implementation & Changes
         </h2>
@@ -676,13 +664,15 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     {(change as any).image && (change as any).video ? (
                       <div className="max-w-4xl mx-auto flex flex-col gap-6">
                         {/* Image */}
-                        <motion.div
+                        <motion.button
+                          type="button"
+                          aria-label={`Enlarge image: ${(change as any).title}`}
                           initial={{ opacity: 0, x: -20 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.2, duration: 0.6 }}
                           viewport={{ once: false, margin: "-100px" }}
-                          onClick={() => setSelectedMedia({ type: 'image', src: (change as any).image })}
-                          className="cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+                          onClick={() => setSelectedMedia({ type: 'image', src: (change as any).image, alt: (change as any).title })}
+                          className="block w-full cursor-zoom-in rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
                         >
                           <motion.img
                             src={(change as any).image}
@@ -690,7 +680,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                             className="w-full h-auto object-contain bg-earth-100 dark:bg-earth-800"
                             whileHover={{ scale: 1.05 }}
                           />
-                        </motion.div>
+                        </motion.button>
 
                         {/* Video */}
                         <motion.div
@@ -698,8 +688,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.25, duration: 0.6 }}
                           viewport={{ once: false, margin: "-100px" }}
-                          onClick={() => setSelectedMedia({ type: 'video', src: (change as any).video })}
-                          className="cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+                          className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
                         >
                           <motion.video
                             src={(change as any).video}
@@ -710,11 +699,19 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                       </div>
                     ) : (
                       <div
+                        role={(change as any).image ? 'button' : undefined}
+                        tabIndex={(change as any).image ? 0 : undefined}
+                        aria-label={(change as any).image ? `Enlarge image: ${(change as any).title}` : undefined}
                         onClick={() => {
-                          if ((change as any).image) setSelectedMedia({ type: 'image', src: (change as any).image })
-                          else if ((change as any).video) setSelectedMedia({ type: 'video', src: (change as any).video })
+                          if ((change as any).image) setSelectedMedia({ type: 'image', src: (change as any).image, alt: (change as any).title })
                         }}
-                        className={`${change.phone ? 'max-w-[360px]' : change.wide ? 'max-w-5xl' : 'max-w-2xl'} mx-auto cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow`}
+                        onKeyDown={(e) => {
+                          if ((change as any).image && (e.key === 'Enter' || e.key === ' ')) {
+                            e.preventDefault()
+                            setSelectedMedia({ type: 'image', src: (change as any).image, alt: (change as any).title })
+                          }
+                        }}
+                        className={`${change.phone ? 'max-w-[360px]' : change.wide ? 'max-w-5xl' : 'max-w-2xl'} mx-auto ${(change as any).image ? 'cursor-zoom-in' : ''} rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow`}
                       >
                         {(change as any).image && (
                           <motion.img
@@ -772,13 +769,15 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                     <div className="max-w-3xl mx-auto flex flex-col gap-6">
                       {(change as any).images.map((img: string, imgIdx: number) => (
                         <div key={imgIdx} className="flex flex-col gap-3">
-                        <motion.div
+                        <motion.button
+                          type="button"
+                          aria-label={`Enlarge image: ${(change as any).captions?.[imgIdx] ?? `${(change as any).title} ${imgIdx + 1}`}`}
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 + imgIdx * 0.1, duration: 0.5 }}
                           viewport={{ once: false, margin: "-100px" }}
-                          onClick={() => setSelectedMedia({ type: 'image', src: img })}
-                          className="cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                          onClick={() => setSelectedMedia({ type: 'image', src: img, alt: (change as any).captions?.[imgIdx] ?? (change as any).title })}
+                          className="block w-full cursor-zoom-in rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
                         >
                           <motion.img
                             src={img}
@@ -786,7 +785,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                             className="w-full h-auto object-contain bg-earth-100 dark:bg-earth-800"
                             whileHover={{ scale: 1.05 }}
                           />
-                        </motion.div>
+                        </motion.button>
                         {(change as any).captions?.[imgIdx] && (
                           <p className="text-lg leading-relaxed text-earth-600 dark:text-earth-300">
                             {(change as any).captions[imgIdx]}
@@ -796,45 +795,6 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
                       ))}
                     </div>
 
-                    {/* Modal for enlarged media (image or video) */}
-                    {selectedMedia && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={() => setSelectedMedia(null)}
-                        className="fixed inset-0 z-50 bg-earth-900/80 dark:bg-earth-900/90 flex items-center justify-center p-4 backdrop-blur-sm"
-                      >
-                        <motion.div
-                          initial={{ scale: 0.9, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          exit={{ scale: 0.9, opacity: 0 }}
-                          onClick={(e) => e.stopPropagation()}
-                          className="relative w-[90vw] h-[90vh] max-w-6xl max-h-[90vh] flex items-center justify-center"
-                        >
-                          {selectedMedia.type === 'image' ? (
-                            <motion.img
-                              src={selectedMedia.src}
-                              alt="Expanded view"
-                              className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg"
-                            />
-                          ) : (
-                            <video
-                              src={selectedMedia.src}
-                              controls
-                              autoPlay
-                              className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg"
-                            />
-                          )}
-                          <button
-                            onClick={() => setSelectedMedia(null)}
-                            className="absolute top-4 right-4 bg-earth-900/80 dark:bg-earth-50/80 text-earth-50 dark:text-earth-900 rounded-full w-10 h-10 flex items-center justify-center text-xl hover:bg-earth-900 dark:hover:bg-earth-50 transition-colors"
-                          >
-                            ✕
-                          </button>
-                        </motion.div>
-                      </motion.div>
-                    )}
                   </motion.div>
                 )}
 
@@ -880,6 +840,65 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         </div>
       </motion.section>
 
+      {/* SECTION 4B: Final design rationale */}
+      {project.decisions && project.decisions.length > 0 && (
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="mb-14"
+        >
+          <Phase n={4} label="Final design rationale" />
+            <div>
+              <h2 className="text-4xl font-serif mb-3 text-earth-900 dark:text-earth-50">
+                Key decisions
+              </h2>
+              <p className="text-earth-600 dark:text-earth-600 mb-8">
+                The options I weighed, and why I chose what I did.
+              </p>
+              <div className="space-y-6">
+                {project.decisions.map((decision, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.08, duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 pb-6 border-b border-earth-100/40 dark:border-earth-600/40"
+                  >
+                    <h3 className="md:col-span-4 text-xl font-serif text-earth-900 dark:text-earth-50 leading-snug">
+                      {decision.question}
+                    </h3>
+                    <div className="md:col-span-8 space-y-3">
+                      <div className="flex flex-wrap gap-2">
+                        {decision.options.map((option) => {
+                          const chosen = option === decision.chose
+                          return (
+                            <span
+                              key={option}
+                              className={
+                                chosen
+                                  ? 'px-3 py-1 rounded-full text-base font-normal bg-earth-900 text-earth-50 dark:bg-earth-200 dark:text-earth-900'
+                                  : 'px-3 py-1 rounded-full text-base text-earth-600 dark:text-earth-600 border border-earth-600/30 dark:border-earth-600/60 line-through decoration-earth-600/50'
+                              }
+                            >
+                              {chosen && '✓ '}{option}
+                            </span>
+                          )
+                        })}
+                      </div>
+                      <p className="text-earth-900 dark:text-earth-200 leading-relaxed">
+                        {decision.why}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+        </motion.section>
+      )}
+
       {/* USABILITY: where it was, where it is now */}
       {project.usability && project.usability.length > 0 && (
         <motion.section
@@ -891,7 +910,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         >
           <h2 className="text-4xl font-serif font-light mb-10 text-earth-900 dark:text-earth-50">Usability Changes</h2>
           <div className="divide-y divide-earth-300/60 dark:divide-earth-600/60 border-y border-earth-300/60 dark:border-earth-600/60">
-            <div className="hidden md:grid grid-cols-12 gap-6 py-3 font-sans font-bold uppercase text-xs tracking-widest text-earth-600 dark:text-earth-300">
+            <div className="hidden md:grid grid-cols-12 gap-6 py-3 font-sans font-bold uppercase text-sm tracking-widest text-earth-600 dark:text-earth-300">
               <span className="col-span-2">Area</span>
               <span className="col-span-4">Before</span>
               <span className="col-span-6">After</span>
@@ -967,7 +986,7 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
             viewport={{ once: true }}
             className="mt-12 max-w-3xl"
           >
-            <p className="text-xs uppercase tracking-widest text-earth-600 dark:text-earth-600 mb-3">
+            <p className="text-sm uppercase tracking-widest text-earth-600 dark:text-earth-600 mb-3">
               Back to the hypothesis
             </p>
             <p className="text-xl font-serif italic text-earth-600 dark:text-earth-600 mb-4 leading-relaxed">
@@ -1006,12 +1025,58 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
         </ul>
       </motion.section>
 
+      {/* Modal for enlarged media (image or video), one for the whole page */}
+      {selectedMedia && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedMedia(null)}
+          className="fixed inset-0 z-50 bg-earth-900/80 dark:bg-earth-900/90 flex items-center justify-center p-4 backdrop-blur-sm"
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedMedia.alt ?? 'Enlarged media'}
+            className="relative w-[90vw] h-[90vh] max-w-6xl max-h-[90vh] flex items-center justify-center"
+          >
+            {selectedMedia.type === 'image' ? (
+              <motion.img
+                src={selectedMedia.src}
+                alt={selectedMedia.alt ?? ''}
+                className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg"
+              />
+            ) : (
+              <video
+                src={selectedMedia.src}
+                controls
+                autoPlay
+                className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg"
+              />
+            )}
+            <button
+              type="button"
+              autoFocus
+              aria-label="Close enlarged image"
+              onClick={() => setSelectedMedia(null)}
+              className="absolute top-4 right-4 bg-earth-900/80 dark:bg-earth-50/80 text-earth-50 dark:text-earth-900 rounded-full w-10 h-10 flex items-center justify-center text-xl hover:bg-earth-900 dark:hover:bg-earth-50 transition-colors"
+            >
+              ✕
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+
       {/* Meta Info */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.75, duration: 0.6 }}
-        className="border-t border-earth-600/15 dark:border-earth-50/10 mt-16 pt-8 text-xs text-earth-600 dark:text-earth-400 tracking-widest uppercase flex gap-4"
+        className="border-t border-earth-600/15 dark:border-earth-50/10 mt-16 pt-8 text-sm text-earth-600 dark:text-earth-400 tracking-widest uppercase flex gap-4"
       >
         <p>{project.timeline}</p>
         <span>•</span>

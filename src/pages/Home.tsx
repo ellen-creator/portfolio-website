@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { projects } from '@data/projects'
+import { projects, sideNotes } from '@data/projects'
 
 interface HomeProps {
   onSelectProject: (id: string) => void
+  onSelectNote: (id: string) => void
 }
 
 const softSkills = [
@@ -27,10 +28,10 @@ const skills = [
   { title: 'User research', body: 'Interviews, observation and behavioral data, turned into the few insights that change a product.' },
   { title: 'Product strategy', body: 'Defining what to build first, from 0 to 1 (Vori) to a redesign of a live app (LUMI).' },
   { title: 'Data-informed decisions', body: 'Analytics, ad performance and cost data (Python, SQL, GA4), used to choose what to measure and what to change.' },
-  { title: 'Accessible design', body: 'Research with neurodivergent users; contrast, touch targets and calm defaults built in from the start.' },
+  { title: 'Accessible design', body: 'Research with neurodivergent users; contrast, touch targets and calm defaults built in from the start. Audits with WAVE, aXe, screen readers, keyboard-only and 400% zoom checks.' },
 ]
 
-export default function Home({ onSelectProject }: HomeProps) {
+export default function Home({ onSelectProject, onSelectNote }: HomeProps) {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="max-w-6xl mx-auto px-4 md:px-8 pt-4">
       {/* Portfolio */}
@@ -57,6 +58,53 @@ export default function Home({ onSelectProject }: HomeProps) {
               </button>
               <p className="text-xl md:text-2xl text-earth-700 mt-2 leading-snug">{p.subtitle}</p>
             </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Side notes: shorter write-ups, kept apart from the case studies */}
+      <section id="notes" className="mt-16 scroll-mt-6">
+        <h2 className="border-t-2 border-earth-900 pt-3 font-sans font-bold uppercase text-sm tracking-widest mb-2">Side notes</h2>
+        <p className="text-xl text-earth-700 mb-8">A shorter piece: a design critique of an app I use.</p>
+        <div className="grid md:grid-cols-2 gap-x-10 gap-y-8">
+          {sideNotes.filter((n) => !n.hidden).map((n) => n.slides ? (
+            <article key={n.id} className="border-t border-earth-300 pt-4">
+              <p className="uppercase text-lg tracking-wide mb-2 text-earth-600">{n.kind} · {n.year}</p>
+              <button onClick={() => onSelectNote(n.id)} className="text-left">
+                <h3 className="font-serif text-2xl md:text-3xl leading-tight hover:underline decoration-1 underline-offset-4">
+                  {n.title}
+                </h3>
+              </button>
+              <p className="text-xl text-earth-700 mt-2 leading-snug">{n.summary}</p>
+              <button
+                onClick={() => onSelectNote(n.id)}
+                className="mt-3 font-sans font-bold uppercase text-sm tracking-widest text-accent hover:underline underline-offset-4"
+              >
+                See the {n.slides.length} slides →
+              </button>
+            </article>
+          ) : (
+            <details key={n.id} className="group border-t border-earth-300 pt-4">
+              <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <p className="uppercase text-lg tracking-wide mb-2 text-earth-600">{n.kind} · {n.year}</p>
+                <h3 className="font-serif text-2xl md:text-3xl leading-tight group-hover:underline decoration-1 underline-offset-4">
+                  {n.title}
+                </h3>
+                <p className="text-xl text-earth-700 mt-2 leading-snug">{n.summary}</p>
+                <span className="inline-block mt-3 font-sans font-bold uppercase text-sm tracking-widest text-accent">
+                  <span className="group-open:hidden">Read the notes +</span>
+                  <span className="hidden group-open:inline">Close −</span>
+                </span>
+              </summary>
+              <ul className="mt-4 space-y-3">
+                {n.points.map((pt) => (
+                  <li key={pt} className="flex gap-3 text-lg text-earth-900 leading-snug">
+                    <span className="text-earth-400 flex-shrink-0" aria-hidden="true">▸</span>
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
           ))}
         </div>
       </section>
