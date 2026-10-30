@@ -31,9 +31,40 @@ const skills = [
   { title: 'Accessible design', body: 'Research with neurodivergent users; contrast, touch targets and calm defaults built in from the start. Audits with WAVE, aXe, screen readers, keyboard-only and 400% zoom checks.' },
 ]
 
+// A link sent with one application (?for=doordash) opens with a note for that team
+const forDoorDash = new URLSearchParams(window.location.search).get('for') === 'doordash'
+
 export default function Home({ onSelectProject, onSelectNote }: HomeProps) {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="max-w-6xl mx-auto px-4 md:px-8 pt-4">
+      {forDoorDash && (
+        <section aria-labelledby="for-doordash" className="mb-14 border-2 border-earth-900 p-6 md:p-10">
+          <p className="font-sans font-bold uppercase text-sm tracking-widest text-accent mb-3">For the DoorDash team</p>
+          <h2 id="for-doordash" className="font-serif text-3xl md:text-5xl leading-tight mb-4">
+            I already started on your ordering flow.
+          </h2>
+          <p className="text-xl md:text-2xl text-earth-700 leading-relaxed max-w-3xl mb-6">
+            I ordered from the same restaurant on DoorDash and Uber Eats and read each step through five cognitive concepts. Five fixes came out of it, each weighed for the person ordering and for the business.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <button
+              onClick={() => onSelectNote('doordash-teardown')}
+              className="bg-earth-900 text-earth-50 px-5 py-3 font-sans font-bold uppercase text-sm tracking-widest hover:opacity-80"
+            >
+              See the DoorDash teardown →
+            </button>
+            <a
+              href="/files/doordash-teardown.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="border-2 border-earth-900 px-5 py-2.5 font-sans font-bold uppercase text-sm tracking-widest hover:bg-earth-900 hover:text-earth-50 transition-colors"
+            >
+              Open as PDF
+            </a>
+          </div>
+        </section>
+      )}
+
       {/* Portfolio */}
       <section>
         <h2 className="border-t-2 border-earth-900 pt-3 font-sans font-bold uppercase text-sm tracking-widest mb-2">Portfolio</h2>
