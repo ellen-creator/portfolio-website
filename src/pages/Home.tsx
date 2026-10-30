@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import { projects, sideNotes } from '@data/projects'
 
 interface HomeProps {
@@ -31,38 +32,55 @@ const skills = [
   { title: 'Accessible design', body: 'Research with neurodivergent users; contrast, touch targets and calm defaults built in from the start. Audits with WAVE, aXe, screen readers, keyboard-only and 400% zoom checks.' },
 ]
 
-// A link sent with one application (?for=doordash) opens with a note for that team
+// A link sent with one application (?for=doordash) opens with a special-edition strip for that team
 const forDoorDash = new URLSearchParams(window.location.search).get('for') === 'doordash'
 
 export default function Home({ onSelectProject, onSelectNote }: HomeProps) {
+  const [showEdition, setShowEdition] = useState(true)
+  const reduceMotion = useReducedMotion()
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="max-w-6xl mx-auto px-4 md:px-8 pt-4">
-      {forDoorDash && (
-        <section aria-labelledby="for-doordash" className="mb-14 border-2 border-earth-900 p-6 md:p-10">
-          <p className="font-sans font-bold uppercase text-sm tracking-widest text-accent mb-3">For the DoorDash team</p>
-          <h2 id="for-doordash" className="font-serif text-3xl md:text-5xl leading-tight mb-4">
-            I already started on your ordering flow.
-          </h2>
-          <p className="text-xl md:text-2xl text-earth-700 leading-relaxed max-w-3xl mb-6">
-            I ordered from the same restaurant on DoorDash and Uber Eats and read each step through five cognitive concepts. Five fixes came out of it, each weighed for the person ordering and for the business.
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="max-w-6xl mx-auto px-4 md:px-8 pt-4 overflow-x-clip">
+      {forDoorDash && showEdition && (
+        <motion.aside
+          aria-label="Special edition for DoorDash"
+          initial={reduceMotion ? false : { opacity: 0, x: 120, rotate: 3 }}
+          animate={{ opacity: 1, x: 0, rotate: -0.6 }}
+          transition={{ delay: 0.6, type: 'spring', stiffness: 70, damping: 14 }}
+          className="relative mb-12 bg-[#FFFDF7] text-earth-900 border border-earth-900/10 px-5 py-5 md:px-7 flex flex-col md:flex-row md:items-center gap-3 md:gap-6 shadow-[0_1px_2px_rgba(0,0,0,0.06),0_18px_32px_-12px_rgba(40,30,20,0.35)]"
+        >
+          <p className="flex-shrink-0 self-start md:self-auto bg-accent text-white font-sans font-bold uppercase text-sm tracking-widest px-3 py-1">
+            Special edition
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex-1">
+            <p className="font-serif text-xl md:text-2xl leading-snug">I order on DoorDash a lot, so I studied my own orders.</p>
+            <p className="text-base md:text-lg text-earth-600 leading-snug mt-1">
+              Concept work from the outside. Your team has data I don't, so each fix also notes the business reason behind today's design.
+            </p>
+          </div>
+          <div className="flex items-center gap-4 flex-shrink-0 whitespace-nowrap">
             <button
               onClick={() => onSelectNote('doordash-teardown')}
-              className="bg-earth-900 text-earth-50 px-5 py-3 font-sans font-bold uppercase text-sm tracking-widest hover:opacity-80"
+              className="font-sans font-bold uppercase text-sm tracking-widest underline underline-offset-4 hover:opacity-80"
             >
-              See the DoorDash teardown →
+              Read the teardown →
             </button>
             <a
               href="/files/doordash-teardown.pdf"
               target="_blank"
               rel="noreferrer"
-              className="border-2 border-earth-900 px-5 py-2.5 font-sans font-bold uppercase text-sm tracking-widest hover:bg-earth-900 hover:text-earth-50 transition-colors"
+              className="font-sans font-bold uppercase text-sm tracking-widest underline underline-offset-4 hover:opacity-80"
             >
-              Open as PDF
+              PDF
             </a>
+            <button
+              onClick={() => setShowEdition(false)}
+              aria-label="Dismiss special edition"
+              className="ml-auto md:ml-2 w-9 h-9 flex items-center justify-center text-xl text-earth-500 hover:text-earth-900"
+            >
+              ×
+            </button>
           </div>
-        </section>
+        </motion.aside>
       )}
 
       {/* Portfolio */}

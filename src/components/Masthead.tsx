@@ -61,13 +61,13 @@ function DogSketch({ night }: { night: boolean }) {
 
 export default function Masthead({ edition, compact = false, onWork, onSkills, onStory, onSelectProject }: MastheadProps) {
   const isNight = edition === 'story'
-  const navBtn = 'uppercase font-sans font-bold text-[17px] tracking-wider hover:opacity-60'
+  const navBtn = 'uppercase font-sans font-bold text-[15px] md:text-[17px] tracking-wide md:tracking-wider hover:opacity-60'
 
   return (
     <header className="max-w-6xl mx-auto px-4 md:px-8">
       {/* Top menu */}
       <nav className="flex items-center justify-between py-3">
-        <div className="flex items-center gap-6 md:gap-8">
+        <div className="flex items-center gap-4 md:gap-8">
           <button onClick={onWork} className={`${navBtn} ${edition === 'work' ? 'underline underline-offset-4 decoration-2' : ''}`}>
             Portfolio
           </button>
@@ -80,7 +80,7 @@ export default function Masthead({ edition, compact = false, onWork, onSkills, o
           href="/resume.pdf"
           target="_blank"
           rel="noreferrer"
-          className="bg-accent text-white px-4 md:px-5 py-2.5 font-sans font-bold text-[17px] uppercase tracking-wider hover:brightness-110"
+          className="bg-accent text-white px-3 md:px-5 py-2 md:py-2.5 font-sans font-bold text-[15px] md:text-[17px] uppercase tracking-wide md:tracking-wider hover:brightness-110"
         >
           Resume
         </a>
