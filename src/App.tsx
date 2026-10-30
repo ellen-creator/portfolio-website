@@ -96,6 +96,7 @@ function App() {
             <p className="font-display uppercase text-4xl tracking-wide">Suhyun Lim</p>
             <div className="flex flex-wrap gap-x-6 gap-y-2 font-sans font-bold uppercase text-sm tracking-wide">
               <a href="mailto:elllllllenlim@gmail.com" className="hover:opacity-60">Email</a>
+              <a href="https://www.linkedin.com/in/suhyun-lim-xoogler-ex-bcger-3a0592135/" target="_blank" rel="noreferrer" className="hover:opacity-60">LinkedIn</a>
               <a href="/resume.pdf" target="_blank" rel="noreferrer" className="hover:opacity-60">Resume</a>
               <button onClick={goPuzzle} className="hover:opacity-60 uppercase">Puzzle</button>
               <span className="text-earth-500 font-normal normal-case">© 2026</span>
