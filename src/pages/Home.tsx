@@ -86,8 +86,22 @@ export default function Home({ onSelectProject, onSelectNote }: HomeProps) {
         </motion.aside>
       )}
 
+      {/* Hero: who I am, and the one thing I want a reader to remember */}
+      <section className="mb-16">
+        <p className="uppercase tracking-wide text-base text-earth-600 mb-4">UX researcher · business mindset</p>
+        <h1 className="font-serif text-4xl md:text-6xl leading-tight mb-6">I find the real problem with people, then prove it with data.</h1>
+        <p className="text-xl md:text-2xl text-earth-700 max-w-3xl mb-8 leading-relaxed">
+          Former consultant and strategist, now building in UX research: interviews, behavioral data, and product decisions, from a 40-person study to a live beta.
+        </p>
+        <div className="flex flex-wrap gap-4 font-sans font-bold uppercase text-base tracking-wider">
+          <a href="#portfolio" className="bg-accent text-white px-6 py-3 hover:brightness-110">See the work</a>
+          <a href="/resume.pdf" target="_blank" rel="noreferrer" className="border-2 border-earth-900 dark:border-earth-50 px-6 py-3 hover:opacity-60">Resume</a>
+          <a href="mailto:elllllllenlim@gmail.com" className="border-2 border-earth-900 dark:border-earth-50 px-6 py-3 hover:opacity-60">Email</a>
+        </div>
+      </section>
+
       {/* Portfolio */}
-      <section>
+      <section id="portfolio" className="scroll-mt-6">
         <h2 className="border-t-2 border-earth-900 pt-3 font-sans font-bold uppercase text-sm tracking-widest mb-2">Portfolio</h2>
         <p className="text-xl md:text-xl text-earth-700 mb-8">UX research and product strategy: find the real problem with people, prove it with data, then change the product.</p>
         <div className="grid md:grid-cols-2 gap-x-10 gap-y-14">
