@@ -86,12 +86,14 @@ export default function Home({ onSelectProject, onSelectNote }: HomeProps) {
         </motion.aside>
       )}
 
-      {/* Hero: who I am, and the one thing I want a reader to remember */}
+      {/* Hero: breaking-news framing for the one identity line */}
       <section className="mb-16">
-        <p className="uppercase tracking-wide text-base text-earth-600 mb-4">UX researcher · business mindset</p>
-        <h1 className="font-serif text-4xl md:text-6xl leading-tight mb-6">I find the real problem with people, then prove it with data.</h1>
+        <span className="inline-block bg-accent text-white px-3 py-1 font-sans font-bold uppercase text-base tracking-wider mb-5">속보 · Breaking</span>
+        <h1 className="font-serif text-4xl md:text-6xl leading-tight mb-6">
+          Breaking: someone who understands the business has entered UX.
+        </h1>
         <p className="text-xl md:text-2xl text-earth-700 max-w-3xl mb-8 leading-relaxed">
-          Former consultant and strategist, now building in UX research: interviews, behavioral data, and product decisions, from a 40-person study to a live beta.
+          UX designer who turns business goals into experiences that perform: from optimizing sites for lead-gen and ecommerce outcomes at Google and consulting at BCG, to building products at early-stage startups.
         </p>
         <div className="flex flex-wrap gap-4 font-sans font-bold uppercase text-base tracking-wider">
           <a href="#portfolio" className="bg-accent text-white px-6 py-3 hover:brightness-110">See the work</a>
