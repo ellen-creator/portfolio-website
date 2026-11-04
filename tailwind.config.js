@@ -16,7 +16,7 @@ export default {
       colors: {
         // Paper & ink (editorial). Full scale so every shade used in the app resolves.
         earth: {
-          50: '#FFFFFF',   // Paper
+          50: '#EBECEC',   // Paper (soft cool grey)
           100: '#F4F3EF',  // Light rule / panel
           200: '#E4E2DC',
           300: '#CBC8C0',

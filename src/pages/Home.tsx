@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { projects, sideNotes } from '@data/projects'
+import LifeGlobe from '@components/LifeGlobe'
 
 interface HomeProps {
   onSelectProject: (id: string) => void
@@ -87,19 +88,17 @@ export default function Home({ onSelectProject, onSelectNote }: HomeProps) {
       )}
 
       {/* Hero: breaking-news framing for the one identity line */}
-      <section className="mb-16">
-        <span className="inline-block bg-accent text-white px-3 py-1 font-sans font-bold uppercase text-base tracking-wider mb-5">속보 · Breaking</span>
+      <section className="mb-16 grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+        <div>
+        <p className="font-sans font-bold uppercase text-base tracking-[0.2em] text-accent mb-5">속보 · Breaking</p>
         <h1 className="font-serif text-4xl md:text-6xl leading-tight mb-6">
           Breaking: someone who understands the business has entered UX.
         </h1>
         <p className="text-xl md:text-2xl text-earth-700 max-w-3xl mb-8 leading-relaxed">
           UX designer who turns business goals into experiences that perform: from optimizing sites for lead-gen and ecommerce outcomes at Google and consulting at BCG, to building products at early-stage startups.
         </p>
-        <div className="flex flex-wrap gap-4 font-sans font-bold uppercase text-base tracking-wider">
-          <a href="#portfolio" className="bg-accent text-white px-6 py-3 hover:brightness-110">See the work</a>
-          <a href="/resume.pdf" target="_blank" rel="noreferrer" className="border-2 border-earth-900 dark:border-earth-50 px-6 py-3 hover:opacity-60">Resume</a>
-          <a href="mailto:elllllllenlim@gmail.com" className="border-2 border-earth-900 dark:border-earth-50 px-6 py-3 hover:opacity-60">Email</a>
         </div>
+        <LifeGlobe />
       </section>
 
       {/* Portfolio */}

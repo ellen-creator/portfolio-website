@@ -100,7 +100,7 @@ export default function Private() {
             </p>
             <p>
               <strong className="font-semibold">I started in social work.</strong> At the University of Hong Kong I double-majored in
-              social work and business design &amp; innovation, and learned to begin every problem by listening to the person living it.
+              social work and design thinking, and learned to begin every problem by listening to the person living it.
             </p>
             <p>
               <strong className="font-semibold">Then I learned to read the data.</strong> As a consultant at Kearney and BCG, I turned
@@ -136,7 +136,7 @@ export default function Private() {
             <dd className="leading-snug">
               M.S. Information, University of Michigan
               <span className="block text-earth-600 dark:text-earth-300 text-base mt-1">UX design &amp; research · 2026 – 2028</span>
-              <span className="block mt-3">B.A. Social Work &amp; Business Design, The University of Hong Kong</span>
+              <span className="block mt-3">B.A. Social Work &amp; Design Thinking, The University of Hong Kong</span>
             </dd>
           </div>
           <div>

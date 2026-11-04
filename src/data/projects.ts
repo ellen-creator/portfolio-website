@@ -26,6 +26,14 @@ export interface CaseStudy {
   // Research methods used in this case
   methods?: string[]
 
+  // Story sections under "What I did": each has a title, a why, and its visuals
+  // Full-width visual at the top of the case page
+  hero?: string
+  sections?: Array<{ title: string; rationale: string; layout?: "sticky" | "grid"; items: Array<{ image: string; label?: string; note?: string }> }>
+
+  // Show the outcome block first (for cases where the result is the strongest story)
+  outcomeFirst?: boolean
+
   // User flows, redrawn during the redesign (horizontal steps)
   flows?: Array<{ title: string; caption: string; steps: Array<{ title: string; note?: string; decision?: boolean }> }>
 
@@ -136,12 +144,13 @@ export const projects: CaseStudy[] = [
     thumbnail: "/images/projects/lumi2/final-light.jpg",
     tags: ["App + Watch design", "Accessible Design", "Health Tech", "iOS & watchOS"],
     scope: "0 → 1 · Beta",
+    outcomeFirst: true,
     result: "One app that answers four questions about your energy: Today is now, Journal is what happened, Analysis is why, Energizer is what helps.",
     before: "v0: five tabs, a 0–10 stress score, streak points and a character called Echo. 8–9 colours on one screen.",
     after: "Four tabs, one question each. A 1–10 Body Battery, growth from logged days, four Lumis to choose from, and two hues plus neutrals.",
     role: "All UI/UX design, end to end",
     team: "CPO of the team",
-    outcome: "In beta with 25 potential users, testing data accuracy and usability",
+    outcome: "In beta: 29 beta test users are testing it now",
     methods: ["40 interviews", "Two user groups defined", "User flows (v0 → one day)", "Wireframe versions side by side", "Character benchmark", "Sensory-overload literature review", "Palette testing (5 palettes)", "Information architecture", "PubMed evidence review (29 studies)"],
     process: [
       { stage: "Users & flows", method: "Two users who burn out for opposite reasons; the v0 flow rebuilt around one day", output: "5 tabs → 4, stress score → Body Battery" },
@@ -149,6 +158,46 @@ export const projects: CaseStudy[] = [
       { stage: "Characters", method: "Four styles explored, a benchmark, a strategy and a lore", output: "One character became four Lumis" },
       { stage: "Brand", method: "Sensory-overload research, then palettes from 8–9 colours down", output: "Sage + the Lumi you chose" },
       { stage: "IA & build", method: "Mapping how data moves, refining by subtracting, SwiftUI with 588 automated tests", output: "Four tabs in light and dark; beta" },
+    ],
+    hero: "/images/projects/lumi2/iphone-today.png",
+    sections: [
+      {
+        title: "User flow",
+        rationale: "Why: a one-day flow showed people needed a reason to come back every day. That pointed to attachment, so the character came next.",
+        items: [
+          { label: "Before · v0 flow", image: "/images/projects/lumi2/flow-v0.jpg" },
+          { label: "After · new user flow (EN)", image: "/images/projects/lumi2/user-flow-new-en.png" },
+          { label: "After · existing user flow (EN)", image: "/images/projects/lumi2/user-flow-existing-en.png" },
+        ],
+      },
+      {
+        title: "Theme colour",
+        rationale: "Why: busy, saturated screens tire ADHD and autistic users. Two hues keep the screen calm, and meaning comes from words and icons.",
+        items: [
+          { image: "/images/projects/lumi2/palette.jpg" },
+        ],
+      },
+      {
+        title: "Wireframe and final design",
+        rationale: "Why: each tab answers one question, and each card asks for one action.",
+        layout: "grid",
+        items: [
+          { label: "Wireframes", image: "/images/projects/lumi2/wireframes.jpg" },
+          { label: "Final · Today", image: "/images/projects/lumi2/iphone-today.png" },
+          { label: "Final · Journal", image: "/images/projects/lumi2/iphone-journal.png" },
+          { label: "Final · Analysis", image: "/images/projects/lumi2/iphone-analysis.png" },
+          { label: "Final · Energizer", image: "/images/projects/lumi2/iphone-energizer.png" },
+        ],
+      },
+      {
+        title: "Character development",
+        rationale: "Why: user engagement and communication to lead actions in Energizer. The character invites one small try, and a card explains it, without guilt.",
+        items: [
+          { label: "Ideation", image: "/images/projects/lumi2/characters-cast.png" },
+          { label: "Evolving · five levels, Lv1 to Lv5", image: "/images/projects/lumi2/characters-levels.png" },
+          { label: "3D version · four Lumis", image: "/images/projects/lumi2/characters-four-3d.png" },
+        ],
+      },
     ],
     overview: "ADHD and autistic young adults notice too late that their energy is gone, and most trackers add numbers and streaks to break. LUMI is an iPhone and Apple Watch app with four tabs, one question each, designed end to end: users and flows, wireframes, characters, brand, and the final app now in beta.",
     insights: [
@@ -178,38 +227,6 @@ export const projects: CaseStudy[] = [
         implication: "Tips and heads-ups are personal from day one, with 988 always there in a crisis.",
       },
     ],
-    decisions: [
-      {
-        question: "What should the main number measure?",
-        options: ["Stress score 0–10", "Body Battery 1–10"],
-        chose: "Body Battery 1–10",
-        why: "Show the energy left today instead of grading stress. “Steady. Pace yourself.” comes before “6 / 10”.",
-      },
-      {
-        question: "How do we reward logging?",
-        options: ["Streaks & points", "Growth from logged days"],
-        chose: "Growth from logged days",
-        why: "A missed day is never a penalty, so nobody quits after one bad week.",
-      },
-      {
-        question: "How many tabs?",
-        options: ["5 tabs", "4 tabs, one question each"],
-        chose: "4 tabs, one question each",
-        why: "Today · Journal · Analysis · Energizer. Each tab answers one question, and each card asks for one action.",
-      },
-      {
-        question: "What happens to Lumi at the end of the story?",
-        options: ["Flies home to space", "Settles in on Earth"],
-        chose: "Settles in on Earth",
-        why: "In the first draft, success meant a goodbye. Now each small log helps Lumi put down roots, and you are its kind neighbour.",
-      },
-      {
-        question: "How many colours on one screen?",
-        options: ["8–9 colours", "2 hues + neutrals"],
-        chose: "2 hues + neutrals",
-        why: "Sensory research pointed to soft, consistent colour with one highlight. Meaning comes from words, icons and fill level, never colour alone.",
-      },
-    ],
     rules: [
       { found: "40 interviews: new users kept asking “what am I looking at?”", rule: "One job per screen; explain first", onScreen: "Each tab answers one question" },
       { found: "Competitive review: too many numbers confused people, and a score gave no reason", rule: "Words, not scores", onScreen: "“Running low”; the number sits behind ⓘ" },
@@ -220,9 +237,9 @@ export const projects: CaseStudy[] = [
     hypothesis: {
       ifWe: "show one Body Battery in words, one next action, and a character that grows only when you log",
       then: "people notice low energy earlier, and keep logging after a bad week",
-      measuredBy: "a beta with 25 potential users: does the battery match how they feel, can they use it without help, do they come back",
+      measuredBy: "a beta with 29 test users: does the battery match how they feel, can they use it without help, do they come back",
     },
-    hypothesisCheck: "Being tested now: 25 potential users are in the beta, checking data accuracy (does the battery match how they feel?) and usability (can they use it without help?).",
+    hypothesisCheck: "Being tested now: 29 beta test users are checking data accuracy (does the battery match how they feel?) and usability (can they use it without help?).",
     situation: {
       title: "Situation",
       description: "Most energy trackers add numbers and streaks.",
@@ -370,15 +387,12 @@ export const projects: CaseStudy[] = [
   ],
     impact: {
       title: "Outcome & Next Steps",
-      description: "UI/UX designed end to end, now in beta with 25 potential users, testing data accuracy and usability. Next: per-account logs, growth from synced logs, and matching Today and Journal numbers. Supported by a Korean government start-up grant and NSF I-Corps Regional funding.",
+      description: "UI/UX designed end to end. Now in beta with 29 beta test users testing data accuracy and usability. Next: per-account logs, growth from synced logs, and matching Today and Journal numbers.",
       metrics: [
-        { label: "potential users in beta", value: "25" },
-        { label: "tabs, one question per tab", value: "5 → 4" },
-        { label: "colours on one screen, plus neutrals", value: "8–9 → 2" },
-        { label: "Korean government grant", value: "20M", unit: "KRW (모두의 창업, about USD 16K)" },
+        { label: "Korean government grant (모두의 창업)", value: "$16K" },
         { label: "NSF I-Corps", value: "Regional", unit: "funding" },
-        { label: "interviews before design", value: "40" },
-        { label: "Body Battery, not a stress score", value: "1–10" },
+        { label: "stakeholder interviews", value: "40" },
+        { label: "beta test users, testing now", value: "29" },
       ],
     },
     learnings: ["Subtract first: most wins came from removing a line, a tab or a number, not adding a feature.", "Design for the bad day: no streaks to lose, no alerts while asleep, “I'm okay” always one tap away.", "Consistent data is UX: when the Watch and phone disagree, people stop trusting every screen."],
@@ -391,6 +405,7 @@ export const projects: CaseStudy[] = [
     title: "Vori - Neuro-Interventional Smart Eyewear",
     navLabel: "AR UI design",
     subtitle: "Smart eyewear that detects sensory overload in neurodivergent children",
+    hero: "/images/projects/vori_glasses.png",
     thumbnail: "/images/projects/vori_mockup.png",
     tags: ["Product Strategy", "Neurotechnology", "Accessible Design", "Usability Testing"],
     scope: "0 → 1 · Solo founder",
@@ -408,7 +423,7 @@ export const projects: CaseStudy[] = [
       { stage: "Signal", method: "EEG data from 121 children (61 ADHD/ASD, 60 controls)", output: "87% early-detection accuracy" },
       { stage: "Usability test", method: "Classroom testing with Pearson Elementary, pending permission", output: "In progress" },
     ],
-    overview: "Lightweight smart eyewear that detects early signs of sensory overload in ADHD and ASD children and responds with calm peripheral cues.",
+    overview: "Vori is light glasses for children with ADHD or autism. They notice when a child is starting to feel overwhelmed, and give a soft cue at the edge of vision before a meltdown starts.",
     insights: [
       {
         source: "Students",
@@ -446,22 +461,22 @@ export const projects: CaseStudy[] = [
         why: "Once behavior is visible, it is too late. Early neural markers give a window to prevent the crisis.",
       },
     ],
-    hypothesisCheck: "Partly answered: early EEG data (61 ADHD/ASD vs 60 controls) shows distinct signatures. Still open: whether cues calm children in real classrooms, which the current phase tests.",
+    hypothesisCheck: "Partly answered: early brain-wave data (61 ADHD/ASD vs 60 controls) shows distinct patterns. Still open: whether the cues calm children in a real classroom, which the next test checks.",
     situation: {
       title: "Situation",
-      description: "Children with ADHD and ASD hide distress until it becomes a visible meltdown.",
-      context: "Teachers and parents only see the crisis. Existing tools are clinical, heavy or reactive.",
-      keywords: ["Reactive than Proactive", "Hidden Distress", "Late Detection", "Stigma"],
+      description: "Children with ADHD and autism often hide distress until it becomes a visible meltdown.",
+      context: "Teachers and parents usually see only the meltdown. Existing tools are clinical, heavy, or they arrive too late.",
+      keywords: ["Too late", "Hidden distress", "Stigma", "Heavy tools"],
     },
     problem: {
       title: "Problem",
       description: "Research with students, parents, educators and clinicians surfaced four needs:",
-      painPoints: ["Students having a hard time sitting still in class", "Teachers struggle to catch the biological signs when a child does not say anything", "Parents see the build-up too late", "Clinicians lack objective data"],
+      painPoints: ["Students struggle to sit still in class", "Teachers miss the early signs when a child stays quiet", "Parents see the build-up too late", "Clinicians have reports, but no objective data"],
     },
     solution: {
       title: "Solution",
-      howMightWe: "How might we build an invisible, clinically grounded tool that prevents a crisis instead of managing it?",
-      description: "Very light glasses with temple-mounted EEG sensors and eye tracking. Peripheral cues appear only when early overload signs are detected, so central vision stays clear.",
+      howMightWe: "How might we build a tool the child does not notice, that prevents a meltdown instead of reacting to one?",
+      description: "Light glasses with sensors on the temples. They read brain-wave signals (EEG) and eye movement. When early signs of overload appear, a soft cue shows only at the edge of the child's vision, so the centre of the view, the board and the teacher, stays clear.",
       tools: ["EEG algorithm design", "AWS + React", "Unity", "Python ML", "Clinical research"],
     },
     implementation: {
@@ -470,28 +485,31 @@ export const projects: CaseStudy[] = [
       changes: [
         {
           title: "1 · Research",
-          description: "Interviews with 50+ clinicians, educators, parents and community leaders. Many of my hypotheses were challenged in real life, from the user's perspective.",
+          description: "I talked with 50+ clinicians, educators, parents and community leaders.\nMany of my assumptions were wrong.\nStudents disliked anything that looked medical, so the device had to look like everyday glasses.",
           image: "/images/projects/vori_glasses.png",
+          caption: "The everyday-looking glasses concept, about 90 g.",
         },
         {
           title: "2 · Design",
-          description: "Peripheral-only cues, a 90g form, and predictions 30–60 seconds before escalation.",
+          description: "Two design choices.\nThe cue appears only at the edge of vision, so the child can still see the teacher and the board.\nIt appears 30–60 seconds before a meltdown, while there is still time to help.",
           image: "/images/projects/vori_eyetracking.png",
-          video: "/images/projects/vori_visual_mockup.mp4",
+          caption: "In a classroom, the eye tracker follows where the child looks. The cue stays out of the centre of vision.",
+          video: "/images/projects/vori_visual_mockup_web.mp4",
         },
         {
           title: "3 · Testing",
-          description: "In progress, pending permission: a collaboration with Pearson Elementary School in Michigan.",
+          description: "Next step: a usability test with children at Pearson Elementary School in Michigan, pending permission.\nThe question: do the cues calm children in a real classroom?",
           images: ["/images/projects/vori_report1.png", "/images/projects/vori_report2.png"],
+          captions: ["An example weekly report for parents and clinicians (illustrative).", "The same report, continued."],
         },
       ],
     },
     impact: {
       title: "Outcome",
-      description: "Validated concept, now in usability testing. Funded by a University of Michigan DARE to Dream Grant.",
+      description: "The concept is validated with early data, and the next step is a classroom usability test. Funded by a University of Michigan DARE to Dream Grant.",
       metrics: [
         {
-          label: "Children's brain waves tested for detecting overstimulation",
+          label: "Children's brain-wave recordings, used to test early detection",
           value: "121",
           unit: "60 controls + 61 ADHD/ASD",
         },
@@ -507,7 +525,7 @@ export const projects: CaseStudy[] = [
         },
       ],
     },
-    learnings: ["Research with the people who live the problem shaped every technical choice.", "Clinical efficacy is not enough. If children refuse to wear it, it does not work.", "Predicting a crisis is a different product from reacting to one."],
+    learnings: ["Research with the people who live the problem shaped every technical choice.", "A device can be clinically good and still fail if children refuse to wear it.", "Predicting a meltdown is a different product from reacting to one."],
     year: 2026,
     timeline: "Ongoing · Research started in 2025, founded Feb 2026",
   },
@@ -586,15 +604,15 @@ export const projects: CaseStudy[] = [
       changes: [
         {
           title: "Persona 1 · Urgent help",
-          description: "Lead with reassurance and personal accountability. Conversion rose among high-urgency users.",
-          images: ["/images/projects/arklink_persona1_cj.png", "/images/projects/arklink_chatbot1.png"],
-          captions: ["Persona 1's journey: becoming a victim, searching, choosing a private service, requesting help and paying. The landing page answers each worry on this path.", "Chatbot reply for urgent users: \"Don't blame yourself. Time matters, so let us help now.\" Confidentiality is stated before any question is asked."],
+          description: "Psychology: acute panic and time pressure, so the page needs immediate reassurance and one clear action. Design solution: reassuring copy with a time-bound action, a chatbot that opens with personal accountability (\"I will personally ensure your data doesn't spread\"), and a Direct Inquiry Bar for instant consultation. Conversion rose among high-urgency users.",
+          images: ["/images/projects/arklink_persona1.png", "/images/projects/arklink_persona1_cj.png", "/images/projects/arklink_chatbot1.png"],
+          captions: ["Persona 1: urgent help and immediate rescue.", "Persona 1's journey: becoming a victim, searching, choosing a private service, requesting help and paying. The landing page answers each worry on this path.", "Chatbot reply for urgent users: \"Don't blame yourself. Time matters, so let us help now.\" Confidentiality is stated before any question is asked."],
         },
         {
           title: "Persona 2 · Technical research",
-          description: "Offer technical documentation and methodology up front. Lead quality improved as customers understood what Arklink provided first.",
-          images: ["/images/projects/arklink_persona2_cj.png", "/images/projects/arklink_chatbot2.png"],
-          captions: ["Persona 2's journey: comparing police and private services, reading reviews and checking credibility, then submitting a request and paying securely.", "Chatbot reply for researchers: the company introduction PDF is offered right away, so they can check credibility before deciding."],
+          description: "Psychology: rational validation, researching specific platforms before trusting one. Design solution: technical credibility first, with platform-specific expertise, and technical summaries and malware-analysis methods offered as soon as people enter their details. Lead quality improved as customers understood what Arklink provided first.",
+          images: ["/images/projects/arklink_persona2.png", "/images/projects/arklink_persona2_cj.png", "/images/projects/arklink_chatbot2.png"],
+          captions: ["Persona 2: people looking for technical reliability.", "Persona 2's journey: comparing police and private services, reading reviews and checking credibility, then submitting a request and paying securely.", "Chatbot reply for researchers: the company introduction PDF is offered right away, so they can check credibility before deciding."],
         },
         {
           title: "Direct inquiry bar",
